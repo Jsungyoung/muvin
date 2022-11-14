@@ -1,4 +1,4 @@
-package com.example.demo3.util;
+package com.example.muvin.util;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
