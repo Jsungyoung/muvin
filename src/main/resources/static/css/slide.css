@@ -1,0 +1,71 @@
+li{list-style:none;}
+.clearfix { overflow: auto; }
+.clearfix::after {content: ""; clear: both; display: table; }
+.clear{clear: both;}
+.gallery{width: 900px; margin: 20px auto; border: 1px solid #ccc; overflow: hidden; padding-left:0; }
+.gallery ul{width: 300%; position: relative; left: -300px;}
+.gallery ul li {float: left; width: 300px; height: 180px; box-sizing: border-box; padding: 15px; text-align: center; line-height: 150px;}
+.gallery ul li .img{border: 3px solid #ccc;}
+
+.g_item{width: 900px; margin: 0 auto; text-align: center;}
+.g_item ul li{display: inline-block; margin-right: 10px; background: #ccc; width: 10px; height: 10px; border-radius: 50%;}
+.g_item ul li.on{background: #f00;}
+
+
+/*First, the holder needs to be relative and, so that the containers can assume % width based on the holder's width*/
+
+.container-holder {
+    text-align: center;
+    width: 100%;
+    /*or what ever you need it to be*/
+    position: relative;
+    overflow: hidden;
+    /*Removes scrollbar*/
+    display: block;
+    /*Block seems to resize well to new content being put in*/
+}
+
+.container {
+    position: relative;
+    transition: margin 1s ease, opacity 0.7s ease;
+    float: left;
+    width: 20%;
+    /*Since we want 5 in the viewport, we use 100/5 -> 20%*/
+    opacity: 1;
+    /*You can use opacity if you like, then we add opacity: 0 to before and after, so they fade out*/
+}
+
+.container img {
+    width: 96%;
+    margin: 0 auto;
+}
+
+.outsideViewBefore {
+    margin-left: -20%;
+    /*With this margin, this container will be off screen to the left*/
+    opacity: 0;
+}
+
+.outsideViewAfter {
+    margin-right: -20%;
+    /*With this margin, this container will be off screen to the right*/
+    opacity: 0;
+}
+
+.nav-button {
+    top: 40%;
+    font-weight: 900;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+    color: #fff;
+    position: absolute;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.click-prev {
+    left: 0;
+}
+
+.click-next {
+    right: 0;
+}
