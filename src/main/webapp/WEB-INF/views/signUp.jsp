@@ -11,35 +11,39 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="">
+<form method="post" action="user/signUp">
     <div>
         <h2>signUp</h2>
         <div>
-            <h4>ID</h4>
+            <h4>아이디</h4>
             <input type="text" name="id" id="id" placeholder="Id">
         </div>
         <div>
-            <h4>Password</h4>
+            <h4>비밀번호</h4>
             <input type="password" name="password" id="password" placeholder="Password">
         </div>
         <div>
-            <h4>name</h4>
+            <h4>비밀번호 확인</h4>
+            <input type="password" name="passwordCheck" id="passwordCheck" placeholder="Password">
+        </div>
+        <div>
+            <h4>이름</h4>
             <input type="text" name="name" id="name" placeholder="name">
         </div>
         <div>
-            <h4>nickname</h4>
+            <h4>닉네임</h4>
             <input type="text" name="nickname" id="nickname" placeholder="nickname">
         </div>
         <div>
-            <h4>phone</h4>
+            <h4>전화번호</h4>
             <input type="text" name="phone" id="phone" placeholder="phone">
         </div>
         <div>
-            <h4>birth</h4>
+            <h4>생년월일</h4>
             <input type="text" name="birth" id="birth" placeholder="birth">
         </div>
         <div>
-            <h4>email</h4>
+            <h4>이메일</h4>
             <input type="text" name="email" id="email" placeholder="email">
         </div>
         <div>

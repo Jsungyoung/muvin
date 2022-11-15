@@ -16,25 +16,21 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    private final UserRepository repository;
+    private UserRepository repository;
 
-    public String save(UserDto userDto){
-        User user = User.toSaveEntity(userDto);
-        return repository.save(user).getId();
+    public User createUser (UserDto userDto){
+        User user = new User();
+        user.setId(userDto.getId());
+        user.setPassword(userDto.getPassword());
+        user.setName(userDto.getName());
+        user.setNickname(userDto.getNickname());
+        user.setPhone(userDto.getPhone());
+        user.setBirth(userDto.getBirth());
+        user.setEmail(userDto.getEmail());
+        return repository.save(user);
     }
 
-
-    public UserDto login(UserDto userDto) {
-        Optional<User> optionalUser = repository.findByUserId(userDto.getId());
-        if(optionalUser.isPresent()){
-            User login = optionalUser.get();
-            if(login.getPassword().equals(userDto.getPassword())){
-                return UserDto.toUserDto(login);
-            }else{
-                return null;
-            }
-        }else{
-            return null;
-        }
+    public User login(String id){
+        return repository.findMyid(id);
     }
 }

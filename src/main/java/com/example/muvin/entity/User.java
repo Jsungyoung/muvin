@@ -2,9 +2,7 @@ package com.example.muvin.entity;
 
 import com.example.muvin.domain.user.UserDto;
 import com.example.muvin.util.Timestamp;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,10 +10,10 @@ import javax.persistence.Table;
 
 @Table(name = "user")
 @Entity
+@AllArgsConstructor
 @NoArgsConstructor // 기본 생성자
-@Getter
-@Setter
-public class User extends Timestamp { // VO (view only)
+@Data
+public class User extends Timestamp {
 
     @Id
     private String id; // PK
@@ -26,15 +24,5 @@ public class User extends Timestamp { // VO (view only)
     private String birth;
     private String email;
 
-    public static User toSaveEntity(UserDto userDto){
-        User user = new User();
-        user.setPassword(userDto.getPassword());
-        user.setName(userDto.getName());
-        user.setNickname(userDto.getNickname());
-        user.setPhone(userDto.getPhone());
-        user.setBirth(userDto.getBirth());
-        user.setEmail(userDto.getEmail());
-        return user;
-    }
 }
 
