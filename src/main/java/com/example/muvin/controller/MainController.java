@@ -11,8 +11,7 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/signUpForm")
-    public String signUpForm(){
-        return "signUp";
-    }
+    @GetMapping("/board")
+    public String board(){return "board";}
+
 }
