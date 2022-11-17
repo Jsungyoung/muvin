@@ -1,10 +1,11 @@
 package com.example.muvin.domain.movie;
 
-import com.example.muvin.util.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,7 +17,7 @@ public class MovieDto {
     private String name;
     private String poster;
     private String director;
-    private Timestamp regdate; //??ㅠㅠ
+    private Date regdate;
     private String genre;
     private String actors;
     private int audiAcc;
@@ -24,5 +25,6 @@ public class MovieDto {
     private String age_limit;
     private int run_time;
     private String keyword;
+    private String content;
 
 }

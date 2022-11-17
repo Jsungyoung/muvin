@@ -59,3 +59,13 @@ ul {
 a {
     color: inherit;
 }
+.movie-container{
+    position: relative;
+}
+
+.movie{
+    float: left;
+    width: 400px;
+    min-height: 700px;
+    background-size: cover;
+}

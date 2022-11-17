@@ -129,3 +129,31 @@ function swapClass(tarEl, addC, remC) {
     tarEl.addClass(addC);
 }
 
+function loadMovie(){
+    var settings = {
+        "url": "https://api.themoviedb.org/3/discover/movie?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&sort_by=popularity.desc&include_adult=false&page=1&with_watch_monetization_types=flatrate",
+        "method": "GET",
+        "timeout": 0,
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        console.log(response);
+        const list = response.results;
+        list.forEach(e => {
+            const poster_path = e.poster_path;
+            const title = e.title;
+            const audAcc = e.popularity;
+            const regdate = e.release_date;
+            const content = e.overview;
+
+            $('.movie-container').append(
+                `<div class="movie" style="background-image: url('https://image.tmdb.org/t/p/original/${poster_path}');"><a href="movieView.jsp">
+                    <p class="title"><strong>${title}</strong></p>
+                    <p class="audAcc">${audAcc}명</p>
+                    <p class="regdate">${regdate}</p>
+				</a></div>`
+            );
+        });
+    });
+}
