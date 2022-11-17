@@ -14,23 +14,18 @@ import javax.validation.constraints.Pattern;
 @Setter
 @NoArgsConstructor
 public class UserDto {
-    @NotBlank
+
     private String id; // PK
-    @NotBlank
-    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}", message = "비밀번호는 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.")
+
     private String password;
-    @NotBlank
-    @Pattern(regexp = "(/^[가-힣]+$/)", message = "이름은 한글만 작성가능합니다.")
+
     private String name;
-    @NotBlank
-    @Pattern(regexp = "^[ㄱ-ㅎ가-힣a-z0-9-_]{2,10}$", message = "닉네임은 특수문자를 제외한 2~10자리여야 합니다.")
+
     private String nickname;
-    @NotBlank
-    @Pattern(regexp = "(01[016789])(\\d{3,4})(\\d{4})", message = "올바른 휴대폰 번호를 입력해주세요.")
+
     private String phone;
     private String birth;
-    @NotBlank
-    @Email(message = "이메일 형식이 올바르지 않습니다.")
+
     private String email;
 
 

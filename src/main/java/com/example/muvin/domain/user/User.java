@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
 @Table(name = "user")
 @Entity
 @NoArgsConstructor // 기본 생성자

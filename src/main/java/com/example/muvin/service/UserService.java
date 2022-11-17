@@ -42,15 +42,15 @@ public class UserService {
         return user;
     }
     // 로그인
-    public UserDto login(UserDto userDto) {
+    public boolean login(UserDto userDto) {
         User findUser = repository.findByUserId(userDto.getId());
 
         if (findUser != null) {
             UserDto findUserDto = new UserDto(findUser);
             if (userDto.getPassword().equals(findUserDto.getPassword())) {
-                return findUserDto;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 }

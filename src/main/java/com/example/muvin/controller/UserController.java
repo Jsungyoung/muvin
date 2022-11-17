@@ -1,5 +1,6 @@
 package com.example.muvin.controller;
 
+import com.example.muvin.domain.user.User;
 import com.example.muvin.domain.user.UserDto;
 import com.example.muvin.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 @RequiredArgsConstructor
@@ -32,4 +36,13 @@ public class UserController {
         return "loginForm";
     }
 
+    @RequestMapping("/login")
+    public String singIn(UserDto userdto, HttpServletRequest request){
+        if(service.login(userdto)){
+            HttpSession session = request.getSession();
+            session.setAttribute("log", userdto.getId());
+            return "redirect:/";
+        }
+        return "loginForm";
+    }
 }
