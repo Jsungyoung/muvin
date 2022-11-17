@@ -130,6 +130,10 @@ function swapClass(tarEl, addC, remC) {
 }
 
 function loadMovie(){
+
+
+
+    // tmdb 인기 영화
     var settings = {
         "url": "https://api.themoviedb.org/3/discover/movie?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&sort_by=popularity.desc&include_adult=false&page=1&with_watch_monetization_types=flatrate",
         "method": "GET",
@@ -148,7 +152,8 @@ function loadMovie(){
             const content = e.overview;
 
             $('.movie-container').append(
-                `<div class="movie" style="background-image: url('https://image.tmdb.org/t/p/original/${poster_path}');"><a href="movieView.jsp">
+                `<div class="movie"><a href="movieView">
+                    <div><img class="poster-img" src="https://image.tmdb.org/t/p/original/${poster_path}";></div>
                     <p class="title"><strong>${title}</strong></p>
                     <p class="audAcc">${audAcc}명</p>
                     <p class="regdate">${regdate}</p>
