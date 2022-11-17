@@ -10,6 +10,8 @@ public class MainController {
     public String index(){
         return "index";
     }
+    @GetMapping("/movieView")
+    public String movieView() { return "movieView"; }
 
     @GetMapping("/board")
     public String board(){return "board";}
