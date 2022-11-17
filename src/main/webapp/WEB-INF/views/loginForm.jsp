@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="">
+<form method="post" action="/login">
     <div>
         <h2>login</h2>
         <div>
