@@ -23,8 +23,7 @@
 </head>
 <body>
 <%
-Place_reviewService service = new Place_reviewService();
-List<Place_review> list = service.readReviewAll();
+
 %>
 <div class="container">
     <h2>게시글 목록</h2>
@@ -46,16 +45,15 @@ List<Place_review> list = service.readReviewAll();
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${list}" var="board">
+
             <tr>
-                <td><c:out value=""/></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
             </tr>
 
-        </c:forEach>
         </tbody>
     </table>
 </div>
