@@ -7,8 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @GetMapping("/")
-    public String index() { return "index"; }
-
+    public String index(){
+        return "index";
+    }
     @GetMapping("/movieView")
     public String movieView() { return "movieView"; }
+
+    @GetMapping("/board")
+    public String board(){return "board";}
+
+
 }
