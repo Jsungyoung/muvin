@@ -11,16 +11,16 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="user/signUp">
+<form method="post" action="/signUp" modelAttribute="userDto">
     <div>
         <h2>signUp</h2>
         <div>
             <h4>아이디</h4>
-            <input type="text" name="id" id="id" placeholder="Id">
+            <input type="text" name="id" placeholder="Id">
         </div>
         <div>
             <h4>비밀번호</h4>
-            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="password" name="password" placeholder="Password">
         </div>
         <div>
             <h4>비밀번호 확인</h4>
@@ -44,7 +44,7 @@
         </div>
         <div>
             <h4>이메일</h4>
-            <input type="text" name="email" id="email" placeholder="email">
+            <input type="email" name="email" id="email" placeholder="email">
         </div>
         <div>
             <input type="submit" value="회원가입">
