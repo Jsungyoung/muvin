@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Id;
 import java.util.Date;
 
 @Getter
@@ -14,7 +15,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Place_reviewDto {
-    private int no; // pk
+    @Id
+    private long no; // pk
     private Date visit_date;
     private String pk_nickname;
     private String title;

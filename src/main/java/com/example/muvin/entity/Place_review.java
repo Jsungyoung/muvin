@@ -1,5 +1,6 @@
 package com.example.muvin.entity;
 
+import com.example.muvin.util.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,9 +17,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor // 기본 생성자
 @Data
-public class Place_review {
+public class Place_review extends Timestamp {
     @Id
-    private int no; // pk
+    private long no; // pk
     private Date visit_date;
     private String pk_nickname;
     private String title;
