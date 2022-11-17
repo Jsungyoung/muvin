@@ -1,9 +1,12 @@
-<%@ page import="com.example.muvin.entity.Place_review" %>
+<%@ page import="com.example.muvin.domain.place_review.Place_review" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.muvin.domain.place_review.Place_reviewDto" %>
 <%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
-<%@ page import="com.example.muvin.service.Place_reviewService" %><%--
+<%@ page import="com.example.muvin.service.Place_reviewService" %>
+<%@ page import="org.springframework.web.bind.annotation.GetMapping" %>
+<%@ page import="com.example.muvin.domain.place_review.Place_reviewRepository" %>
+<%@ page import="com.example.muvin.domain.user.UserDto" %><%--
   Created by IntelliJ IDEA.
   User: 박진규
   Date: 2022-11-15
@@ -22,9 +25,6 @@
 
 </head>
 <body>
-<%
-
-%>
 <div class="container">
     <h2>게시글 목록</h2>
     <table class="board_list">
@@ -41,21 +41,24 @@
             <th scope="col">제목</th>
             <th scope="col">작성자</th>
             <th scope="col">작성일</th>
-            <th scope="col">조회수</th>
+            <th scope="col">별점</th>
         </tr>
         </thead>
         <tbody>
-
+        <c:forEach items="${list}" var="place">
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
 
+                    <td><c:out value="${place.no}"/></td>
+                    <td><c:out value="${place.title}"/></td>
+                    <td><c:out value="${place.pr_nickname}"/></td>
+                    <td><c:out value="${place.visit_date}"/></td>
+                    <td><c:out value="${place.score}"/></td>
+
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
+    <button type="button" onclick="location.href='/boardWriteForm'">글쓰기</button>
 </div>
 </body>
 </html>

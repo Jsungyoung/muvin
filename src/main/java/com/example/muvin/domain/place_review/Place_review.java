@@ -1,4 +1,4 @@
-package com.example.muvin.entity;
+package com.example.muvin.domain.place_review;
 
 import com.example.muvin.util.Timestamp;
 import lombok.AllArgsConstructor;
@@ -21,9 +21,19 @@ public class Place_review extends Timestamp {
     @Id
     private long no; // pk
     private Date visit_date;
-    private String pk_nickname;
+    private String pr_nickname;
     private String title;
     private String content;
     private double score;
+
+    public Place_review(Place_reviewDto reviewDto){
+        this.no = reviewDto.getNo();
+        this.visit_date = reviewDto.getVisit_date();
+        this.pr_nickname = reviewDto.getPr_nickname();
+        this.title = reviewDto.getTitle();
+        this.content = reviewDto.getContent();
+        this.score=reviewDto.getScore();
+    }
+
 
 }

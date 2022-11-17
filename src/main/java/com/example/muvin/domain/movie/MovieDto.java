@@ -26,5 +26,4 @@ public class MovieDto {
     private int run_time;
     private String keyword;
     private String content;
-
 }

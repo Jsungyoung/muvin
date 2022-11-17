@@ -2,12 +2,13 @@ package com.example.muvin.service;
 
 import com.example.muvin.domain.place_review.Place_reviewDto;
 import com.example.muvin.domain.place_review.Place_reviewRepository;
-import com.example.muvin.entity.Place_review;
+import com.example.muvin.domain.place_review.Place_review;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,18 +21,17 @@ public class Place_reviewService {
     private Place_reviewRepository repository;
 
 
+    //Create
     public Place_review createReview(Place_reviewDto reviewDto){
-        Place_review review = new Place_review();
-        review.setNo(reviewDto.getNo());
-        review.setVisit_date(reviewDto.getVisit_date());
-        review.setPk_nickname(reviewDto.getPk_nickname());
-        review.setTitle(reviewDto.getTitle());
-        review.setContent(reviewDto.getContent());
-        review.setScore(reviewDto.getScore());
+        Place_review review = new Place_review(reviewDto);
         return repository.save(review);
     }
 
-    public List readReviewAll(){
+
+
+    //read
+    public List<Place_review> readReviewAll(){
+        System.out.println("repo : " + repository);
         return repository.findAll();
     }
 

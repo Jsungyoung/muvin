@@ -18,7 +18,7 @@ public class Place_reviewDto {
     @Id
     private long no; // pk
     private Date visit_date;
-    private String pk_nickname;
+    private String pr_nickname;
     private String title;
     private String content;
     private double score;

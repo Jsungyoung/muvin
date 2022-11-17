@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class Timestamp {
 
     @CreatedDate
-    private LocalDateTime regDate;
+    private LocalDateTime reg_date;
     @LastModifiedDate
-    private LocalDateTime modDate;
+    private LocalDateTime mod_date;
 }

@@ -13,8 +13,7 @@ public class MainController {
     @GetMapping("/movieView")
     public String movieView() { return "movieView"; }
 
-    @GetMapping("/board")
-    public String board(){return "board";}
+
 
 
 }
