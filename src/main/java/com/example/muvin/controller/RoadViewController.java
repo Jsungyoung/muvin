@@ -1,16 +1,15 @@
 package com.example.muvin.controller;
 
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
-
-@RequiredArgsConstructor
 @Controller
-public class MapController {
+@RequiredArgsConstructor
+public class RoadViewController {
 
-    @GetMapping("/map")
-    public String map(){return "map/map";}
+    @GetMapping("/roadView")
+    public String roadView(){return "map/roadView";}
 
 }
