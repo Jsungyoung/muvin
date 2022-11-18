@@ -17,15 +17,20 @@
 
     <button onclick="location.href='/next'" value="영화 페이지"></button>
 
-<%--    <div class="movie-container boxoffice">ㅇㅣ거는 영진위? 그래두돼??ㅠㅠ</div>--%>
+    <div><strong>지도</strong></div>
+    <div class="movie-container map"></div>
 
-    <div class="movie-container" style></div>
+    <div><strong>일일 박스오피스</strong></div>
+    <div class="movie-container boxoffice"></div>
+
+    <div><strong>인기 영화</strong></div>
+    <div class="movie-container popular"></div>
 
     <div class="gallery">
         <ul class="clearfix">
             <li><div class="img">box4</div></li>
             <li><div class="img">box5</div></li>
-            <li><div class="img" style="background-image: url("/images/sampleimg8.jpg")"></div></li>
+            <li><div class="img"><img src="/images/sampleimg8.jpg"></div></li>
             <li><div class="img">box2</div></li>
             <li><div class="img">box3</div></li>
             <li><div class="img">box4</div></li>

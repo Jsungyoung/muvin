@@ -17,7 +17,7 @@
 <body>
   <header><h1>muvin</h1></header>
   <nav class="nav_tab">
-    <ul>
+    <ul class="menu">
       <li>탐색</li>
       <li>영화</li>
       <li>메뉴1</li>

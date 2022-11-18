@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/movieView.css">
 </head>
 <body>
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 
 <section>
     <div id="movie-title" style="font-size: 30px; text-align: center; margin: 0 auto;"><strong>스파이더맨: 파 프롬 홈</strong></div>
