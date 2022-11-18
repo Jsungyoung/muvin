@@ -20,6 +20,8 @@ public class Place extends Timestamp{
     private String area_code;
     private String area_name;
     private String movie_code;
+    private String place_name;
+    private String place_URL;
 
 
 

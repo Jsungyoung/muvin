@@ -8,5 +8,10 @@ import java.util.List;
 public interface PlaceRepository extends JpaRepository<Place, String> {
 
     @Query(value = "SELECT * FROM place WHERE movie_code = ?", nativeQuery = true)
-    public List<Place> findPlaceByMovie_code(String movie_code);
+    List<Place> findPlaceByMovie_code(String movie_code);
+
+    @Query(value = "SELECT * FROM place", nativeQuery = true)
+    List<Place> findAllPlace();
+
+
 }
