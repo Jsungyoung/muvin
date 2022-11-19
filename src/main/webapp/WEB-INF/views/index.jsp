@@ -56,9 +56,6 @@
         <div class="click-next nav-button">▶</div>
     </div>
 
-
-
-
 </section>
 <footer>
     선준 진규 성영 진아 승우
