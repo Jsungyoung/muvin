@@ -22,11 +22,10 @@ public class Place_reviewService {
 
 
     //Create
-    public Place_review createReview(Place_reviewDto reviewDto){
+    public void createView(Place_reviewDto reviewDto){
         Place_review review = new Place_review(reviewDto);
-        return repository.save(review);
+        repository.save(review);
     }
-
 
 
     //read

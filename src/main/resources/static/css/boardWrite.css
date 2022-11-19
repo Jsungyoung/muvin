@@ -1,0 +1,12 @@
+input, textarea {
+    padding: 5px;
+    margin-top: 10px;
+    border: solid 1px;
+    outline: none;
+    resize: none;
+    width: 800px;
+}
+.container {max-width:900px; margin:30px auto;}
+.write_form{
+    width:100%;
+}

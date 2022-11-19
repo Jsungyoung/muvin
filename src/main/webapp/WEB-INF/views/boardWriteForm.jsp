@@ -9,19 +9,35 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="css/boardWrite.css">
 </head>
 <body>
+<%
+    HttpSession sessionCheck = request.getSession();
+    String id = (String)sessionCheck.getAttribute("log");
+
+%>
 보드라이트입니다
 <section>
-    <form class="write_form" name="writeForm" method="post" action="">
+    <div class="container">
+    <form method="post"  class="write_form">
+<%--        <input type="hidden" id="no" name="no" value="">--%>
+        <input type="date" id="visit_date" name="visit_date" value="2022-11-18">
+        <input type="hidden" id="pr_nickname" name="pr_nickname" value="닉네임">
+
         <div>
             <input type="text" id="title" name="title" required>
         </div>
         <div>
             <textarea name="content" id="content" rows="20" required></textarea>
         </div>
-        <input type="submit" value="작성">
+        <input type="number" max="10" min="0" id="score" name="score" >
+        <input type="button" value="작성" onclick="createBoard()">
+        <input type="button" value="home" onclick="location.href='/board'">
     </form>
+    </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="javascript/createBoard.js"></script>
 </body>
 </html>

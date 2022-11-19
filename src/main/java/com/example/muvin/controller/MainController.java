@@ -13,7 +13,10 @@ public class MainController {
     @GetMapping("/movieView")
     public String movieView() { return "movieView"; }
 
-
+    @GetMapping("/boardWriteForm")
+    public String boardWrite(){
+        return "boardWriteForm";
+    }
 
 
 }
