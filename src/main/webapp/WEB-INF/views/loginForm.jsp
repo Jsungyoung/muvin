@@ -9,8 +9,11 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
+<button onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=6a4c077fca80e32384fcf93a071c6788&redirect_uri=http://localhost:8087/login&response_type=code'">코드 받기</button>
+<button onclick="kakaoLogin()">카카오 로그인</button>
 <form method="post" action="/login">
     <div>
         <h2>login</h2>
@@ -27,5 +30,6 @@
         </div>
     </div>
 </form>
+<script src="javascript/kakaoLogin.js"></script>
 </body>
 </html>

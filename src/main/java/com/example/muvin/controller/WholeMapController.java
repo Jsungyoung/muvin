@@ -23,36 +23,37 @@ public class WholeMapController {
     private PlaceService placeService;
 
     @GetMapping("/v1/wholemap")
-    public List<Place> getPlaceByMovieCode(String movie_code){
+    public List<Place> getPlaceByMovieCode(String movie_code) {
         return placeService.placeListByMovie_code(movie_code);
     }
 
 
-
     @RequestMapping("/wholeMap")
-    public void wholeMap(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public void wholeMap(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<Place> list = getPlaceByMovieCode("2");
         request.setAttribute("list", list);
         request.getRequestDispatcher("/WEB-INF/views/map/wholeMap.jsp").forward(request, response);
-        }
+    }
 
     @GetMapping("/wholeMap/navi")
-    public String navi(){
+    public String navi() {
         String command =
-                "curl 'https://naveropenapi.apigw.ntruss.com/map-direction-15/v1/driving?start={출발지}&goal={목적지}&option={탐색옵션}'" ;
+                "curl 'https://naveropenapi.apigw.ntruss.com/map-direction-15/v1/driving?start={출발지}&goal={목적지}&option={탐색옵션}'";
         ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
         return "map/navi";
     }
 
     @GetMapping("/wholeMap/roadView")
-    public String roadView(){
+    public String roadView() {
         return "map/roadView";
     }
 
 
     @GetMapping("v1/map")
-    public List<Place> getPlaceAll(){return placeService.getAllPlace();}
+    public List<Place> getPlaceAll() {
+        return placeService.getAllPlace();
+    }
 
     @RequestMapping("/map")
     public void map(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -62,8 +63,4 @@ public class WholeMapController {
         request.getRequestDispatcher("/WEB-INF/views/map/map.jsp").forward(request, response);
 
     }
-
-
-
-
 }

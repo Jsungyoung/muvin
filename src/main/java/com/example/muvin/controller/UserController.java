@@ -3,6 +3,7 @@ package com.example.muvin.controller;
 import com.example.muvin.domain.user.User;
 import com.example.muvin.domain.user.UserDto;
 import com.example.muvin.service.UserService;
+import com.mysql.cj.protocol.x.Notice;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,10 @@ public class UserController {
             return "redirect:/";
         }
         return "loginForm";
+    }
+
+    @RequestMapping("/v1/kakao/login?{code}")
+    public void getKakaoCode(@PathVariable String code, HttpServletRequest request){
+        
     }
 }

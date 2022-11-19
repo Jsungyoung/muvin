@@ -150,7 +150,7 @@ function loadMovie(){
             const audAcc = e.popularity;
             const regdate = e.release_date;
             const content = e.overview;
-
+        URL();
             $('.movie-container').append(
                 `<div class="movie"><a href="movieView">
                     <div><img class="poster-img" src="https://image.tmdb.org/t/p/original/${poster_path}";></div>
