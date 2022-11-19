@@ -10,7 +10,7 @@ public interface PlaceRepository extends JpaRepository<Place, String> {
     @Query(value = "SELECT * FROM place WHERE movie_code = ?", nativeQuery = true)
     List<Place> findPlaceByMovie_code(String movie_code);
 
-    @Query(value = "SELECT * FROM place", nativeQuery = true)
+    @Query(value = "SELECT * from `place`", nativeQuery = true)
     List<Place> findAllPlace();
 
 

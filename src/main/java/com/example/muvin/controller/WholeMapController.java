@@ -22,7 +22,7 @@ public class WholeMapController {
     @Autowired
     private PlaceService placeService;
 
-    @GetMapping
+    @GetMapping("/v1/wholemap")
     public List<Place> getPlaceByMovieCode(String movie_code){
         return placeService.placeListByMovie_code(movie_code);
     }
@@ -62,6 +62,8 @@ public class WholeMapController {
         request.getRequestDispatcher("/WEB-INF/views/map/map.jsp").forward(request, response);
 
     }
+
+
 
 
 }
