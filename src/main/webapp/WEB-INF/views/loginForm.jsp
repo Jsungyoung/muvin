@@ -16,7 +16,7 @@
 <button onclick="kakaoLogin()">카카오 로그인</button>
 <form method="post" action="/login">
     <div>
-        <h2>login</h2>
+        <h2>로그인</h2>
         <div>
             <h4>ID</h4>
             <input type="text" name="id" id="id" placeholder="Id">

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example.muvin.domain.user.UserDto" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 2022-11-13
@@ -10,7 +10,6 @@
 <head>
     <link rel="stylesheet" href="/css/slide.css">
 </head>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <body onload="loadMovie()">
 <jsp:include page="header.jsp" />

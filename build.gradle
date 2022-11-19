@@ -37,7 +37,8 @@ dependencies {
 
     // 유효성 검사용
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-
+    // 이메일 인증
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
     // jstl 사용을 위한
     implementation 'javax.servlet:jstl:1.2'
     implementation 'taglibs:standard:1.1.2'
