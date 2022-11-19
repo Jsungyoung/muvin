@@ -16,9 +16,10 @@
     object-fit: cover;
 }
 
-.nav{
-    width: 80vw;
-    margin: 20px auto;
+.movie-title{
+    font-size: 30px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .movie-info{

@@ -14,9 +14,10 @@ function getAllMovie(){
             const poster_path = e.poster_path;
             const title = e.title;
             const releasedate = e.release_date;
+            const movie_id = e.id;
 
             $('.movie_all').append(
-                `<div class="movie" onclick="movieView">
+                `<div class="movie" onclick="location.href='movieView?moive_id=${movie_id}';">
                     <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"></img>
                 </div>`
             );
@@ -41,7 +42,7 @@ function getMovieByGenre(genre_id){
             const releasedate = e.release_date;
 
             $('.movie_all').append(
-                `<div class="movie" onclick="movieView">
+                `<div class="movie" onclick="location.href='movieView';">
                     <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"></img>
                 </div>`
             );
