@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/movieView.css">
 </head>
-<body>
-<jsp:include page="header.jsp" />
+<body onload="javascript:getMovie(${param.movie_id});">
+<jsp:include page="../header.jsp" />
 
 <section>
-    <div id="movie-title" style="font-size: 30px; text-align: center; margin: 0 auto;"><strong>스파이더맨: 파 프롬 홈</strong></div>
+    <div id="movie-title"><strong>스파이더맨: 파 프롬 홈</strong></div>
     <div class="movie-info">
     <%-- 상단 콘텐츠 이미지/제목 등 주요 정보 들어갈 자리--%>
         <div class="image-container"><img class="image" src="/images/testspiderman.jpg"></div>
@@ -83,10 +83,11 @@
             <p>리뷰 로드하기</p>
         </div>
         <div class="tab-pane fade" id="temp">
-            <p>임시로 추가한 탭</p>
+            <p>준 ㅂㅣ 중 . . .</p>
         </div>
     </div>
 </section>
+<script src="/javascript/movieSearch.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="/css/slide.css">
 </head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -17,15 +18,20 @@
 
     <button onclick="location.href='/next'" value="영화 페이지"></button>
 
-<%--    <div class="movie-container boxoffice">ㅇㅣ거는 영진위? 그래두돼??ㅠㅠ</div>--%>
+    <div><strong>지도</strong></div>
+    <div class="movie-container map"></div>
 
-    <div class="movie-container" style></div>
+    <div><strong>일일 박스오피스</strong></div>
+    <div class="movie-container boxoffice"></div>
+
+    <div><strong>인기 영화</strong></div>
+    <div class="movie-container popular"></div>
 
     <div class="gallery">
         <ul class="clearfix">
             <li><div class="img">box4</div></li>
             <li><div class="img">box5</div></li>
-            <li><div class="img" style="background-image: url("/images/sampleimg8.jpg")"></div></li>
+            <li><div class="img"><img src="/images/sampleimg8.jpg"></div></li>
             <li><div class="img">box2</div></li>
             <li><div class="img">box3</div></li>
             <li><div class="img">box4</div></li>
@@ -62,5 +68,6 @@
 </footer>
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="></script>
 </body>
+<script src="/javascript/movieSearch.js"></script>
 <script src="/javascript/slide.js"></script>
 </html>

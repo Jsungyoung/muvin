@@ -10,8 +10,7 @@ public class MainController {
     public String index(){
         return "index";
     }
-    @GetMapping("/movieView")
-    public String movieView() { return "movieView"; }
+
 
     @GetMapping("/boardWriteForm")
     public String boardWrite(){
