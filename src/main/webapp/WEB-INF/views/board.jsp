@@ -16,7 +16,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="th" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Title</title>
@@ -47,23 +49,33 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${list}" var="place">
-            <tr>
 
+
+
+        <form method="get"  class="write_form">
+        <c:forEach items="${list}" var="place">
+
+            <tr>
+<%--onclick="location.href='/board'--%>
                     <td><c:out value="${place.no}"/></td>
-                    <td><a href="boardView.jsp?no=${place.no}"><c:out value="${place.title}"/></a></td>
+                    <td><a href="http://localhost:8084/v1/board/reviewNo?no=${place.no}"><c:out value="${place.title}"/></a></td>
                     <td><c:out value="${place.pr_nickname}"/></td>
                     <td><c:out value="${place.visit_date}"/></td>
                     <td><c:out value="${place.score}"/></td>
                     <td><c:out value="${place.reg_date}"/></td>
-
             </tr>
+
         </c:forEach>
+
+        </form>
         </tbody>
+
     </table>
     <button type="button" onclick="location.href='/boardWriteForm'">글쓰기</button>
 <%--    <input type="button" value="submit" onclick="createBoard()">--%>
     <input type="button" value="home" onclick="location.href='/board'">
+    <script src="javascript/boardView.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </div>
 </body>
 </html>

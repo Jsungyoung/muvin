@@ -8,6 +8,8 @@ import com.example.muvin.service.Place_reviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.el.ELException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,24 +53,33 @@ public class Place_reviewController {
         return service.readReviewAll();
     }
     @RequestMapping("/board")
-    public void board(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void board(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ELException {
          List<Place_review> list = getReviewAll();
          request.setAttribute("list", list);
 
         // request.getRequestDispatcher("board").forward(request, response);
         request.getRequestDispatcher("/WEB-INF/views/board.jsp").forward(request, response);
     }
+    @RequestMapping("/review")
+    public void Review(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ELException {
+        int no = Integer.parseInt(request.getParameter("no"));
+        Place_review review = readReviewByNo(no);
+
+
+        // request.getRequestDispatcher("board").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/boardView.jsp").forward(request, response);
+    }
 
 
     @GetMapping("v1/board/reviewNo")
-    public Place_review readReviewByNo(long no){
+    public Place_review readReviewByNo(@RequestParam long no){
+
         return service.readByNo(no);
     }
     @RequestMapping("/boardView")
     public void boardView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-        Place_review review = readReviewByNo(1); // 대충 번호를 통해서 원하는 개시물 번호에 저장된 값 출력해야되는데 어떠케함
+        Place_review review = readReviewByNo(5); // 대충 번호를 통해서 원하는 개시물 번호에 저장된 값 출력해야되는데 어떠케함
         request.setAttribute("review",review);
 
         // request.getRequestDispatcher("board").forward(request, response);
