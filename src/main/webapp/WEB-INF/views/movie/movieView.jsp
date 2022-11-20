@@ -11,39 +11,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/movieView.css">
 </head>
-<body onload="javascript:getMovie(${param.movie_id});">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%--<c:set var="movie_id" value="2" scope="request"/>--%>
+<body onload="javascript:getMovie(${movie_id})">
 <jsp:include page="../header.jsp" />
 
 <section>
-    <div id="movie-title"><strong>스파이더맨: 파 프롬 홈</strong></div>
-    <div class="movie-info">
-    <%-- 상단 콘텐츠 이미지/제목 등 주요 정보 들어갈 자리--%>
-        <div class="image-container"><img class="image" src="/images/testspiderman.jpg"></div>
-        <table>
-            <tbody>
-                <tr>
-                    <td>year</td>
-                    <td>2019</td>
-                </tr>
-                <tr>
-                    <td>심의</td>
-                    <td>12세</td>
-                </tr>
-                <tr>
-                    <td>별점</td>
-                    <td>가져오기</td>
-                </tr>
-                <tr>
-                    <td>장르</td>
-                    <td>액션</td>
-                </tr>
-                <tr>
-                    <td>상영 시간</td>
-                    <td>2시간 9분</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <div class = movie-view></div>
+
     <div style="margin: 10px auto; display: flex; align-items: flex-end; width: 80vw;">
         <div>키워드</div>
         <div>별점 매기는 거...........</div>
@@ -62,7 +37,6 @@
 
     <div class="tab-content">
         <div class="tab-pane fade show active" id="details">
-            <p>엔드게임 이후 피터 파커는 친구들과 유럽 여행을 떠난다. 하지만 이내 닉 퓨리의 요청으로 정체불명의 조력자 미스테리오와 함께 세계를 위협하는 엘리멘탈 크리쳐스에 맞서야 하는 상황에 처한다.</p>
             <p>감독</p>
             <p>출연진 리스트</p>
             <p>관람등급</p>
@@ -73,7 +47,6 @@
             <img src="/images/mapsample.png">
         </div>
         <div class="tab-pane fade" id="actors">
-            <p>출연진.. 시간이 남으면 클릭 시 넘어가융 아니면 그냥 리스트업</p>
         </div>
         <div class="tab-pane fade" id="related">
             <p>관련 영화 리스트 . . .  ajax? 이거 하려면,, 흠..api 확인하기</p>
@@ -88,7 +61,6 @@
     </div>
 </section>
 <script src="/javascript/movieSearch.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
