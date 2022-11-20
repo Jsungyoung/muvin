@@ -1,4 +1,8 @@
 //이메일 입력방식 선택
+
+
+
+
 $('#selectEmail').change(function(){
     $("#selectEmail option:selected").each(function () {
 
@@ -105,7 +109,7 @@ function sign_check() {
     let myId = document.getElementById("myid");
 
     // 정규식
-    let pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+    let pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
     let nameCheck = (/^[가-힣]+$/);
     let nickCheck = (/^[ㄱ-ㅎ가-힣a-z0-9-_]+$/);
     let phoneCheck = /^(01[016789]-)(\d{3,4}-)(\d{4})$/;
@@ -133,7 +137,7 @@ function sign_check() {
 
 
     if (!pwdCheck.test(pw.value)) {
-        alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~16자리 사용해야 합니다.");
+        alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~20자리 사용해야 합니다.");
         pw.focus();
         return false;
     } else if (/(\w)\1\1/.test(pw.value)) {
@@ -241,3 +245,52 @@ $('#mail-check-input').blur(function () {
         $("#mail-check-warn").val("N");
     }
 });
+kakaoOnLoad();
+
+function kakaoOnLoad(){
+    $("#mail-Check-Btn").val("Y");
+    $("#mail-check-warn").val("Y");
+    $("#checkId").val("Y");
+    $("#myid").val("Y");
+
+    let str = sessionStorage.getItem("data");
+    let userInfo = JSON.parse(str);
+    let id = $('#id');
+    let pw = $('#password');
+    let pwCheck = $('#passwordCheck');
+    let nickname = $('#nickname');
+    let emailId = $('#str_email01');
+    let emailAddress = $('#str_email02');
+    id.val(userInfo.id);
+    id.attr("disabled", true);
+    let pwCode = pwGenerator();
+    pw.val(pwCode);
+    pw.attr("disabled", true);
+    pwCheck.val(pwCode);
+    pwCheck.attr("disabled", true);
+    nickname.val(userInfo.nickname);
+    let email = userInfo.email.split("@");
+    emailId.val(email[0]);
+    emailId.attr("disabled", true);
+    emailAddress.val(email[1]);
+    emailAddress.attr("disabled", true);
+}
+
+function pwGenerator(){
+    const str = ["1","2","3","4","5","6","7","8","9","0","a","b","c","d","e","f","g"
+        ,"h","i","j","k","l","n","m","o","p","q","r","s","t","u","v","w","x","y","z",
+        "A","B","C","D","E","F","G","H","I","J","K","L","N","M","O","P","Q","R","S",
+        "T","U","V","W","X","Y","Z","!","@","#","$","%","^","&","*","-","+","="];
+    let pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,30}$/;
+    let pw = "";
+    while(!pwdCheck.test(pw)) {
+        pw = "";
+        for (let i = 0; i < 20; i++) {
+            let idx = Math.floor(Math.random() * str.length);
+            pw += str[idx];
+        }
+        console.log(pw);
+        console.log(pwdCheck.test(pw));
+    }
+    return pw;
+}

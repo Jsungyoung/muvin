@@ -11,8 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.annotation.HttpMethodConstraint;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 
 @RequiredArgsConstructor
@@ -56,7 +59,7 @@ public class UserController {
         return "loginForm";
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public String singIn(@RequestParam String id, @RequestParam String password, HttpServletRequest request){
         if(service.login(id,password)){
             HttpSession session = request.getSession();
@@ -66,9 +69,18 @@ public class UserController {
         return "loginForm";
     }
 
-    @RequestMapping("/v1/kakao/login?{code}")
-    public void getKakaoCode(@PathVariable String code, HttpServletRequest request){
-        
+    @PostMapping("/v1/kakao/login")
+    @ResponseBody
+    public String getKakaoCode(HttpServletRequest request, HttpServletResponse response)
+        throws Exception {
+        String id = request.getParameter("id");
+        if(service.idCheck(id)==0){
+            return "/signUpForm";
+        }else{
+            HttpSession session = request.getSession();
+            session.setAttribute("log", id);
+            return "/";
+        }
     }
     // 로그아웃
     @GetMapping("/logout")

@@ -74,6 +74,7 @@
         </div>
     </div>
 </form>
-<script type="text/javascript" src="/javascript/signUp.js"></script>
+
+<script type="text/javascript" src="/javascript/signUp.js?ver=1"></script>
 </body>
 </html>
