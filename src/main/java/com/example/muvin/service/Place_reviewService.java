@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,16 @@ public class Place_reviewService {
     public Place_review readByNo(long no){
         Place_review result =repository.findMyReview(no);
         return result;
+    }
+
+    //Update
+    @Transactional
+    public void UpdateByNo(Place_reviewDto reviewDto){
+        Place_review review = readByNo(reviewDto.getNo());
+        if(review!=null){
+            review.setPlace_review(reviewDto);
+        }
+
     }
 
 }

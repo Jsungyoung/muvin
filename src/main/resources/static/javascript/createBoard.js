@@ -25,13 +25,13 @@ function reqBoard(obj){
         // no=${obj.no}
         url : `/v1/boardWrite?&visit_date=${obj.visit_date}&pr_nickname=${obj.pr_nickname}&title=${obj.title}&content=${obj.content}&score=${obj.score}`,
         method : "POST",
-         dataType: 'json',
+         // dataType: 'json',
         // contentType: 'application/json',
         // data : obj
     }).done(function (response) {
-        console.log(response);
+        console.log("response" + response);
         alert("글쓰기 성공");
-        // location.href="http://localhost:8084/board";
+        location.href=`http://localhost:8084/board`;
     }).fail(error => {
         console.log(error);
     });

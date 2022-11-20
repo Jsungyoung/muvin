@@ -15,7 +15,6 @@
 <%
     HttpSession sessionCheck = request.getSession();
     String id = (String)sessionCheck.getAttribute("log");
-
 %>
 보드라이트입니다
 <section>

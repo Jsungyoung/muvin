@@ -58,7 +58,9 @@
             <tr>
 <%--onclick="location.href='/board'--%>
                     <td><c:out value="${place.no}"/></td>
-                    <td><a href="http://localhost:8084/v1/board/reviewNo?no=${place.no}"><c:out value="${place.title}"/></a></td>
+                    <input type="hidden" name="no" id="no" value="${place.no}"/>
+<%--                    <td><a href="http://localhost:8084/v1/board/reviewNo?no=${place.no}"><c:out value="${place.title}"/></a></td>--%>
+                    <td><a href="http://localhost:8084/boardView?no=${place.no}"><c:out value="${place.title}"/></a></td>
                     <td><c:out value="${place.pr_nickname}"/></td>
                     <td><c:out value="${place.visit_date}"/></td>
                     <td><c:out value="${place.score}"/></td>

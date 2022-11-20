@@ -9,6 +9,7 @@ function boardView(){
         "headers": {
             "": ""
         },
+
     };
     $.ajax(settings).done(function (response) {
         console.log(response);
