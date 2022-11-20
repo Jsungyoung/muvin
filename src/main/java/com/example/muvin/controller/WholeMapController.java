@@ -5,6 +5,7 @@ import com.example.muvin.domain.place.Place;
 import com.example.muvin.service.PlaceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,11 +38,11 @@ public class WholeMapController {
     }
 
     @GetMapping("/wholeMap/navi")
-    public String navi() {
-        String command =
-                "curl 'https://naveropenapi.apigw.ntruss.com/map-direction-15/v1/driving?start={출발지}&goal={목적지}&option={탐색옵션}'";
-        ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
-        return "map/navi";
+    public void navi(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String x = request.getParameter("x");
+        String y = request.getParameter("y");
+        String place_name = request.getParameter("place_name");
+        request.getRequestDispatcher("https://map.kakao.com/link/to/"+place_name+","+y+","+x+'"').forward(request,response);
     }
 
     @GetMapping("/wholeMap/roadView")

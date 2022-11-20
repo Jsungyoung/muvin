@@ -11,7 +11,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>촬영지 지도</title>
-    <link rel="stylesheet" href="/css/wholeMap.css">
+    <link rel="stylesheet" href="css/wholeMap.css">
 </head>
 <body>
 
@@ -61,7 +61,8 @@
     // 데이터를 가져오기 위해 jQuery를 사용합니다
     // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
     $.get("http://localhost:8084/v1/map", function(data) {
-        // 데이터에서 좌표 값을 가지고 마커를 표시합니다
+
+     //   데이터에서 좌표 값을 가지고 마커를 표시합니다
         // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
         var markers = $(data).map(function(i, position) {
             return new kakao.maps.Marker({
@@ -69,8 +70,85 @@
             });
         });
 
+        (function (markers, place){
+            //마크 클릭 시
+            kakao.maps.event.addListener(markers, 'click', function (){
+                let overlay = new kakao.maps.CustomOverlay({
+                    //오버레이에 띄울 내용
+                    map : map,
+                    position: markers.getPosition(),
+                    content :  '<div class="wrap">' +
+                        '    <div class="info">' +
+                        '        <div class="title">' +
+                        place.place_name +
+                        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+                        '        </div>' +
+                        '        <div class="body">' +
+                        '            <div class="img">' +
+                        '                <img src="'+ place.place_URL +'" width="73" height="70">' +
+                        '           </div>' +
+                        '            <div class="desc">' +
+                        '                <div class="ellipsis">' + place.area_name + '</div>' +
+                        '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
+                        '            </div>' +
+                        '        </div>' +
+                        '    </div>' +
+                        '</div>'
+                });
+                console.log(overlay);
+                overlay.setMap(map);
+            })
+        })(markers, data)
+
         // 클러스터러에 마커들을 추가합니다
         clusterer.addMarkers(markers);
+
+
+
+
+        // for(let i=0; i<data.length; i++){
+        //     let marker = new kakao.maps.Marker({
+        //         position : new kakao.maps.LatLng(data[i].y, data[i].x),
+        //         title : data[i].area_name,
+        //     });
+        //     console.log(marker);
+            // (function (marker, place){
+            //     //마크 클릭 시
+            //     kakao.maps.event.addListener(marker, 'click', function (){
+            //         let overlay = new kakao.maps.CustomOverlay({
+            //             //오버레이에 띄울 내용
+            //             map : map,
+            //             position: marker.getPosition(),
+            //             content :  '<div class="wrap">' +
+            //                 '    <div class="info">' +
+            //                 '        <div class="title">' +
+            //                 place.place_name +
+            //                 '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+            //                 '        </div>' +
+            //                 '        <div class="body">' +
+            //                 '            <div class="img">' +
+            //                 '                <img src="'+ place.place_URL +'" width="73" height="70">' +
+            //                 '           </div>' +
+            //                 '            <div class="desc">' +
+            //                 '                <div class="ellipsis">' + place.area_name + '</div>' +
+            //                 '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
+            //                 '            </div>' +
+            //                 '        </div>' +
+            //                 '    </div>' +
+            //                 '</div>'
+            //         });
+            //         console.log(overlay);
+            //         overlay.setMap(map);
+            //     })
+            // })(marker, data[i])
+            //
+            //
+            // // 클러스터러에 마커들을 추가합니다
+            // clusterer.addMarkers(markers);
+       // }
+
+
+
     });
 
     // 마커 클러스터러에 클릭이벤트를 등록합니다
