@@ -15,6 +15,9 @@
   <title>muvin</title>
 </head>
 <body>
+<c:set var="id" value="${sessionScope.log}"/>
+<c:out value="${id}"/>
+
   <header><h1><a href="/">muvin</a></h1></header>
   <nav class="nav_tab">
     <ul class="menu">
@@ -24,6 +27,7 @@
       <li>문의</li>
       <li><a href="/loginForm">로그인</a></li>
       <li><a href="/logout">로그아웃</a></li>
+
     </ul>
   </nav>
 </body>

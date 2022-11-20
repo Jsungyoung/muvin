@@ -39,7 +39,9 @@
         </div>
         <div>
             <h4>닉네임</h4>
-            <input type="text" name="nickname" id="nickname" placeholder="특수문자를 ">
+            <input type="text" name="nickname" id="nickname" placeholder="특수문자를 넣을 수 없습니다">
+            <button id="checkNick" type="button" value="N">중복확인</button><br>
+            <div><span id="myNick" value="N"></span></div>
         </div>
         <div>
             <h4>전화번호</h4>

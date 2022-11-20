@@ -23,7 +23,7 @@ $('#selectEmail').change(function(){
     });
 });
 
-$(document).ready(function() {
+
     // ID 중복검사
     $("#checkId").click(function () {
         let id = $("#id").val();
@@ -55,7 +55,44 @@ $(document).ready(function() {
             });
         }
     });
-});
+
+
+    // 닉네임
+    $("#checkNick").click(function () {
+        let nickCheck = (/^[ㄱ-ㅎ가-힣a-z0-9-_]+$/);
+        let nick = $("#nickname").val();
+        nick = nick.trim();
+        if (nick === "") {
+            alert("닉네임을 입력하세요");
+            $("#nickname").focus();
+            return false;
+        }else if(!nickCheck.test(nick)){
+            alert("닉네임은 특수문자를 넣을 수 없습니다");
+            $("#nickname").focus();
+            return false;
+        } else {
+
+            $.ajax({
+                type: "post",
+                url: "/checkNick",
+                datatype: "text",
+                data: {"nickname": nick},
+                success: function (result) {
+                    if (result === 1) {    // 중복 ID
+                        $("#checkNick").val("Y");
+                        $("#myNick").val("N");
+                        $("#myNick").text("중복된 아이디입니다.");
+                        $("#myNick").css('color','red');
+                    } else {            // 사용 가능한 ID
+                        $("#checkNick").val("Y");
+                        $("#myNick").val("Y");
+                        $("#myNick").text("사용 가능한 아이디입니다.");
+                        $("#myNick").css('color','green');
+                    }
+                }
+            });
+        }
+    });
 
 $("#id").keyup(function(event){
     if (!(event.keyCode >=37 && event.keyCode<=40)) {
@@ -107,6 +144,8 @@ function sign_check() {
     let mailCheck = document.getElementById("mail-Check-Btn");
     let warn = document.getElementById("mail-check-warn");
     let myId = document.getElementById("myid");
+    let myNick = document.getElementById("myNick");
+    let checkNick = document.getElementById("checkNick");
 
     // 정규식
     let pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
@@ -174,6 +213,14 @@ function sign_check() {
         alert("닉네임은 특수문자를 넣을 수 없습니다");
         nickname.focus();
         return false;
+    }else if(checkNick.value === "N") {
+        alert("닉네임 중복확인을 해주세요");
+        nickname.focus();
+        return false;
+    }else if(myNick.value === "N"){
+        alert("중복된 닉네임입니다. 다시 확인해주세요.");
+        nickname.focus();
+        return false;
     }
     if (phone.value === "") {
         alert("전화번호를 입력하세요.");
@@ -211,6 +258,12 @@ $('#mail-Check-Btn').click(function() {
     console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
     const checkInput = $('#mail-check-input') // 인증번호 입력하는곳
 
+    if($('#str_email01').val() === ""){
+        alert("이메일을 입력해주세요");
+        $('#str_email01').focus();
+        return false;
+    }else {
+
     $.ajax({
         type : 'get',
         url : 'mailCheck?email='+email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
@@ -222,6 +275,7 @@ $('#mail-Check-Btn').click(function() {
             $("#mail-Check-Btn").val("Y");
         }
     }); // end ajax
+    }
 }); // end send eamil
 
 // 인증번호 비교

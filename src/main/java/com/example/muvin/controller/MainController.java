@@ -11,7 +11,6 @@ public class MainController {
         return "index";
     }
 
-
     @GetMapping("/boardWriteForm")
     public String boardWrite(){
         return "boardWriteForm";

@@ -33,6 +33,11 @@ public class UserController {
         int result = service.idCheck(id);
         return result;
     }
+    @PostMapping("/checkNick")
+    public @ResponseBody int nickCheck(@RequestParam String nickname){
+        int result = service.nickCheck(nickname);
+        return result;
+    }
 
     // 회원가입
     @GetMapping("/signUpForm")
@@ -40,6 +45,11 @@ public class UserController {
         return "signUpForm";
     }
 
+    @GetMapping("/mypage")
+    @ResponseBody
+    public String mypage(User user){
+        return "mypage";
+    }
     @RequestMapping("/signUp")
     public String signUp(UserDto userDto) {
         service.createUser(userDto);
@@ -52,7 +62,6 @@ public class UserController {
         System.out.println("이메일 인증 요청이 들어옴!");
         System.out.println("이메일 인증 이메일 : " + email);
         return mailService.joinEmail(email);
-
     }
     @GetMapping("/loginForm")
     public String loginForm() {

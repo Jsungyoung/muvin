@@ -20,19 +20,22 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    // id중복확인
+    // id 중복확인
     public int idCheck(String id){
         int result = repository.findByCheckId(id);
+        return result;
+    }
+    // 닉네임 중복확인
+    public int nickCheck(String nickname){
+        int result = repository.findByCheckNick(nickname);
         return result;
     }
 
     // 회원가입
     public void createUser (UserDto userDto) {
         User user = userDto.toEntity();
-        User findUser = repository.findByUserId(userDto.getId());
-        if(findUser == null) {
-            repository.save(user);
-        }
+        repository.save(user);
+
 
     }
 
