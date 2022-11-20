@@ -37,6 +37,7 @@ function getMovieByGenre(genre_id){
             const poster_path = e.poster_path;
             const title = e.title;
             const releasedate = e.release_date;
+            const movie_id = e.id;
 
             $('.movie_all').append(
                 `<div class="movie" onclick="location.href='movieView?movie_id=${movie_id}';">
