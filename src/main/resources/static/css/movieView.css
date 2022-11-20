@@ -16,10 +16,10 @@
     object-fit: cover;
 }
 
-.movie-title{
-    font-size: 30px;
+#movie-title{
+    font-size: 20px;
     text-align: center;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 .movie-info{
@@ -28,6 +28,11 @@
     height: 300px;
     margin: 0 auto;
     align-items: center;
+}
+
+.nav {
+    width: 80vw;
+    margin: 0 auto;
 }
 
 .tab-content{
