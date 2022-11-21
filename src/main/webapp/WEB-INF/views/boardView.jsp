@@ -19,7 +19,7 @@
 
         <c:set var="view" value="${review}" scope="session"/>
 
-
+        <input type="hidden" id="no" value="<c:out value="${sessionScope.view.no}"/> ">
 
             제목
         <div>
@@ -50,6 +50,9 @@
 <%--      <input type="submit" value="작성" onclick="createBoard()">--%>
       <input type="button" value="home" onclick="location.href='/board'">
     </form>
+
+      <button><a href="http://localhost:8084/boardUpdate?no=${sessionScope.view.no}">수정하기</a></button>
+
 <%--            <script src="javascript/boardView.js"></script>--%>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   </div>
