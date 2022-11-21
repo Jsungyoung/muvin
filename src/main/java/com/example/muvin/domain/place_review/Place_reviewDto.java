@@ -29,6 +29,14 @@ public class Place_reviewDto {
         this.title = title;
         this.content = content;
     }
+//    public Place_reviewDto(long no, String visit_date, String pr_nickname, String title, String content, double score){
+//        this.no = no;
+//        this.visit_date = visit_date;
+//        this.pr_nickname = pr_nickname;
+//        this.title = title;
+//        this.content = content;
+//        this.score = score;
+//    }
     public Place_reviewDto(String visit_date, String pr_nickname, String title, String content){
         this.visit_date = visit_date;
         this.pr_nickname = pr_nickname;

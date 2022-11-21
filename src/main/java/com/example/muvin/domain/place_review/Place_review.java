@@ -38,6 +38,7 @@ public class Place_review extends Timestamp {
 
     //update 용 setter
     public void setPlace_review(Place_reviewDto reviewDto){
+        this.no = reviewDto.getNo();
         this.title =reviewDto.getTitle();
         this.content =reviewDto.getContent();
         this.visit_date=reviewDto.getVisit_date();

@@ -63,13 +63,18 @@ public class Place_reviewController {
         session.setAttribute("review",review);
         request.getRequestDispatcher("/WEB-INF/views/boardView.jsp").forward(request, response);
     }
+    @RequestMapping("/boardUpdate")
+    public void replaceBoard(@RequestParam long no, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        HttpSession session = request.getSession();
+        Place_review review = readReviewByNo(no); // 대충 번호를 통해서 원하는 개시물 번호에 저장된 값 출력해야되는데 어떠케함
+        session.setAttribute("update",review);
+        request.getRequestDispatcher("/WEB-INF/views/boardUpdate.jsp").forward(request,response);
+    }
 
     @PostMapping("/v1/update/board")
     public void updateBoard(@RequestBody Place_reviewDto reviewDto){
         service.UpdateByNo(reviewDto);
+
     }
-
-
-
 
 }

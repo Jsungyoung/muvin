@@ -25,6 +25,7 @@ function reqBoard(obj){
         // no=${obj.no}
         url : `/v1/boardWrite?&visit_date=${obj.visit_date}&pr_nickname=${obj.pr_nickname}&title=${obj.title}&content=${obj.content}&score=${obj.score}`,
         method : "POST",
+        datatype : "JSON"
          // dataType: 'json',
         // contentType: 'application/json',
         // data : obj
