@@ -22,6 +22,7 @@
   <nav class="nav_tab">
     <ul class="menu">
       <li>탐색</li>
+      <li><a href="/search">검색</a></li>
       <li><a href="movieAll">영화</a></li>
       <li><a href="dramaAll">TV</a></li>
       <li>문의</li>

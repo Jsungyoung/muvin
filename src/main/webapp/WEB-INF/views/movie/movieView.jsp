@@ -10,12 +10,11 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/movieView.css">
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e0146e3fc3c4cc6c4776c917bccae6c&libraries=services,clusterer,drawing"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 
 </head>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%--<c:set let="movie_id" value="2" scope="request"/>--%>
 <body onload="javascript:getMovie(${movie_id})">
 <jsp:include page="../header.jsp" />
@@ -33,7 +32,7 @@
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#details">상세정보</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#mapz">촬영지</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#actors">출연진</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#related">관련영화</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#related" style="width: 500px">관련영화</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#reviews">리뷰</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#temp">임시탭</a></li>
         </ul>
@@ -46,9 +45,9 @@
             <p>관람등급</p>
             <p>누적관객수</p>
         </div>
-        <div class="tab-pane fade" id="mapz">
+        <div class="tab-pane fade" id="mapz" style="background-color: white">
             <p>지도 로드만 하고? 더보기.. 자세히보기.. 이런 거 누르면 넘어가기</p>
-            <div id="map" style="width:500px ;height:500px;"></div>
+            <jsp:include page="../map/wholeMap.jsp"/>
         </div>
         <div class="tab-pane fade" id="actors">
         </div>
@@ -67,6 +66,5 @@
 <script src="/javascript/movieSearch.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script src="/javascript/wholeMap.js"></script>
 </body>
 </html>

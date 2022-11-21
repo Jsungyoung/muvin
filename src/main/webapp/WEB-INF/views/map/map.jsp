@@ -18,7 +18,6 @@
 <div id="map" style="width:700px;height:700px;"></div>
 
 <div class="xy"></div>
-<h1 class="fuck"> 안녕하세요</h1>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e0146e3fc3c4cc6c4776c917bccae6c&libraries=services,clusterer,drawing"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -63,46 +62,41 @@
 
      //   데이터에서 좌표 값을 가지고 마커를 표시합니다
         // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
-        var markers = $(data).map(function(i, position) {
+        let marker = $(data).map(function(i, position) {
             return new kakao.maps.Marker({
                 position : new kakao.maps.LatLng(position.y, position.x)
             });
         });
 
+        console.log(typeof marker);
 
-
+        console.log(marker)
         // 클러스터러에 마커들을 추가합니다
-        clusterer.addMarkers(markers);
+        clusterer.addMarkers(marker);
 
-
-
-
-        for(let i=0; i<data.length; i++){
+        let markers = [];
+        for(let i=0; i<data.length; i++) {
             let marker = new kakao.maps.Marker({
                 position : new kakao.maps.LatLng(data[i].y, data[i].x),
-                title : data[i].area_name,
                 map : map
             });
             console.log(marker);
-            (function (marker, place){
-                //마크 클릭 시
-                kakao.maps.event.addListener(marker, 'mouseover', function (){
                     let overlay = new kakao.maps.CustomOverlay({
                         //오버레이에 띄울 내용
-                        map : map,
+                        map: map,
                         position: marker.getPosition(),
-                        content :  '<div class="wrap">' +
+                        content: '<div class="wrap">' +
                             '    <div class="info">' +
                             '        <div class="title">' +
-                            place.place_name +
-                            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+                            data[i].place_name+
                             '        </div>' +
                             '        <div class="body">' +
+                            '            <input type="hidden" value="'+data[i].movie_code+'" id="movie_id" >'  +
                             '            <div class="img">' +
-                            '                <img src="'+ place.place_URL +'" width="73" height="70">' +
+                            '                <img referrerpolicy="no-referrer" src="'+ data[i].place_URL+'"'+ 'width="73" height="70">' +
                             '           </div>' +
                             '            <div class="desc">' +
-                            '                <div class="ellipsis">' + place.area_name + '</div>' +
+                            '                <div class="ellipsis"></div>' +
                             '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
                             '                <div><a href="" class="link" > 길찾기 </a></div>' +
                             '                <div><a href="" class="link" > 로드뷰 보기 </a></div>' +
@@ -112,21 +106,22 @@
                             '</div>'
                     });
                     console.log(overlay);
-                    overlay.setMap(map);
+                    markers.push(marker);
 
-                    kakao.maps.event.addListener(map, 'mouseout', function (mouseEvent){
+                    // 클릭시 열기
+                    kakao.maps.event.addListener(marker, 'click', function (){
+                        overlay.setMap(map);
+                    })
+
+                    // 더블클릭시 닫기
+                    kakao.maps.event.addListener(map, 'mouseover', function (mouseEvent) {
                         overlay.setMap(null)
                     })
-                })
-            })(marker, data[i])
 
 
+        }
             // 클러스터러에 마커들을 추가합니다
             clusterer.addMarkers(markers);
-       }
-
-
-
     });
 
     // 마커 클러스터러에 클릭이벤트를 등록합니다
