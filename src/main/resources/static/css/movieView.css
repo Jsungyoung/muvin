@@ -39,3 +39,16 @@
     width: 80vw;
     margin: 0 auto;
 }
+
+#keywords{
+    margin: 20px 0;
+}
+
+.keyword{
+    padding: 4px 10px;
+    border-radius: 13px;
+    background-color: #585858;
+    margin: 3px 6px;
+    cursor: pointer;
+    color: #dddddd;
+}
