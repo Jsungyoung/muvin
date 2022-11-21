@@ -8,12 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="/css/login.css" />
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
-<button onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=6a4c077fca80e32384fcf93a071c6788&redirect_uri=http://localhost:8084/loginForm&response_type=code'">코드 받기</button>
-<button onclick="kakaoLogin()">카카오 로그인</button>
+<input type="image" id="kakaoLoginBtn" src="/images/kakao_login_medium_narrow.png" onclick="kakaoLogin()" />
 <form method="post" action="/login">
     <div>
         <h2>로그인</h2>
