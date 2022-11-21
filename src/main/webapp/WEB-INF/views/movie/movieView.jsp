@@ -49,6 +49,8 @@
         <div class="tab-pane fade" id="mapz">
             <p>지도 로드만 하고? 더보기.. 자세히보기.. 이런 거 누르면 넘어가기</p>
             <div id="map" style="width:500px ;height:500px;"></div>
+            <input type="button" onclick="movePlaceSearch()" value="촬영지 등록하기"/>
+
         </div>
         <div class="tab-pane fade" id="actors">
         </div>

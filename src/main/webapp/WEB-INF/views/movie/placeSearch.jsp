@@ -34,9 +34,9 @@
     <div id="pointInfo" style="display: none">
         <input type="hidden" id="placeX"/>
         <input type="hidden" id="placeY"/>
-        <p id="placeTitle"></p>
         <p id="placeAddress"></p>
-        <input type="button" onclick="sendPosition" value="이 장소 추가하기"/>
+        <input type="text" placeholder="장소 이름">
+        <input type="button" onclick="addPlace()" value="이 장소 추가하기"/>
     </div>
 </div>
 <script src="/javascript/placeSearch.js"></script>

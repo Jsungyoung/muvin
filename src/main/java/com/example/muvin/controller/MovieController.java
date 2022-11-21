@@ -2,7 +2,6 @@ package com.example.muvin.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MovieController {
@@ -18,9 +17,9 @@ public class MovieController {
         return "movie/movieAll";
     }
 
-    @GetMapping("movie/placeSearch")
+    @GetMapping("/placeSearch")
     public String placeSearch(){
-        return "movie/placeSearchPopup";
+        return "movie/placeSearch";
     }
 
     @GetMapping("/dramaView")

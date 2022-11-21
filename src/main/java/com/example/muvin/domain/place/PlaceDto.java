@@ -15,7 +15,6 @@ public class PlaceDto {
     private String code;
     private double x;
     private double y;
-    private String area_code;
     private String area_name;
     private String movie_code;
     private String place_name;

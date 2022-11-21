@@ -17,7 +17,6 @@ public class Place extends Timestamp{
     private String code; //pk
     private double x;
     private double y;
-    private String area_code;
     private String area_name;
     private String movie_code;
     private String place_name;
@@ -29,10 +28,7 @@ public class Place extends Timestamp{
         this.code = placeDto.getCode();
         this.x = placeDto.getX();
         this.y = placeDto.getY();
-        this.area_code = placeDto.getArea_code();
         this.area_name = placeDto.getArea_name();
         this.movie_code = placeDto.getMovie_code();
     }
-
-
 }

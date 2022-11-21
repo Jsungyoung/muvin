@@ -31,7 +31,7 @@
 <%
 String movie_id = request.getParameter("movie_id");
 %>
-<div id="map" style="width:500px ;height:500px;"></div>
+<div id="map" style="width:500px ;height:500px; left:0px; top:0px;"></div>
 
 <script>
     var mapContainer = document.getElementById('map'), // 지도의 중심좌표
