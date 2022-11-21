@@ -54,7 +54,7 @@
         <div>
             <h4>이메일</h4>
             <input type="text" name="str_email01" id="str_email01"><span id="middle">@</span>
-            <input type="text" name="str_email02" id="str_email02" disabled value="선택하세요">
+            <input type="text" name="str_email02" id="str_email02" readonly value="선택하세요">
             <select name="selectEmail" id="selectEmail">
                 <option value="" selected>선택하세요</option>
                 <option value="naver.com">naver.com</option>

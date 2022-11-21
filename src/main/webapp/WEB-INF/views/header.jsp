@@ -27,7 +27,7 @@
       <li>문의</li>
       <li><a href="/loginForm">로그인</a></li>
       <li><a href="/logout">로그아웃</a></li>
-
+      <li><a href="/kakaoMsg">홍보 메세지 보내기</a></li>
     </ul>
   </nav>
 </body>

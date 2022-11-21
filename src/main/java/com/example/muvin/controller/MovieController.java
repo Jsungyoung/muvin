@@ -17,4 +17,9 @@ public class MovieController {
     public String movieAll(){
         return "movie/movieAll";
     }
+
+    @GetMapping("movie/placeSearch")
+    public String placeSearch(){
+        return "movie/placeSearchPopup";
+    }
 }

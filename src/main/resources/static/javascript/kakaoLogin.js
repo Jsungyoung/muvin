@@ -5,6 +5,9 @@ if(code!=null){
 }
 
 function kakaoLogin(){
+    if(code==null) {
+        location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6a4c077fca80e32384fcf93a071c6788&redirect_uri=http://localhost:8084/loginForm&response_type=code';
+    }
     console.log(code);
     if(code!=null) {
         $.ajax({

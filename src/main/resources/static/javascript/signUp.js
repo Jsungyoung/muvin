@@ -307,7 +307,7 @@ function kakaoOnLoad(){
     $("#checkId").val("Y");
     $("#myid").val("Y");
 
-    let str = sessionStorage.getItem("data");
+    let str = ""+sessionStorage.getItem("data");
     let userInfo = JSON.parse(str);
     let id = $('#id');
     let pw = $('#password');
@@ -315,19 +315,22 @@ function kakaoOnLoad(){
     let nickname = $('#nickname');
     let emailId = $('#str_email01');
     let emailAddress = $('#str_email02');
+    let email = $('#email');
     id.val(userInfo.id);
-    id.attr("disabled", true);
-    let pwCode = pwGenerator();
+    id.attr("readonly", true);
+    let pwCode = ""+pwGenerator();
     pw.val(pwCode);
-    pw.attr("disabled", true);
+    pw.attr("readonly", true);
     pwCheck.val(pwCode);
-    pwCheck.attr("disabled", true);
-    nickname.val(userInfo.nickname);
-    let email = userInfo.email.split("@");
-    emailId.val(email[0]);
-    emailId.attr("disabled", true);
-    emailAddress.val(email[1]);
-    emailAddress.attr("disabled", true);
+    pwCheck.attr("readonly", true);
+    nickname.val(""+userInfo.nickname);
+    let emailInfo = userInfo.email.split("@");
+    console.log(email);
+    emailId.val(""+emailInfo[0]);
+    emailId.attr("readonly", true);
+    emailAddress.val(""+emailInfo[1]);
+    emailAddress.attr("readonly", true);
+    email.val(emailInfo[0]+"@"+emailInfo[1]);
 }
 
 function pwGenerator(){

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/movieView.css">
 </head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%--<c:set var="movie_id" value="2" scope="request"/>--%>
+<%--<c:set let="movie_id" value="2" scope="request"/>--%>
 <body onload="javascript:getMovie(${movie_id})">
 <jsp:include page="../header.jsp" />
 
@@ -45,6 +45,14 @@
         <div class="tab-pane fade" id="map">
             <p>지도 로드만 하고? 더보기.. 자세히보기.. 이런 거 누르면 넘어가기</p>
             <img src="/images/mapsample.png">
+            <input type="button" onclick="visableAddForm()" value="장소 등록" />
+            <div class="plaseContainer">
+
+                <form>
+                    <input type="hidden" name="movieId"/>
+
+                </form>
+            </div>
         </div>
         <div class="tab-pane fade" id="actors">
         </div>
