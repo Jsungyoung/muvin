@@ -10,38 +10,42 @@
 <head>
   <link rel="stylesheet" href="/css/contentAll.css">
 </head>
-<body onload="javascript:getAllMovie()">
+<body onload="javascript:getMovieByGenre()">
 <jsp:include page="../header.jsp" />
   <section>
 
-    <h3 class="">국가</h3>
-    <ul class="nation_name">
-      <li class="nation_name" id=""></li>
+    <h3 class="category">국가</h3>
+    <ul class="nation">
+      <li class="nation_name click_nation" id="" onclick="handleNation()">전체</li>
+      <li class="nation_name" id="ko" onclick="handleNation()">국내</li>
+      <li class="nation_name" id="es" onclick="handleNation()">남미</li>
+      <li class="nation_name" id="en" onclick="handleNation()">영미</li>
+      <li class="nation_name" id="ja" onclick="handleNation()">일본</li>
+      <li class="nation_name" id="zh" onclick="handleNation()">중국</li>
     </ul>
-
 
     <h3 class="category">장르</h3>
     <ul class="genre">
-      <li class="genre_name non_click_genre" id="" onclick="getMovieByGenre()">전체</li>
-      <li class="genre_name non_click_genre" id="28" onclick="getMovieByGenre()">액션</li>
-      <li class="genre_name non_click_genre" id="12" onclick="getMovieByGenre()">모험</li>
-      <li class="genre_name non_click_genre" id="16" onclick="getMovieByGenre()">애니메이션</li>
-      <li class="genre_name non_click_genre" id="35" onclick="getMovieByGenre()">코미디</li>
-      <li class="genre_name non_click_genre" id="80" onclick="getMovieByGenre()">범죄</li>
-      <li class="genre_name non_click_genre" id="99" onclick="getMovieByGenre()">다큐멘터리</li>
-      <li class="genre_name non_click_genre" id="18" onclick="getMovieByGenre()">드라마</li>
-      <li class="genre_name" id="10751" onclick="getMovieByGenre()">가족</li>
-      <li class="genre_name" id="14" onclick="getMovieByGenre(this.id)">판타지</li>
-      <li class="genre_name" id="36" onclick="getMovieByGenre(this.id)">역사</li>
-      <li class="genre_name" id="27" onclick="getMovieByGenre(this.id)">공포</li>
-      <li class="genre_name" id="10402" onclick="getMovieByGenre(this.id)">음악</li>
-      <li class="genre_name" id="9648" onclick="getMovieByGenre(this.id)">미스터리</li>
-      <li class="genre_name" id="10749" onclick="getMovieByGenre(this.id)">로맨스</li>
-      <li class="genre_name" id="878" onclick="getMovieByGenre(this.id)">SF</li>
-      <li class="genre_name" id="10770" onclick="getMovieByGenre(this.id)">TV 영화</li>
-      <li class="genre_name" id="53" onclick="getMovieByGenre(this.id)">스릴러</li>
-      <li class="genre_name" id="10752" onclick="getMovieByGenre(this.id)">전쟁</li>
-      <li class="genre_name" id="37" onclick="getMovieByGenre(this.id)">서부</li>
+      <li class="genre_name click_genre" id="" onclick="handleGenre()">전체</li>
+      <li class="genre_name" id="28" onclick="handleGenre()">액션</li>
+      <li class="genre_name" id="12" onclick="handleGenre()">모험</li>
+      <li class="genre_name" id="16" onclick="handleGenre()">애니메이션</li>
+      <li class="genre_name" id="35" onclick="handleGenre()">코미디</li>
+      <li class="genre_name" id="80" onclick="handleGenre()">범죄</li>
+      <li class="genre_name" id="99" onclick="handleGenre()">다큐멘터리</li>
+      <li class="genre_name" id="18" onclick="handleGenre()">드라마</li>
+      <li class="genre_name" id="10751" onclick="handleGenre()">가족</li>
+      <li class="genre_name" id="14" onclick="handleGenre()">판타지</li>
+      <li class="genre_name" id="36" onclick="handleGenre()">역사</li>
+      <li class="genre_name" id="27" onclick="handleGenre()">공포</li>
+      <li class="genre_name" id="10402" onclick="handleGenre()">음악</li>
+      <li class="genre_name" id="9648" onclick="handleGenre()">미스터리</li>
+      <li class="genre_name" id="10749" onclick="handleGenre()">로맨스</li>
+      <li class="genre_name" id="878" onclick="handleGenre()">SF</li>
+      <li class="genre_name" id="10770" onclick="handleGenre()">TV 영화</li>
+      <li class="genre_name" id="53" onclick="handleGenre()">스릴러</li>
+      <li class="genre_name" id="10752" onclick="handleGenre()">전쟁</li>
+      <li class="genre_name" id="37" onclick="handleGenre()">서부</li>
     </ul>
 
     <div class="content_all"></div>

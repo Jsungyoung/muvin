@@ -160,14 +160,12 @@ function loadMovie(){
             const audAcc = e.popularity;
             const regdate = e.release_date;
             const content = e.overview;
+            const movie_id = e.id;
 
             $('.popular').append(
-                `<div class="movie"><a href="movieView">
+                `<div class="movie" onclick="location.href='movieView?movie_id=${movie_id}';">
                     <div><img class="poster-img" src="https://image.tmdb.org/t/p/original/${poster_path}"></div>
-                    <p class="title"><strong>${title}</strong></p>
-                    <p class="audAcc">${audAcc}명</p>
-                    <p class="regdate">${regdate}</p>
-				</a></div>`
+				</div>`
             );
         });
     });

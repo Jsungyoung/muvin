@@ -9,14 +9,11 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/movieView.css">
+    <link rel="stylesheet" href="/css/contentView.css">
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e0146e3fc3c4cc6c4776c917bccae6c&libraries=services,clusterer,drawing"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-
 </head>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%--<c:set let="movie_id" value="2" scope="request"/>--%>
 <body onload="javascript:getMovie(${movie_id})">
 <jsp:include page="../header.jsp" />
 
@@ -24,11 +21,9 @@
     <div class = movie-view></div>
 
     <div style="margin: 10px auto; display: flex; align-items: flex-end; width: 80vw;">
-        <div>키워드</div>
         <div>별점 매기는 거...........</div>
     </div>
     <div>
-    <%-- 콘텐츠 주요 정보 하단에 선택할 nav 탭--%>
         <ul class="nav nav-pills">
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#details">상세정보</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#mapz">촬영지</a></li>
@@ -41,13 +36,10 @@
 
     <div class="tab-content">
         <div class="tab-pane fade show active" id="details">
-            <p>감독</p>
-            <p>출연진 리스트</p>
-            <p>관람등급</p>
-            <p>누적관객수</p>
+            <div id="keywords"></div>
+            <div id="plot"></div>
         </div>
-        <div class="tab-pane fade" id="mapz">
-            <p>지도 로드만 하고? 더보기.. 자세히보기.. 이런 거 누르면 넘어가기</p>
+        <div class="tab-pane fade" id="map">
             <div id="map" style="width:500px ;height:500px;"></div>
         </div>
         <div class="tab-pane fade" id="actors">

@@ -23,6 +23,11 @@ public class MovieController {
         return "movie/placeSearchPopup";
     }
 
+    @GetMapping("/search")
+    public String search(){
+        return "movie/search";
+    }
+
     @GetMapping("/dramaView")
     public String dramaView() {
         return "movie/dramaView";

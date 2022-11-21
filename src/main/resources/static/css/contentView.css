@@ -16,13 +16,13 @@
     object-fit: cover;
 }
 
-#movie-title{
+#movie-title, #drama-title{
     font-size: 20px;
     text-align: center;
     margin: 10px auto;
 }
 
-.movie-info{
+.movie-info, .drama-info{
     display: flex;
     width: 80vw;
     height: 300px;

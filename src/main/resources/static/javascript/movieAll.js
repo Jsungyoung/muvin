@@ -1,58 +1,59 @@
 let page = 1;
 
+const nation = document.getElementsByClassName('nation_name');
+const nonClickNation = document.querySelectorAll('.nation_name');
 
-const genre = document.getElementsByClassName("genre_name");
-
-const nonClick = document.querySelectorAll(".non_click_genre");
-
-function handleClick(event) {
-    // div에서 모든 "click" 클래스 제거
-    nonClick.forEach((e) => {
-        e.classList.remove("click_genre");
+function handleNation(event){
+    nonClickNation.forEach((e) => {
+        e.classList.remove("click_nation");
     });
-    // 클릭한 div만 "click"클래스 추가
-    event.target.classList.add("click_genre");
-    return event.target.classList.id;
+    event.target.classList.add("click_nation");
+    getMovieByGenre();
 }
 
-nonClick.forEach((e) => {
-    e.addEventListener("click", handleClick);
+nonClickNation.forEach((e) => {
+    e.addEventListener("click", e => {
+        handleNation(e) ;
+    } );
 });
 
-function getGenre(){
-    $(document).ready(function(){
-        $(".genre_name non_click_genre").attr("class","변경 할 클래스명");
+
+const genre = document.getElementsByClassName("genre_name");
+const nonClickGenre = document.querySelectorAll(".genre_name");
+
+function handleGenre(event) {
+    nonClickGenre.forEach((e) => {
+        e.classList.remove("click_genre");
     });
+    event.target.classList.add("click_genre");
+    getMovieByGenre();
 }
 
-
-// function getGenre(event) {
-//     console.log(event.target);
-//     console.log(this);
-//     console.log(event.target.classList);
-//
-//     if (event.target.classList[1] === "clicked") {
-//         event.target.classList.remove("clicked");
-//     } else {
-//         for (var i = 0; i < div2.length; i++) {
-//             genre[i].classList.remove("clicked");
-//         }
-//
-//         event.target.classList.add("clicked");
-//     }
-// }
+nonClickGenre.forEach((e) => {
+    e.addEventListener("click", e => {
+        handleGenre(e) ;
+    } );
+});
 
 function init() {
     for (var i = 0; i < genre.length; i++) {
-        genre[i].addEventListener("click", getGenre());
+        genre[i].addEventListener("click", e => {
+            handleGenre(e) ;
+        });
+    }
+    for (var i = 0; i < nation.length; i++) {
+        nation[i].addEventListener("click", e => {
+            handleNation(e) ;
+        });
     }
 }
-
-init();
 
 
 
 function getAllMovie(){
+
+    const classVal=$(".class").val();
+
     $.ajax({
         url: "https://api.themoviedb.org/3/movie/top_rated?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&region=KR&page="+page,
         method: "GET",
@@ -76,11 +77,13 @@ function getAllMovie(){
 }
 
 function getMovieByGenre(){
-
-    const genre = getGenre();
+    const genre = $('.click_genre').attr('id');
+    const nation = $('.click_nation').attr('id');
+    console.log(genre);
+    console.log(nation);
 
     $.ajax({
-        url: "https://api.themoviedb.org/3/discover/movie?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&include_adult=false&watch_region=KR&page="+page+"&region=KR&with_genres="+genre_id,
+        url: "https://api.themoviedb.org/3/discover/movie?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&page="+page+"&include_adult=false&page=1&region=KR&with_genres="+genre + "&with_original_language="+nation,
         method: "GET",
         timeout: 0,
     }).done(function (response) {
