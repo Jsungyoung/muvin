@@ -5,6 +5,7 @@ import com.example.muvin.domain.place.PlaceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -16,9 +17,14 @@ public class PlaceService {
     @Autowired
     private PlaceRepository repository;
 
-    public void write(Place place){
-
+    public Boolean write(Place place){
         repository.save(place);
+
+        Place result = repository.findPlace(place.getX(),place.getY(),place.getArea_name());
+        if(result == null){
+            return false;
+        }
+        return true;
     }
 
     public List<Place> placeList(){

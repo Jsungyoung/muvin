@@ -14,8 +14,13 @@ public class PlaceController {
     @Autowired
     private PlaceService placeService;
 
-    @RequestMapping("/checkNick")
-    public void addPlace(Place place){
-        placeService.write(place);
+    @RequestMapping("/add/place")
+    @ResponseBody
+    public String addPlace(Place place){
+        if(placeService.write(place)){
+            return "success";
+        }
+        return "fail";
     }
+
 }

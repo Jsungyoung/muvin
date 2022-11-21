@@ -120,3 +120,4 @@ function getMovie(movie_id){
 
     });
 }
+

@@ -13,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
-<input type="image" id="kakaoLoginBtn" src="/images/kakao_login_medium_narrow.png" onclick="kakaoLogin()" />
+<input type="image" id="kakaoLoginBtn" src="/images/kakao_login_medium_wide.png" style="width:320px; height:48px" onclick="kakaoLogin()" />
 <form method="post" action="/login">
     <div>
         <h2>로그인</h2>
