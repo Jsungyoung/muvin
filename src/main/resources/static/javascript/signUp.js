@@ -1,8 +1,4 @@
 //이메일 입력방식 선택
-
-
-
-
 $('#selectEmail').change(function(){
     $("#selectEmail option:selected").each(function () {
 

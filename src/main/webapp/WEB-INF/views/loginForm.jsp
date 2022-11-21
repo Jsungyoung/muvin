@@ -27,9 +27,10 @@
         </div>
         <div>
             <input type="submit" value="로그인">
+            <button type="button" onclick="location.href='/signUpForm'">회원가입</button>
         </div>
     </div>
 </form>
-<script src="javascript/kakaoLogin.js?ver=3"></script>
+<script src="/javascript/kakaoLogin.js?ver=3"></script>
 </body>
 </html>

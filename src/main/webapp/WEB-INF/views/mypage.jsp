@@ -12,7 +12,45 @@
     <title>Title</title>
 </head>
 <body>
-<c:set var="id" value="${sessionScope.log}"/>
-<c:out value="${id}"/>
+<c:set var="user" value="${user}" scope="session"/>
+
+<form>
+    <div>
+        <h2>마이페이지</h2>
+        <div>
+            <h4>아이디</h4>
+            <input type="text" id="id" name="id" value="${user.id}" readonly>
+        </div>
+        <div>
+            <h4>비밀번호</h4>
+            <input type="password" id="password" value="${user.password}" readonly>
+        </div>
+        <div>
+            <h4>이름</h4>
+            <input type="text" name="name" id="name" value="${user.name}" readonly>
+        </div>
+        <div>
+            <h4>닉네임</h4>
+            <input type="text" name="nickname" id="nickname" value="${user.nickname}" readonly>
+        </div>
+        <div>
+            <h4>전화번호</h4>
+            <input type="text" name="phone" id="phone" value="${user.phone}" readonly>
+        </div>
+        <div>
+            <h4>생년월일</h4>
+            <input type="text" name="birth" id="birth" value="${user.birth}" readonly>
+        </div>
+        <div>
+            <h4>이메일</h4>
+            <input type="text" name="email" id="email" value="${user.email}" readonly>
+        </div>
+    </div>
+    <div>
+        <button type="button" onclick="location.href='/updateForm'">회원정보 수정</button>
+        <button type="button" onclick="location.href='/deleteForm'">회원탈퇴</button>
+    </div>
+    </div>
+</form>
 </body>
 </html>

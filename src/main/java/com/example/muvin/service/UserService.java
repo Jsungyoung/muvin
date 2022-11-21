@@ -21,22 +21,28 @@ public class UserService {
     private UserRepository repository;
 
     // id 중복확인
-    public int idCheck(String id){
+    public int idCheck(String id) {
         int result = repository.findByCheckId(id);
         return result;
     }
+
     // 닉네임 중복확인
-    public int nickCheck(String nickname){
+    public int nickCheck(String nickname) {
         int result = repository.findByCheckNick(nickname);
         return result;
     }
 
     // 회원가입
-    public void createUser (UserDto userDto) {
+    public void createUser(UserDto userDto) {
         User user = userDto.toEntity();
         repository.save(user);
 
 
+    }
+
+    public User userInfo(String id) {
+        User result = repository.findByUserId(id);
+        return result;
     }
 
     // 로그인
@@ -51,10 +57,20 @@ public class UserService {
         }
         return false;
     }
-    // 회원탈퇴
-    @Transactional
-    public void deleteUser(String id, String password){
-        repository.deleteById(id);
-    }
 
+    // 회원정보수정
+    public void updateUser(String id, String password, String name, String phone, String birth) {
+        User user = repository.findByUserId(id);
+        user.setUser(password,name,phone,birth);
+    }
+    // 회원탈퇴
+    public boolean deleteUser(String id, String password) {
+        User findUser = repository.findByUserId(id);
+
+        if (password.equals(findUser.getPassword())) {
+            repository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

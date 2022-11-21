@@ -1,6 +1,7 @@
 package com.example.muvin.domain.user;
 
 import com.example.muvin.util.Timestamp;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,7 +35,12 @@ public class User extends Timestamp {
         this.birth = userDto.getBirth();
         this.email = userDto.getEmail();
     }
-
+    public void setUser(String password, String name, String phone, String birth){
+        this.password = password;
+        this.name = name;
+        this.phone = phone;
+        this.birth = birth;
+    }
     @Builder
     public User(String id, String password, String name, String nickname, String phone, String birth, String email){
         this.id = id;

@@ -30,7 +30,7 @@
         </div>
         <div>
             <h4>비밀번호 확인</h4>
-            <input type="password" id="passwordCheck" name="passwordCheck" id="passwordCheck" placeholder="영문자+숫자+특수문자 조합 8~16자리" onkeyup="isSame();">
+            <input type="password" id="passwordCheck" name="passwordCheck" placeholder="영문자+숫자+특수문자 조합 8~16자리" onkeyup="isSame();">
             <div><span id="same"></span></div>
         </div>
         <div>
@@ -77,6 +77,6 @@
     </div>
 </form>
 
-<script type="text/javascript" src="/javascript/signUp.js?ver=1"></script>
+<script type="text/javascript" src="/javascript/signUp.js"></script>
 </body>
 </html>
