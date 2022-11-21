@@ -48,9 +48,7 @@ function getMovie(movie_id){
             </div>`
         );
 
-        $('#details').append(
-            `<p>${detail}</p>`
-        );
+
 
         $.ajax({
             url: "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&detail=Y&ServiceKey=CKA71K1PJ7OSNRPAAK9W&query="+title+"&releaseDts="+releasedate+"&createDte="+releasedate,
@@ -59,7 +57,7 @@ function getMovie(movie_id){
             headers: {
                 "Cookie": "JSESSIONID=233DDC54CCE62B6C804553C557BC113F"
             }}).done(function (response) {
-            var obj = JSON.parse(response);
+            const obj = JSON.parse(response);
             // console.log(obj);
             console.log(obj);
             const details = obj.Data[0].Result[0];
@@ -73,18 +71,22 @@ function getMovie(movie_id){
                     <td>${details.rating}</td>
                 </tr>`
             );
-            const actor = [];
-            details.actors.actor.forEach(e =>
+            const actor = details.actors.actor;
+            actor.forEach(e =>
                 $('#actors').append(`<p>${e.actorNm}</p>`)
             )
             const director = [];
             details.directors.director.forEach(e =>
                 $('#director').append(`${e.directorNm} `)
             )
-
-
+            const keywords = details.keywords.split(',');
+            keywords.forEach(e => $('#keywords').append(`<span class="keyword">${e}</span>`))
 
         });
+
+        $('#plot').append(
+            `<p>${detail}</p>`
+        );
 
 
     });

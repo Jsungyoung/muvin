@@ -23,7 +23,7 @@
     color: #dddddd;
 }
 
-.movie{
+.content{
     width: 16.6667%;
     vertical-align: top;
     margin: 1%;
@@ -38,7 +38,7 @@
     object-fit:cover;
 }
 
-.movie_all{
+.content_all{
     /* display: grid; */
     /* grid-template-columns: repeat(5, 1fr); */
     display: flex;
@@ -47,4 +47,9 @@
     margin: 0 auto;
     justify-content:space-between;
     border-radius: 10px;
+}
+
+.clicked{
+    background-color: #cccccc;
+    color: #252525;
 }
