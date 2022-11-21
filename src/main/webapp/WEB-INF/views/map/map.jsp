@@ -24,7 +24,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
 
-    console.log("sibal")
     let settings = {
         "url": "http://localhost:8084/v1/map",
         "method": "GET",
@@ -70,35 +69,7 @@
             });
         });
 
-        (function (markers, place){
-            //마크 클릭 시
-            kakao.maps.event.addListener(markers, 'click', function (){
-                let overlay = new kakao.maps.CustomOverlay({
-                    //오버레이에 띄울 내용
-                    map : map,
-                    position: markers.getPosition(),
-                    content :  '<div class="wrap">' +
-                        '    <div class="info">' +
-                        '        <div class="title">' +
-                        place.place_name +
-                        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-                        '        </div>' +
-                        '        <div class="body">' +
-                        '            <div class="img">' +
-                        '                <img src="'+ place.place_URL +'" width="73" height="70">' +
-                        '           </div>' +
-                        '            <div class="desc">' +
-                        '                <div class="ellipsis">' + place.area_name + '</div>' +
-                        '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
-                        '            </div>' +
-                        '        </div>' +
-                        '    </div>' +
-                        '</div>'
-                });
-                console.log(overlay);
-                overlay.setMap(map);
-            })
-        })(markers, data)
+
 
         // 클러스터러에 마커들을 추가합니다
         clusterer.addMarkers(markers);
@@ -106,46 +77,53 @@
 
 
 
-        // for(let i=0; i<data.length; i++){
-        //     let marker = new kakao.maps.Marker({
-        //         position : new kakao.maps.LatLng(data[i].y, data[i].x),
-        //         title : data[i].area_name,
-        //     });
-        //     console.log(marker);
-            // (function (marker, place){
-            //     //마크 클릭 시
-            //     kakao.maps.event.addListener(marker, 'click', function (){
-            //         let overlay = new kakao.maps.CustomOverlay({
-            //             //오버레이에 띄울 내용
-            //             map : map,
-            //             position: marker.getPosition(),
-            //             content :  '<div class="wrap">' +
-            //                 '    <div class="info">' +
-            //                 '        <div class="title">' +
-            //                 place.place_name +
-            //                 '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-            //                 '        </div>' +
-            //                 '        <div class="body">' +
-            //                 '            <div class="img">' +
-            //                 '                <img src="'+ place.place_URL +'" width="73" height="70">' +
-            //                 '           </div>' +
-            //                 '            <div class="desc">' +
-            //                 '                <div class="ellipsis">' + place.area_name + '</div>' +
-            //                 '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
-            //                 '            </div>' +
-            //                 '        </div>' +
-            //                 '    </div>' +
-            //                 '</div>'
-            //         });
-            //         console.log(overlay);
-            //         overlay.setMap(map);
-            //     })
-            // })(marker, data[i])
-            //
-            //
-            // // 클러스터러에 마커들을 추가합니다
-            // clusterer.addMarkers(markers);
-       // }
+        for(let i=0; i<data.length; i++){
+            let marker = new kakao.maps.Marker({
+                position : new kakao.maps.LatLng(data[i].y, data[i].x),
+                title : data[i].area_name,
+                map : map
+            });
+            console.log(marker);
+            (function (marker, place){
+                //마크 클릭 시
+                kakao.maps.event.addListener(marker, 'mouseover', function (){
+                    let overlay = new kakao.maps.CustomOverlay({
+                        //오버레이에 띄울 내용
+                        map : map,
+                        position: marker.getPosition(),
+                        content :  '<div class="wrap">' +
+                            '    <div class="info">' +
+                            '        <div class="title">' +
+                            place.place_name +
+                            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+                            '        </div>' +
+                            '        <div class="body">' +
+                            '            <div class="img">' +
+                            '                <img src="'+ place.place_URL +'" width="73" height="70">' +
+                            '           </div>' +
+                            '            <div class="desc">' +
+                            '                <div class="ellipsis">' + place.area_name + '</div>' +
+                            '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
+                            '                <div><a href="" class="link" > 길찾기 </a></div>' +
+                            '                <div><a href="" class="link" > 로드뷰 보기 </a></div>' +
+                            '            </div>' +
+                            '        </div>' +
+                            '    </div>' +
+                            '</div>'
+                    });
+                    console.log(overlay);
+                    overlay.setMap(map);
+
+                    kakao.maps.event.addListener(map, 'mouseout', function (mouseEvent){
+                        overlay.setMap(null)
+                    })
+                })
+            })(marker, data[i])
+
+
+            // 클러스터러에 마커들을 추가합니다
+            clusterer.addMarkers(markers);
+       }
 
 
 

@@ -2,7 +2,6 @@ package com.example.muvin.service;
 
 import com.example.muvin.domain.place.Place;
 import com.example.muvin.domain.place.PlaceRepository;
-import com.example.muvin.domain.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +36,5 @@ public class PlaceService {
     }
 
 
-
+    public List<Place> getPlaceByPlaceCode(String place_code){return repository.findByPlaceCode();}
 }
