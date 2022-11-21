@@ -13,8 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
-
-<form name="signup" method="post" action="/signUp">
+<jsp:include page="../header.jsp"/>
+<section>
+<form name="signup" method="post" action="/user/signUp">
     <div>
         <h2>회원가입</h2>
         <div>
@@ -49,7 +50,7 @@
         </div>
         <div>
             <h4>생년월일</h4>
-            <input type="text" name="birth" id="birth" placeholder="birth">
+            <input type="text" name="birth" id="birth" placeholder="선택입력">
         </div>
         <div>
             <h4>이메일</h4>
@@ -76,7 +77,7 @@
         </div>
     </div>
 </form>
-
+</section>
 <script type="text/javascript" src="/javascript/signUp.js"></script>
 </body>
 </html>

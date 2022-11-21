@@ -47,8 +47,8 @@
         </div>
     </div>
     <div>
-        <button type="button" onclick="location.href='/updateForm'">회원정보 수정</button>
-        <button type="button" onclick="location.href='/deleteForm'">회원탈퇴</button>
+        <button type="button" onclick="location.href='/user/updateForm'">회원정보 수정</button>
+        <button type="button" onclick="location.href='/user/deleteForm'">회원탈퇴</button>
     </div>
     </div>
 </form>

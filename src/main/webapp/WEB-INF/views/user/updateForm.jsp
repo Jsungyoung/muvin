@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<form name="update" method="post" action="/update">
+<form name="update" method="post" action="/user/update">
     <div>
         <h2>회원정보 수정</h2>
         <div>
@@ -55,7 +55,7 @@
     </div>
     <div>
         <button type="button" class="btn" onclick="update_check();">수정</button>
-        <button type="button" onclick="location.href='/mypage'">취소</button>
+        <button type="button" onclick="location.href='/user/mypage'">취소</button>
     </div>
     </div>
 </form>

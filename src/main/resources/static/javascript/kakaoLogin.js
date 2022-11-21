@@ -1,12 +1,13 @@
 const REST_API_KEY = "6a4c077fca80e32384fcf93a071c6788";
 let code = new URL(window.location.href).searchParams.get("code");
+
 if(code!=null){
     kakaoLogin();
 }
 
 function kakaoLogin(){
     if(code==null) {
-        location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6a4c077fca80e32384fcf93a071c6788&redirect_uri=http://localhost:8084/loginForm&response_type=code';
+        location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6a4c077fca80e32384fcf93a071c6788&redirect_uri=http://localhost:8084/user/loginForm&response_type=code';
     }
     console.log(code);
     if(code!=null) {
@@ -19,7 +20,7 @@ function kakaoLogin(){
             data: {
                 grant_type : "authorization_code",
                 client_id: REST_API_KEY,
-                redirect_url: "http://localhost:8084/loginForm",
+                redirect_url: "http://localhost:8084/user/loginForm",
                 code: code
             }
         }).done(function (res) {
@@ -49,7 +50,7 @@ function getUserInfo(access_token){
             }
         }).done(function(res) {
             console.log(res);
-            if(res==="/signUpForm"){
+            if(res==="/user/signUpForm"){
                 let data = `{"id":"${id}","nickname":"${nickname}","email":"${email}"}`;
                 sessionStorage.setItem("data",data);
             }

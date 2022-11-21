@@ -4,22 +4,18 @@ import com.example.muvin.domain.user.User;
 import com.example.muvin.domain.user.UserDto;
 import com.example.muvin.service.SendMailService;
 import com.example.muvin.service.UserService;
-import com.mysql.cj.protocol.x.Notice;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.script.ScriptContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.HttpMethodConstraint;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.http.HttpHeaders;
 
 
 @RequiredArgsConstructor
@@ -45,16 +41,17 @@ public class UserController {
     }
 
     // 회원가입
-    @GetMapping("/signUpForm")
+    @GetMapping("/user/signUpForm")
     public String signUpForm(){
-        return "signUpForm";
+        return "user/signUpForm";
     }
 
-    @RequestMapping("/signUp")
-    public String signUp(UserDto userDto) {
+    @RequestMapping("/user/signUp")
+    public String signUp(UserDto userDto, Model model) {
         service.createUser(userDto);
-
-        return "redirect:/loginForm";
+        model.addAttribute("msg", "회원가입이 완료되었습니다");
+        model.addAttribute("url", "/user/loginForm");
+        return "user/redirect";
     }
 
     //이메일 인증
@@ -66,20 +63,27 @@ public class UserController {
         return mailService.joinEmail(email);
     }
     // 로그인
-    @GetMapping("/loginForm")
+    @GetMapping("/user/loginForm")
     public String loginForm() {
-        return "loginForm";
+        return "user/loginForm";
     }
 
-
-    @PostMapping("/login")
-    public String singIn(@RequestParam String id, @RequestParam String password, HttpServletRequest request){
+    @GetMapping("/user/redirect")
+    public String redirect(){
+        return "user/redirect";
+    }
+    @PostMapping("/user/login")
+    public String singIn(@RequestParam String id, @RequestParam String password, HttpServletRequest request, Model model){
         if(service.login(id,password)){
             HttpSession session = request.getSession();
             session.setAttribute("log", id);
-            return "redirect:/";
+            model.addAttribute("msg", id+"님 환영합니다");
+            model.addAttribute("url", "/");
+            return "user/redirect";
         }
-        return "loginForm";
+        model.addAttribute("msg", "아이디 또는 비밀번호가 틀렸습니다");
+        model.addAttribute("url", "/user/loginForm");
+        return "user/redirect";
     }
 
     @PostMapping("/v1/kakao/login")
@@ -88,7 +92,7 @@ public class UserController {
         throws Exception {
         String id = request.getParameter("id");
         if(service.idCheck(id)==0){
-            return "/signUpForm";
+            return "user/signUpForm";
         }else{
             HttpSession session = request.getSession();
             session.setAttribute("log", id);
@@ -96,46 +100,75 @@ public class UserController {
         }
     }
     // 로그아웃
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
+    @GetMapping("/user/logout")
+    public String logout(HttpSession session, Model model) {
         session.removeAttribute("log");
-
-        return "redirect:/";
+        model.addAttribute("msg", "로그아웃 되셨습니다");
+        model.addAttribute("url", "/");
+        return "user/redirect";
     }
     // 마이페이지
-    @GetMapping("/mypage")
+    @GetMapping("/user/mypage")
     public void getInfo(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = (String)session.getAttribute("log");
         User info = service.userInfo(id);
         session.setAttribute("user",info);
-        request.getRequestDispatcher("/WEB-INF/views/mypage.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/user/mypage.jsp").forward(request, response);
     }
 
     // 회원정보수정
-    @GetMapping("/updateForm")
+    @GetMapping("/user/updateForm")
     public String updateInfo(){
-        return "/updateForm";
+        return "user/updateForm";
     }
 
     // 회원정보수정
-    @PostMapping("/update")
-    public String updateUserInfo(HttpSession session,@RequestParam String password, @RequestParam String name, @RequestParam String phone, @RequestParam String birth) {
+    @PostMapping("/user/update")
+    public String updateUserInfo(HttpSession session,@RequestParam String password, @RequestParam String name, @RequestParam String phone, @RequestParam String birth, Model model) {
         String id = (String)session.getAttribute("log");
         service.updateUser(id,password, name, phone, birth);
-        return "redirect:mypage";
+        model.addAttribute("msg", "정보가 수정되었습니다");
+        model.addAttribute("url", "/user/mypage");
+        return "user/redirect";
     }
     // 회원탈퇴
-    @GetMapping("/deleteForm")
+    @GetMapping("/user/deleteForm")
     public String deleteForm(){
-        return "/deleteForm";
+        return "user/deleteForm";
     }
-    @PostMapping("/delete")
-    public String deleteInfo(@RequestParam String password, HttpSession session){
+    @PostMapping("/user/delete")
+    public String deleteInfo(@RequestParam String password, HttpSession session, Model model){
         String id = (String)session.getAttribute("log");
         if(service.deleteUser(id,password)){
             session.removeAttribute("log");
-            return "redirect:/";
+            model.addAttribute("msg", "회원탈퇴가 되었습니다");
+            model.addAttribute("url", "/");
+            return "user/redirect";
         }
-        return "redirect:deleteForm";
+        model.addAttribute("msg", "비밀번호가 틀렸습니다");
+        model.addAttribute("url", "/user/deleteForm");
+        return "user/redirect";
+    }
+
+    // 아이디 찾기
+    @GetMapping("/user/findIdForm")
+    public String findId(){
+        return "/user/findIdForm";
+    }
+    @PostMapping("/user/findId")
+    public String findId(@RequestParam String name, @RequestParam String phone, Model model){
+        String id = service.userId(name, phone);
+        model.addAttribute("msg", name+"님의 아이디는 "+id+"입니다.");
+        model.addAttribute("url", "/user/loginForm");
+        return "user/redirect";
+    }
+    // 비밀번호 찾기
+    @GetMapping("/user/findPwForm")
+    public String findPw(){
+        return "/user/findPwForm";
+    }
+    @PostMapping("/findPw")
+    public String findPw(@RequestParam String id, @RequestParam String email){
+        return "/";
     }
 }

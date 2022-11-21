@@ -15,4 +15,7 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     @Query(value = "SELECT count(`nickname`) FROM user WHERE `nickname`=?",nativeQuery = true)
     public int findByCheckNick(String nickname);
+
+    @Query(value = "SELECT `id` FROM user WHERE `name`=? AND `phone`=?",nativeQuery = true)
+    public String findByNameAndPhone(String name, String phone);
 }

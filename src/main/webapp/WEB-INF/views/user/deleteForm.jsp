@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="/delete">
+<form method="post" action="/user/delete">
     <div>
         <h2>회원탈퇴</h2>
         <div>
@@ -20,7 +20,7 @@
         </div>
         <div>
             <input type="submit" value="회원탈퇴">
-            <button type="button" onclick="location.href='/mypage'">뒤로가기</button>
+            <button type="button" onclick="location.href='/user/mypage'">뒤로가기</button>
         </div>
     </div>
 </form>

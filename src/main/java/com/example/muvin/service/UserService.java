@@ -36,15 +36,17 @@ public class UserService {
     public void createUser(UserDto userDto) {
         User user = userDto.toEntity();
         repository.save(user);
-
-
     }
 
     public User userInfo(String id) {
         User result = repository.findByUserId(id);
         return result;
     }
-
+    // 아이디 찾기
+    public String userId(String name, String phone){
+        String result = repository.findByNameAndPhone(name,phone);
+        return result;
+    }
     // 로그인
     public boolean login(String id, String password) {
         User findUser = repository.findByUserId(id);

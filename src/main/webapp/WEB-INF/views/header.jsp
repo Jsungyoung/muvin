@@ -26,11 +26,11 @@
       <li><a href="dramaAll">TV</a></li>
       <li>문의</li>
       <c:if test = "${id == null }">
-        <li><a href="/loginForm">로그인</a></li>
+        <li><a href="/user/loginForm">로그인</a></li>
       </c:if>
       <c:if test = "${id != null }">
-        <li><a href="/mypage">마이페이지</a></li>
-        <li><a href="/logout">로그아웃</a></li>
+        <li><a href="/user/mypage">마이페이지</a></li>
+        <li><a href="/user/logout">로그아웃</a></li>
       </c:if>
       <li><a href="/kakaoMsg">홍보 메세지 보내기</a></li>
     </ul>
