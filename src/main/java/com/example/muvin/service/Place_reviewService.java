@@ -3,10 +3,13 @@ package com.example.muvin.service;
 import com.example.muvin.domain.place_review.Place_reviewDto;
 import com.example.muvin.domain.place_review.Place_reviewRepository;
 import com.example.muvin.domain.place_review.Place_review;
+import com.mysql.cj.MysqlxSession;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -47,7 +50,16 @@ public class Place_reviewService {
         if(review!=null){
             review.setPlace_review(reviewDto);
         }
-
     }
+    @Transactional
+    public void DeleteBoard(long no){
+        repository.deleteById(no);
+    }
+
+
+
+
+
+
 
 }

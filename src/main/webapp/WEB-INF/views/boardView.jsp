@@ -52,10 +52,11 @@
     </form>
 
       <button><a href="http://localhost:8084/boardUpdate?no=${sessionScope.view.no}">수정하기</a></button>
-
+      <input type="button" value="삭제하기" onclick="delBoard()">
 <%--            <script src="javascript/boardView.js"></script>--%>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   </div>
 </section>
+<script src="javascript/deleteBoard.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </body>
 </html>

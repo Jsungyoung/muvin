@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -74,7 +75,14 @@ public class Place_reviewController {
     @PostMapping("/v1/update/board")
     public void updateBoard(@RequestBody Place_reviewDto reviewDto){
         service.UpdateByNo(reviewDto);
+    }
+
+    @DeleteMapping("/v1/delete/board")
+    public void deleteBoard(@RequestParam long no){
+        service.DeleteBoard(no);
 
     }
+
+
 
 }
