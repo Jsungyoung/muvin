@@ -17,6 +17,8 @@
 
     <button onclick="location.href='/next'" value="영화 페이지"></button>
 
+
+
     <div><strong>지도</strong></div>
     <div class="movie-container map"></div>
 

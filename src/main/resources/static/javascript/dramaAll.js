@@ -1,8 +1,61 @@
 let page = 1;
 
-function getDramaByGenre(genre_id){
+const nation = document.getElementsByClassName('nation_name');
+const nonClickNation = document.querySelectorAll('.nation_name');
+
+function handleNation(event){
+    nonClickNation.forEach((e) => {
+        e.classList.remove("click_nation");
+    });
+    event.target.classList.add("click_nation");
+    getMovieByGenre();
+}
+
+nonClickNation.forEach((e) => {
+    e.addEventListener("click", e => {
+        handleNation(e) ;
+    } );
+});
+
+
+const genre = document.getElementsByClassName("genre_name");
+const nonClickGenre = document.querySelectorAll(".genre_name");
+
+function handleGenre(event) {
+    nonClickGenre.forEach((e) => {
+        e.classList.remove("click_genre");
+    });
+    event.target.classList.add("click_genre");
+    getMovieByGenre();
+}
+
+nonClickGenre.forEach((e) => {
+    e.addEventListener("click", e => {
+        handleGenre(e) ;
+    } );
+});
+
+function init() {
+    for (var i = 0; i < genre.length; i++) {
+        genre[i].addEventListener("click", e => {
+            handleGenre(e) ;
+        });
+    }
+    for (var i = 0; i < nation.length; i++) {
+        nation[i].addEventListener("click", e => {
+            handleNation(e) ;
+        });
+    }
+}
+
+function getDramaByGenre(){
+    const genre = $('.click_genre').attr('id');
+    const nation = $('.click_nation').attr('id');
+    console.log(genre);
+    console.log(nation);
+
     $.ajax({
-        url: "https://api.themoviedb.org/3/discover/tv?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&page=1&without_genres=16,10763,10764,10767&timezone=Asia%2FSeoul&include_null_first_air_dates=false&watch_region=KR&page="+page+"&with_genres="+genre_id,
+        url: "https://api.themoviedb.org/3/discover/tv?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&page=1&without_genres=16,10763,10764,10767&timezone=Asia%2FSeoul&include_null_first_air_dates=false&with_genres"+genre+"watch_region=KR&page="+page+"&with_original_language="+nation,
         method: "GET",
         timeout: 0
     }).done(function (response) {

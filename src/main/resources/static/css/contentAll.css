@@ -6,14 +6,14 @@
     font-size: 26px;
 }
 
-.genre{
+.genre, .nation{
     display: flex;
     flex-wrap: wrap;
     width: 90vw;
     margin: 0 auto;
 }
 
-.genre_name{
+.genre_name, .nation_name{
     list-style-type:none;
     padding: 4px 10px;
     border-radius: 13px;
@@ -49,7 +49,7 @@
     border-radius: 10px;
 }
 
-.clicked{
+.click_genre, .click_nation{
     background-color: #cccccc;
     color: #252525;
 }

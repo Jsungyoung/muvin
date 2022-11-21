@@ -16,7 +16,12 @@
 
   <h3 class="category">국가</h3>
   <ul class="nation">
-    <li class="nation_name clicked_nation" id="" onclick="getDrama"></li>
+    <li class="nation_name click_nation" id="" onclick="handleNation()">전체</li>
+    <li class="nation_name" id="ko" onclick="handleNation()">국내</li>
+    <li class="nation_name" id="es" onclick="handleNation()">남미</li>
+    <li class="nation_name" id="en" onclick="handleNation()">영미</li>
+    <li class="nation_name" id="ja" onclick="handleNation()">일본</li>
+    <li class="nation_name" id="zh" onclick="handleNation()">중국</li>
   </ul>
 
   <h3 class="category">장르</h3>
