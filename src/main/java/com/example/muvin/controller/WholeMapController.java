@@ -37,13 +37,14 @@ public class WholeMapController {
         request.getRequestDispatcher("/WEB-INF/views/map/wholeMap.jsp").forward(request, response);
     }
 
-    @GetMapping("/wholeMap/navi")
-    public void navi(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String x = request.getParameter("x");
-        String y = request.getParameter("y");
-        String place_name = request.getParameter("place_name");
-        request.getRequestDispatcher("https://map.kakao.com/link/to/"+place_name+","+y+","+x+'"').forward(request,response);
-    }
+//    @GetMapping("/wholeMap/navi")
+//    public void navi(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+//        String place_code = request.getParameter("place_code");
+//
+//
+//        List<Place> list = placeService.getPlaceByPlaceCode(place_code);
+//        request.getRequestDispatcher("https://map.kakao.com/link/to/"+list.+","+y+","+x+'"').forward(request,response);
+//    }
 
     @GetMapping("/wholeMap/roadView")
     public String roadView() {
