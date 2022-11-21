@@ -29,7 +29,7 @@
 <body>
 <div class="container">
     <h2>게시글 목록</h2>
-    <table class="board_list">
+    <table class="board_list" id="board_list">
         <colgroup>
             <col width="15%"/>
             <col width="*"/>
@@ -51,10 +51,11 @@
         <tbody>
 
 
+<%--        <div id='result'>0</div>--%>
+
 
         <form method="get"  class="write_form">
         <c:forEach items="${list}" var="place">
-
             <tr>
 <%--onclick="location.href='/board'--%>
                     <td><c:out value="${place.no}"/></td>
@@ -73,10 +74,27 @@
         </tbody>
 
     </table>
+    <div>
+        <form name="search_form" autocomplete="off">
+            <select name="type">
+                <option selected value="">검색 내용 선택</option>
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+                <option value="writer">작성자</option>
+            </select>
+            <input type="text" value="" name="keyword"/>
+            <input type="button" onclick="getSearchList()" value="검색">
+
+        </form>
+    </div>
+
+
+
     <button type="button" onclick="location.href='/boardWriteForm'">글쓰기</button>
 <%--    <input type="button" value="submit" onclick="createBoard()">--%>
     <input type="button" value="home" onclick="location.href='/board'">
     <script src="javascript/boardView.js"></script>
+    <script src="javascript/count.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </div>
 </body>

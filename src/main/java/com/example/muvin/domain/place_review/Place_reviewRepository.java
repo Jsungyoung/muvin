@@ -3,7 +3,9 @@ package com.example.muvin.domain.place_review;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import javax.validation.executable.ValidateOnExecution;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,11 @@ public interface Place_reviewRepository extends JpaRepository<Place_review, Long
 //    @Query(value = "UPDATE place_review SET title = ?, content = ? where `no` = ?",nativeQuery = true)
 //    Place_review updateReview(String title, String content, long no);
 
+//    @Query(value = "DELETE FROM place_review WHERE `no`=?",nativeQuery = true)
+//    Place_review deletePlace_review(long no);
+    @Query(value="select * from Users u where u.first_name like %:content% or u.last_name like %:content%", nativeQuery=true)
+    List<Place_review> findContent(@Param("content") String content);
 
-
+    @Query(value="select * from Users u where u.first_name like %:Title% or u.last_name like %:Title%", nativeQuery=true)
+    List<Place_review> findTitle(@Param("Title") String Title);
 }

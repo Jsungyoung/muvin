@@ -22,6 +22,10 @@ public class Place_reviewDto {
     private String content;
     private double score;
 
+    private String type;
+
+    private String keyword;
+
     public Place_reviewDto(long no, String visit_date, String pr_nickname, String title, String content){
         this.no = no;
         this.visit_date = visit_date;
