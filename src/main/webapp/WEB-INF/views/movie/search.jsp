@@ -13,7 +13,7 @@
 <body>
 <jsp:include page="../header.jsp" />
     <section>
-        <form method="post" action="javascript:findMovie()">
+        <form method="post" action="javascript:findContent()">
             <input type="text" id="query">
             <input type="submit" value="검색하기">
         </form>
@@ -21,6 +21,6 @@
         <div class="content_all"></div>
     </section>
 
-<script src="/javascript/movieSearch.js"></script>
+<script src="/javascript/findContent.js"></script>
 </body>
 </html>
