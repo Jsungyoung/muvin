@@ -17,7 +17,7 @@ public interface PlaceRepository extends JpaRepository<Place, String> {
     @Query(value = "SELECT * FROM place where `code` = ? ", nativeQuery = true)
     List<Place> findByPlaceCode();
 
-    @Query(value = "SELECT * FROM place WHERE x=? and y=? and area_name=?", nativeQuery = true)
-    Place findPlace(double x, double y, String area_name);
+    @Query(value = "SELECT * FROM place WHERE movie_code=? and area_name=?", nativeQuery = true)
+    Place findPlace(String movie_code, String area_name);
 
 }

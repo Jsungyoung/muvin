@@ -41,7 +41,7 @@
             <div id="keywords"></div>
             <div id="plot"></div>
         </div>
-        <div class="tab-pane fade" id="map">
+        <div class="tab-pane fade" id="mapz">
             <div id="map" style="width:500px ;height:500px;"></div>
             <input type="button" onclick="movePlaceSearch()" value="촬영지 등록하기"/>
 

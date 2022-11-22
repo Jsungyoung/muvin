@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @NoArgsConstructor
 public class PlaceDto {
-    private String code;
+    private int code;
     private double x;
     private double y;
     private String area_name;

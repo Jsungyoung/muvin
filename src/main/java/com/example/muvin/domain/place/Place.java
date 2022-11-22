@@ -1,6 +1,7 @@
 package com.example.muvin.domain.place;
 
 import com.example.muvin.util.Timestamp;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 @Getter
 public class Place extends Timestamp{
     @Id
-    private String code; //pk
+    private int code; //pk
     private double x;
     private double y;
     private String area_name;
@@ -24,11 +25,16 @@ public class Place extends Timestamp{
 
 
 
-    public Place(PlaceDto placeDto){
-        this.code = placeDto.getCode();
+    public Place(PlaceDto placeDto) {
         this.x = placeDto.getX();
         this.y = placeDto.getY();
+        this.place_name = placeDto.getPlace_name();
         this.area_name = placeDto.getArea_name();
         this.movie_code = placeDto.getMovie_code();
+        this.place_URL = placeDto.getPlace_URL();
+        System.out.println(this.place_URL);
+        if(this.place_URL==null){
+            this.place_URL = "https://postfiles.pstatic.net/20160402_264/maddara_1459606941333wgx8L_JPEG/Untitled-1.jpg?type=w1";
+        }
     }
 }

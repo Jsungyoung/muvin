@@ -92,7 +92,7 @@ public class UserController {
         throws Exception {
         String id = request.getParameter("id");
         if(service.idCheck(id)==0){
-            return "user/signUpForm";
+            return "/user/signUpForm";
         }else{
             HttpSession session = request.getSession();
             session.setAttribute("log", id);

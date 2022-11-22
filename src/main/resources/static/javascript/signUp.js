@@ -295,7 +295,9 @@ $('#mail-check-input').blur(function () {
         $("#mail-check-warn").val("N");
     }
 });
-kakaoOnLoad();
+if(sessionStorage.getItem("data")!=null) {
+    kakaoOnLoad();
+}
 
 function kakaoOnLoad(){
     $("#mail-Check-Btn").val("Y");
@@ -304,6 +306,7 @@ function kakaoOnLoad(){
     $("#myid").val("Y");
 
     let str = ""+sessionStorage.getItem("data");
+    sessionStorage.clear();
     let userInfo = JSON.parse(str);
     let id = $('#id');
     let pw = $('#password');

@@ -20,10 +20,11 @@ let infowindow = new kakao.maps.InfoWindow({zIndex: 1});
 
 function addPlace() {
     let movie_id = new URL(window.location.href).searchParams.get("movie_id");
-    let x = $('#placeX').val();
-    let y = $('#placeY').val();
-    let title = $('#placeTitle');
-    let address = $('#placeAddress').val();
+    let x = $('#placeX').text();
+    let y = $('#placeY').text();
+    let title = $('#areaName');
+    let address = $('#placeAddress').text();
+    console.log(movie_id, x, y, title.val(), address);
     if(title.val() === ""){
         alert("장소 이름을 입력해주세요");
         title.focus();
@@ -35,16 +36,16 @@ function addPlace() {
         method : "POST",
         url : "http://localhost:8084/add/place",
         data : {
-            id : movie_id,
             x : x,
             y : y,
-            title : title,
-            address : address
+            place_name : address,
+            area_name : title.val(),
+            movie_code: movie_id,
         }
     }).done(function(res) {
         console.log(res);
         if(res=="success"){
-            location.href="/movieView";
+            location.href="/movieView?movie_id=" + movie_id;
         }else{
             alert("다시 시도해 주세요");
         }

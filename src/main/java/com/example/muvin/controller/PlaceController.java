@@ -16,7 +16,8 @@ public class PlaceController {
 
     @RequestMapping("/add/place")
     @ResponseBody
-    public String addPlace(Place place){
+    public String addPlace(PlaceDto placeDto){
+        Place place = new Place(placeDto);
         if(placeService.write(place)){
             return "success";
         }
