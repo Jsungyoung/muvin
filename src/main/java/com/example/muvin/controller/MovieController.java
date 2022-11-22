@@ -29,10 +29,10 @@ public class MovieController {
         return "movie/placeSearch";
     }
 
-    @GetMapping("/search")
-    public String search(){
-        return "movie/search";
-    }
+//    @GetMapping("/search")
+//    public String search(){
+//        return "movie/search";
+//    }
 
     @GetMapping("/dramaView")
     public String dramaView() {

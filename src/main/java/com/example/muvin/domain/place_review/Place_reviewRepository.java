@@ -20,9 +20,9 @@ public interface Place_reviewRepository extends JpaRepository<Place_review, Long
 
 //    @Query(value = "DELETE FROM place_review WHERE `no`=?",nativeQuery = true)
 //    Place_review deletePlace_review(long no);
-    @Query(value="select * from Users u where u.first_name like %:content% or u.last_name like %:content%", nativeQuery=true)
+    @Query(value="select * from place_review where content like %?%", nativeQuery=true)
     List<Place_review> findContent(@Param("content") String content);
 
-    @Query(value="select * from Users u where u.first_name like %:Title% or u.last_name like %:Title%", nativeQuery=true)
+    @Query(value="select * from place_review where title like %?%", nativeQuery=true)
     List<Place_review> findTitle(@Param("Title") String Title);
 }

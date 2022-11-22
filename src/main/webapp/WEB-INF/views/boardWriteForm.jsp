@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="css/boardWrite.css">
 </head>
 <body>
+<jsp:include page="header.jsp" />
 <%
     HttpSession sessionCheck = request.getSession();
     String id = (String)sessionCheck.getAttribute("log");
 %>
-보드라이트입니다
 <section>
     <div class="container">
     <form method="post"  class="write_form">

@@ -42,6 +42,12 @@ public class Place_reviewService {
         Place_review result =repository.findMyReview(no);
         return result;
     }
+    public List<Place_review> readByTitle(String title){
+        return repository.findTitle(title);
+    }
+    public List<Place_review> readByContent(String content){
+        return repository.findContent(content);
+    }
 
     //Update
     @Transactional

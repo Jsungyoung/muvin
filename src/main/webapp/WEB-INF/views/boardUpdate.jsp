@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/boardWrite.css">
 </head>
 <body>
+<jsp:include page="header.jsp" />
 <section>
     <div class="container">
 

@@ -42,7 +42,7 @@
             <div id="plot"></div>
         </div>
         <div class="tab-pane fade" id="map">
-            <div id="map" style="width:500px ;height:500px;"></div>
+            <jsp:include page="../map/wholeMap.jsp"/>
             <input type="button" onclick="movePlaceSearch()" value="촬영지 등록하기"/>
 
         </div>
