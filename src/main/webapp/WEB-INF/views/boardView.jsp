@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/boardWrite.css">
 </head>
 <body>
+<jsp:include page="header.jsp" />
 <section>
   <div class="container">
     <form method="get" class="write_form">
@@ -45,7 +46,7 @@
         </div>
 <%--        </c:forEach>--%>
         <div>
-        <textarea name="content" id="content" rows="20"  readonly><c:out value="${sessionScope.view.title}"/></textarea>
+        <textarea name="content" id="content" rows="20"  readonly><c:out value="${sessionScope.view.content}"/></textarea>
         </div>
 <%--      <input type="submit" value="작성" onclick="createBoard()">--%>
       <input type="button" value="home" onclick="location.href='/board'">

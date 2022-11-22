@@ -52,6 +52,14 @@ public class Place_reviewController {
         request.getRequestDispatcher("/WEB-INF/views/board.jsp").forward(request, response);
     }
 
+    @GetMapping("v1/board/readTitle")
+    public List<Place_review> readTitle(String title){
+        return service.readByTitle(title);
+    }
+    @GetMapping("v1/board/readContent")
+    public List<Place_review> readContent(String content){
+        return service.readByContent(content);
+    }
 
     @GetMapping("v1/board/reviewNo")
     public Place_review readReviewByNo(@RequestParam long no){

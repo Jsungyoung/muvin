@@ -4,6 +4,7 @@ input, textarea {
     border: solid 1px;
     outline: none;
     resize: none;
+    color: black;
     width: 800px;
 }
 .container {max-width:900px; margin:30px auto;}
