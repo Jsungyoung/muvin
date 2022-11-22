@@ -99,7 +99,7 @@
                             '                <div class="ellipsis"></div>' +
                             '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
                             '                <div><a href="" class="link" > 길찾기 </a></div>' +
-                            '                <div><a href="" class="link" > 로드뷰 보기 </a></div>' +
+                            '                <div><a href="wholeMap/roadView?x='+data[i].x+'&y='+data[i].y+'"' +' class="link" > 로드뷰 보기 </a></div>' +
                             '            </div>' +
                             '        </div>' +
                             '    </div>' +

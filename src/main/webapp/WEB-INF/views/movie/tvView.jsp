@@ -24,7 +24,7 @@
     <div>
         <ul class="nav nav-pills">
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#details">상세정보</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#map">촬영지</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#mapz">촬영지</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#actors">출연진</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#related">관련영화</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#reviews">리뷰</a></li>
@@ -37,8 +37,8 @@
             <div id="keywords"></div>
             <div id="plot"></div>
         </div>
-        <div class="tab-pane fade" id="map">
-            <div id="map" style="width:500px ;height:500px;"></div>
+        <div class="tab-pane fade" id="mapz">
+            <jsp:include page="../map/wholeMap.jsp" />
         </div>
         <div class="tab-pane fade" id="actors">
         </div>

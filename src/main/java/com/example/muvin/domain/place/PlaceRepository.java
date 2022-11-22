@@ -4,6 +4,7 @@ import com.example.muvin.util.Timestamp;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.temporal.ValueRange;
 import java.util.List;
 
 public interface PlaceRepository extends JpaRepository<Place, String> {
@@ -20,4 +21,10 @@ public interface PlaceRepository extends JpaRepository<Place, String> {
     @Query(value = "SELECT * FROM place WHERE x=? and y=? and area_name=?", nativeQuery = true)
     Place findPlace(double x, double y, String area_name);
 
+
+    @Query(value = "SELECT movie_code FROM place where selmord = 1", nativeQuery = true)
+    List<String> findMovieCodeByMovie();
+
+    @Query(value = "SELECT movie_code FROM place where selmord = 2", nativeQuery = true)
+    List<String> findMovieCodeByDrama();
 }

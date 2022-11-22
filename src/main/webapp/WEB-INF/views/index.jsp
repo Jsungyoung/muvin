@@ -20,7 +20,9 @@
 
 
     <div><strong>지도</strong></div>
-    <div class="movie-container map"></div>
+    <div class="movie-container map">
+        <jsp:include page="map/map.jsp"/>
+    </div>
 
     <div><strong>일일 박스오피스</strong></div>
     <div class="movie-container boxoffice"></div>

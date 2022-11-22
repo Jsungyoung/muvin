@@ -1,6 +1,6 @@
-function getDrama(drama_id){
+function getDrama(tv_id){
     const urlParams = new URL(window.location.href).searchParams;
-    const dramaid = urlParams.get('drama_id');
+    const dramaid = urlParams.get('tv_id');
     console.log(dramaid);
 
     $.ajax({
