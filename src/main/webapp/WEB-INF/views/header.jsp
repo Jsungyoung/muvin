@@ -22,8 +22,8 @@
   <nav class="nav_tab">
     <ul class="menu">
       <li><a href="/search">검색</a></li>
-      <li><a href="movieAll">영화</a></li>
-      <li><a href="dramaAll">TV</a></li>
+      <li><a href="/movieAll">영화</a></li>
+      <li><a href="/dramaAll">TV</a></li>
       <li><a href="map">지도</a></li>
       <c:if test = "${id == null }">
         <li><a href="/user/loginForm">로그인</a></li>

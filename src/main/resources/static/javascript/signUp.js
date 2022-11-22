@@ -169,8 +169,6 @@ function sign_check() {
         pw.focus();
         return false;
     }
-
-
     if (!pwdCheck.test(pw.value)) {
         alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~20자리 사용해야 합니다.");
         pw.focus();
@@ -262,7 +260,7 @@ $('#mail-Check-Btn').click(function() {
 
     $.ajax({
         type : 'get',
-        url : 'mailCheck?email='+email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+        url : '/mailCheck?email='+email, //
         success : function (data) {
             console.log("data : " +  data);
             checkInput.attr('disabled',false);

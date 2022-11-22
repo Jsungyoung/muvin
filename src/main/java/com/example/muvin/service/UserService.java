@@ -47,6 +47,11 @@ public class UserService {
         String result = repository.findByNameAndPhone(name,phone);
         return result;
     }
+    // 비밀번호 찾기
+    public String userPw(String id, String email){
+        String result = repository.findByIdAndEmail(id, email);
+        return result;
+    }
     // 로그인
     public boolean login(String id, String password) {
         User findUser = repository.findByUserId(id);

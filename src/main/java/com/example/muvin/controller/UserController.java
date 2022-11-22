@@ -167,8 +167,17 @@ public class UserController {
     public String findPw(){
         return "/user/findPwForm";
     }
-    @PostMapping("/findPw")
-    public String findPw(@RequestParam String id, @RequestParam String email){
-        return "/";
+    @PostMapping("/user/findPw")
+    public String findPw(@RequestParam String id, @RequestParam String email, Model model){
+        String pw = service.userPw(id, email);
+        if(pw != null) {
+            mailService.findPassword(email, pw);
+            model.addAttribute("msg", "이메일 전송이 완료되었습니다");
+            model.addAttribute("url", "/user/loginForm");
+            return "user/redirect";
+        }
+        model.addAttribute("msg", "가입하신 정보가 잘못되었습니다.");
+        model.addAttribute("url", "/user/findPwForm");
+        return "user/redirect";
     }
 }

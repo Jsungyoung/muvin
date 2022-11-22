@@ -39,6 +39,17 @@ public class SendMailService {
         mailSend(setFrom, toMail, title, content);
         return Integer.toString(authNumber);
     }
+    public String findPassword(String email, String pw) {
+        String setFrom = "nettjddud@gmail.com"; // email-config에 설정한 자신의 이메일 주소를 입력
+        String toMail1 = email;
+        String title = "[muvin] 비밀번호 이메일 입니다."; // 이메일 제목
+        String content =
+                "저희 muvin을 이용해주셔서 감사합니다." + 	//html 형식으로 작성 !
+                        "<br><br>" +
+                        "비밀번호는 " + pw + "입니다.";
+        mailSend(setFrom, toMail1, title, content);
+        return pw;
+    }
 
     //이메일 전송 메소드
     public void mailSend(String setFrom, String toMail, String title, String content) {

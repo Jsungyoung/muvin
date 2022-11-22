@@ -13,11 +13,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
-<jsp:include page="../header.jsp"/>
-<section>
+<section class="container">
 <form name="signup" method="post" action="/user/signUp">
     <div>
-        <h2>회원가입</h2>
+        <h2><a href="/">회원가입</a></h2>
         <div>
             <h4>아이디</h4>
             <input type="text" id="id" name="id" placeholder="Id">
@@ -26,12 +25,12 @@
         </div>
         <div>
             <h4>비밀번호</h4>
-            <input type="password" id="password" name="password" placeholder="영문자+숫자+특수문자 조합 8~16자리" onkeyup="isSame();">
+            <input type="password" id="password" name="password" placeholder="영문자+숫자+특수문자 조합 8~20자리" onkeyup="isSame();">
             <div><span id="space"></span></div>
         </div>
         <div>
             <h4>비밀번호 확인</h4>
-            <input type="password" id="passwordCheck" name="passwordCheck" placeholder="영문자+숫자+특수문자 조합 8~16자리" onkeyup="isSame();">
+            <input type="password" id="passwordCheck" name="passwordCheck" placeholder="영문자+숫자+특수문자 조합 8~20자리" onkeyup="isSame();">
             <div><span id="same"></span></div>
         </div>
         <div>
