@@ -40,6 +40,7 @@
         <div class="tab-pane fade" id="mapz">
             <jsp:include page="../map/wholeMap.jsp"/>
             <div id="map" style="width:500px ;height:500px;"></div>
+            <input type="button" onclick="location.href='/board'" value="촬영지 후기 작성"/>
         </div>
 <%--        <div class="tab-pane fade" id="actors">--%>
 <%--        </div>--%>

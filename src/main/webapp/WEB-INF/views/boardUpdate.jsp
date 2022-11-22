@@ -30,18 +30,18 @@
             <div>
                 방문일 : <input type="date" id="visit_date" name="visit_date" value="<c:out value="${sessionScope.view.visit_date}"/>">
             </div>
-                <%--        </c:forEach>--%>
+            <%--        </c:forEach>--%>
             <div>
-                <textarea name="content" id="content" rows="20" ><c:out value="${sessionScope.view.title}"/></textarea>
+                <textarea name="content" id="content" rows="20" ><c:out value="${sessionScope.view.content}"/></textarea>
             </div>
             <div>
                 점수 : <input type="number" max="10" min="0" id="score" name="score" value="<c:out value="${sessionScope.view.score}"/>" >
             </div>
-                <%--      <input type="submit" value="작성" onclick="createBoard()">--%>
+            <%--      <input type="submit" value="작성" onclick="createBoard()">--%>
             <input type="button" value="home" onclick="location.href='/board'">
             <input type="button" value="수정" onclick="updateBoard()">
         </form>
-            <%--            <script src="javascript/boardView.js"></script>--%>
+        <%--            <script src="javascript/boardView.js"></script>--%>
     </div>
 
 </section>

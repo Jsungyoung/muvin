@@ -16,7 +16,10 @@ public class MovieController {
     public String movieAll(){
         return "movie/movieAll";
     }
-
+    @GetMapping("/search")
+    public String search() {
+        return "movie/search";
+    }
     @GetMapping("/placeSearch")
     public String placeSearch(){
         return "movie/placeSearch";

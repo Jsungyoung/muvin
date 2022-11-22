@@ -8,21 +8,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="/css/login.css"/>
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="/user/delete">
-    <div>
+<jsp:include page="../header.jsp"/>
+<section class="container">
+    <div class="login-wrapper">
         <h2>회원탈퇴</h2>
-        <div>
+        <form method="post" action="/user/delete" id="login-form">
             <h4>Password</h4>
             <input type="password" name="password" id="password">
-        </div>
-        <div>
             <input type="submit" value="회원탈퇴">
             <button type="button" onclick="location.href='/user/mypage'">뒤로가기</button>
-        </div>
+        </form>
     </div>
-</form>
+</section>
 </body>
 </html>

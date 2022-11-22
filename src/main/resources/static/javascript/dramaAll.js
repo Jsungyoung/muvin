@@ -69,7 +69,7 @@ function getDramaByGenre(){
             const drama_id = e.id;
 
             $('.content_all').append(
-                `<div class="content" onclick="location.href='tvView?drama_id=${drama_id}';">
+                `<div class="content" onclick="location.href='tvView?tv_id=${drama_id}';">
                     <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"></img>
                 </div>`
             );

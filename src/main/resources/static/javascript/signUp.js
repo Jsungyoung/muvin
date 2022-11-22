@@ -29,7 +29,6 @@ $('#selectEmail').change(function(){
             $("#id").focus();
             return false;
         } else {
-
             $.ajax({
                 type: "post",
                 url: "/checkId",
