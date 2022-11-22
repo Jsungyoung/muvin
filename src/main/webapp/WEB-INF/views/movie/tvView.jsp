@@ -40,6 +40,7 @@
         <div class="tab-pane fade" id="mapz">
             <jsp:include page="../map/wholeMap.jsp"/>
             <div id="map" style="width:500px ;height:500px;"></div>
+            <input type="button" onclick="movePlaceSearch()" value="촬영지 등록하기"/>
             <input type="button" onclick="location.href='/board'" value="촬영지 후기 작성"/>
         </div>
 <%--        <div class="tab-pane fade" id="actors">--%>
@@ -61,5 +62,6 @@
 <script src="/javascript/dramaSearch.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="/javascript/wholeMap.js"></script>
 </body>
 </html>
