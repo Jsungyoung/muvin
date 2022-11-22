@@ -8,7 +8,7 @@ function handleNation(event){
         e.classList.remove("click_nation");
     });
     event.target.classList.add("click_nation");
-    getMovieByGenre();
+    getDramaByGenre();
 }
 
 nonClickNation.forEach((e) => {
@@ -26,7 +26,7 @@ function handleGenre(event) {
         e.classList.remove("click_genre");
     });
     event.target.classList.add("click_genre");
-    getMovieByGenre();
+    getDramaByGenre();
 }
 
 nonClickGenre.forEach((e) => {
@@ -36,12 +36,12 @@ nonClickGenre.forEach((e) => {
 });
 
 function init() {
-    for (var i = 0; i < genre.length; i++) {
+    for (let i = 0; i < genre.length; i++) {
         genre[i].addEventListener("click", e => {
             handleGenre(e) ;
         });
     }
-    for (var i = 0; i < nation.length; i++) {
+    for (let i = 0; i < nation.length; i++) {
         nation[i].addEventListener("click", e => {
             handleNation(e) ;
         });
@@ -55,9 +55,9 @@ function getDramaByGenre(){
     console.log(nation);
 
     $.ajax({
-        url: "https://api.themoviedb.org/3/discover/tv?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&page=1&without_genres=16,10763,10764,10767&timezone=Asia%2FSeoul&include_null_first_air_dates=false&with_genres"+genre+"watch_region=KR&page="+page+"&with_original_language="+nation,
+        url: "https://api.themoviedb.org/3/discover/tv?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&page=1&watch_region=KR&without_genres=16,10763,10764,10767&with_genres="+genre+"&with_original_language="+nation,
         method: "GET",
-        timeout: 0
+        timeout: 0,
     }).done(function (response) {
         console.log(response);
         $('.content_all').empty();
@@ -69,7 +69,7 @@ function getDramaByGenre(){
             const drama_id = e.id;
 
             $('.content_all').append(
-                `<div class="content" onclick="location.href='dramaView?drama_id=${drama_id}';">
+                `<div class="content" onclick="location.href='tvView?drama_id=${drama_id}';">
                     <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"></img>
                 </div>`
             );

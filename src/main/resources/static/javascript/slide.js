@@ -1,176 +1,90 @@
-var gall  = setInterval(galleryFun, 2000);
-var inter = true;
-var idx = 2;
-
-function galleryFun(){
-
-    $(".gallery ul").animate({
-        "left":-300*idx+"px"
-    },300);
-    $(".g_item ul li").eq(idx-1).addClass("on").siblings().removeClass("on");
-    idx++;
-    if(idx> $(".gallery ul li").length-3){
-        $(".gallery ul").animate({
-            "left":0
-        },0);
-        idx=0;
-
-    }
-}
-
-$(".gallery , .g_item").hover(function(){
-    if(inter==true){
-        clearInterval(gall);
-        inter=false;
-    }
-},function(){
-    if(inter==false){
-        gall  = setInterval(galleryFun, 3000);
-        inter=true;
-    }
-
-});
-
-$(".g_item ul li").on('click',function(){
-    $(this).addClass("on").siblings().removeClass("on");
-    idx = $(this).index()+1;
-    $(".gallery ul").animate({
-        "left":-300*idx+"px"
-    },2000);
-
-});
+function loadMainMovie(){
 
 
-
-// 2nd
-
-var animationPause = 0;
-/*This is used to prevent user from clicking next/prev if animation is in progress*/
-jQuery(document).on("click", ".click-next", function() {
-    console.log("Next Clicked");
-    console.log("Animation Test");
-    if (animationPause == 0) {
-        animationPause = 1; //Animation is now active
-        console.log("Animation Free");
-        //Here we link our containers to variables. Keep track of the name of the var and the class it has here, in the function we will for example remove the class ".inView1" from var inView1, but that container will still be var inView1.
-        var outsideViewBefore = jQuery(".outsideViewBefore");
-        var inView1 = jQuery(".inView1");
-        var inView2 = jQuery(".inView2");
-        var inView3 = jQuery(".inView3");
-        var inView4 = jQuery(".inView4");
-        var inView5 = jQuery(".inView5");
-        var outsideViewAfter = jQuery(".outsideViewAfter");
-
-        //So we want everything to move to the left. With the first swap class, adding "outsideViewBefore" to inView1, it will get margin-left: -20%; (which is the width of each container). This transition will take 1.4s, as we defined in the css. We swap the classes of the rest of the containers, so that it will correspond to their current position.
-        //        Target     AddClass            RemoveClass
-        swapClass(inView1, "outsideViewBefore", "inView1");
-        swapClass(inView2, "inView1", "inView2");
-        swapClass(inView3, "inView2", "inView3");
-        swapClass(inView4, "inView3", "inView4");
-        swapClass(inView5, "inView4", "inView5");
-        swapClass(outsideViewAfter, "inView5", "outsideViewAfter ");
-
-        //This timeout function will run after 1400ms, which is the same time the animation will take to complete.
-        setTimeout(function() {
-            //We then remove container outsideViewBefore, and add it to the end
-            outsideViewBefore.remove();
-            //Here we swap the class so that it gets pushed out to the right
-            swapClass(outsideViewBefore, "outsideViewAfter", "outsideViewBefore");
-            //And now we put it back in at the end (off screen to the right)
-            outsideViewAfter.after(outsideViewBefore);
-            //Allow user to click again resetting the pause to 0. With a extra 20ms added to animation time (1400 + 20), we can be sure that the animation is over.
-            setTimeout(function() {
-                animationPause = 0;
-            }, 20);
-        }, 1000); // This 1400ms should be the same as your css transition, 1.4s.
-    }
-});
-jQuery(document).on("click", ".click-prev", function() {
-    console.log("Next Clicked");
-    console.log("Animation Test");
-    if (animationPause == 0) {
-        animationPause = 1; //Animation is now active
-        console.log("Animation Free");
-        //Here we link our containers to variables. Keep track of the name of the var and the class it has here, in the function we will for example remove the class ".inView1" from var inView1, but that container will still be var inView1.
-        var outsideViewBefore = jQuery(".outsideViewBefore");
-        var inView1 = jQuery(".inView1");
-        var inView2 = jQuery(".inView2");
-        var inView3 = jQuery(".inView3");
-        var inView4 = jQuery(".inView4");
-        var inView5 = jQuery(".inView5");
-        var outsideViewAfter = jQuery(".outsideViewAfter");
-
-        //So we want everything to move to the left. With the first swap class, adding "outsideViewBefore" to inView1, it will get margin-left: -20%; (which is the width of each container). This transition will take 1.4s, as we defined in the css. We swap the classes of the rest of the containers, so that it will correspond to their current position.
-        //        Target     AddClass            RemoveClass
-        swapClass(outsideViewBefore, "inView1", "outsideViewBefore");
-        swapClass(inView1, "inView2", "inView1");
-        swapClass(inView2, "inView3", "inView2");
-        swapClass(inView3, "inView4", "inView3");
-        swapClass(inView4, "inView5", "inView4");
-        swapClass(inView5, "outsideViewAfter ", "inView5");
-
-
-        //This timeout function will run after 1400ms, which is the same time the animation will take to complete.
-        setTimeout(function() {
-            outsideViewAfter.remove();
-            swapClass(outsideViewAfter, "outsideViewBefore", "outsideViewAfter");
-            outsideViewBefore.before(outsideViewAfter);
-            //Allow user to click again resetting the pause to 0. With a extra 20ms added to animation time (1400 + 20), we can be sure that the animation is over.
-            setTimeout(function() {
-                animationPause = 0;
-            }, 20);
-        }, 1000); // This 1400ms should be the same as your css transition, 1.4s.
-    }
-});
-
-//This is simply a function to add one class to a element, and remove a different class.
-function swapClass(tarEl, addC, remC) {
-    tarEl.removeClass(remC);
-    tarEl.addClass(addC);
-}
-
-function loadMovie(){
 
     // 영진위 일일 박스오피스
-    var settings = {
-        "url": "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=2e727d1f0bd177ba8acc6a63c5c4288c&targetDt=20221116",
-        "method": "GET",
-        "timeout": 0,
-    };
+    // const date = new Date();
+    // const day = "" + date.getFullYear() + (date.getMonth()+1) + (date.getDate()-1);
+    // console.log(day);
+    // $.ajax({
+    //     url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=2e727d1f0bd177ba8acc6a63c5c4288c&targetDt="+day,
+    //     method: "GET",
+    //     timeout: 0
+    // }).done(function (res) {
+    //     console.log(res);
+    //     const list = res.boxOfficeResult.dailyBoxOfficeList;
+    //     for(let i=0; i<10; i++){
+    //         const poster_path = list[i].poster_path;
+    //         const title = list[i].title;
+    //         const movie_id = list[i].id;
+    //
+    //         $('.popular').append(
+    //             `<div class="movie" onclick="location.href='movieView?movie_id=${movie_id}';">
+    //                 <div><img class="poster-img" src="https://image.tmdb.org/t/p/original/${poster_path}"></div>
+	// 			</div>`
+    //         );
+    //     }
+    //     getPoster(res);
+    // });
 
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-        getPoster(response);
-    });
 
 
-    // tmdb 인기 영화
-    var settings = {
-        "url": "https://api.themoviedb.org/3/discover/movie?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&sort_by=popularity.desc&include_adult=false&page=1&region=KR",
-        "method": "GET",
-        "timeout": 0,
-    };
 
-    $.ajax(settings).done(function (response) {
+    // tmdb 상위 랭킹
+    $.ajax({
+        url: "https://api.themoviedb.org/3/movie/top_rated?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&page=1&region=KR",
+        method: "GET",
+        timeout: 0
+    }).done(function (response) {
         console.log(response);
         const list = response.results;
-        list.forEach(e => {
-            const poster_path = e.poster_path;
-            const title = e.title;
-            const audAcc = e.popularity;
-            const regdate = e.release_date;
-            const content = e.overview;
-            const movie_id = e.id;
+        for(let i=0; i<10; i++){
+            const poster_path = list[i].poster_path;
+            const title = list[i].title;
+            const movie_id = list[i].id;
+
+            $('.rated').append(
+                `<div class="movie" onclick="location.href='movieView?movie_id=${movie_id}';">
+                    <div><img class="poster-img" src="https://image.tmdb.org/t/p/original/${poster_path}"></div>
+				</div>`
+            );
+        }
+
+
+        // list.forEach(e => {
+        //     const poster_path = e.poster_path;
+        //     const title = e.title;
+        //     const audAcc = e.popularity;
+        //     const regdate = e.release_date;
+        //     const content = e.overview;
+        //     const movie_id = e.id;
+        //
+        //     $('.popular').append(
+        //         `<div class="movie" onclick="location.href='movieView?movie_id=${movie_id}';">
+        //             <div><img class="poster-img" src="https://image.tmdb.org/t/p/original/${poster_path}"></div>
+		// 		</div>`
+        //     );
+        // });
+    });
+
+    // tmdb 인기순
+    $.ajax({
+        url: "https://api.themoviedb.org/3/discover/movie?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&sort_by=popularity.desc&include_adult=false&page=1&region=KR",
+        method: "GET",
+        timeout: 0
+    }).done(function (response) {
+        console.log(response);
+        const list = response.results;
+        for(let i=0; i<10; i++){
+            const poster_path = list[i].poster_path;
+            const title = list[i].title;
+            const movie_id = list[i].id;
 
             $('.popular').append(
                 `<div class="movie" onclick="location.href='movieView?movie_id=${movie_id}';">
                     <div><img class="poster-img" src="https://image.tmdb.org/t/p/original/${poster_path}"></div>
 				</div>`
             );
-        });
+        }
     });
-}
-
-function getPoster(response){
-
 }

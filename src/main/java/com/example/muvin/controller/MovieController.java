@@ -29,7 +29,6 @@ public class MovieController {
         return "movie/placeSearch";
     }
 
-
     @GetMapping("/tvView")
     public String tvView() {
         return "movie/tvView";

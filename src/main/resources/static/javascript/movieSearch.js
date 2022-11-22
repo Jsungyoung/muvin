@@ -16,6 +16,7 @@ function getMovie(movie_id){
         const poster_path = res.poster_path;
         const detail = res.overview;
         const releasedate = res.release_date;
+        const rating = (res.vote_average+"").substring(0,3);
 
         $('.movie-view').append(
             `<div id = "movie-title">${title}</div>
@@ -33,7 +34,7 @@ function getMovie(movie_id){
                             </tr>
                             <tr>
                                 <td>별점</td>
-                                <td>가져오기</td>
+                                <td>${rating}점</td>
                             </tr>
                             <tr>
                                 <td>장르</td>
@@ -93,3 +94,15 @@ function getMovie(movie_id){
     });
 }
 
+function getPosterById(movie_id){
+    $.ajax({
+        url: "https://api.themoviedb.org/3/movie/" + movieid + "?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko",
+        method: 'GET',
+        timeout: 0
+    }).done(function (res) {
+        console.log(res);
+        const poster_path = res.poster_path;
+        return poster_path;
+    });
+    return null;
+}

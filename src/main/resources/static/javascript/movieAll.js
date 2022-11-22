@@ -36,12 +36,12 @@ nonClickGenre.forEach((e) => {
 });
 
 function init() {
-    for (var i = 0; i < genre.length; i++) {
+    for (let i = 0; i < genre.length; i++) {
         genre[i].addEventListener("click", e => {
             handleGenre(e) ;
         });
     }
-    for (var i = 0; i < nation.length; i++) {
+    for (let i = 0; i < nation.length; i++) {
         nation[i].addEventListener("click", e => {
             handleNation(e) ;
         });
@@ -106,11 +106,13 @@ function getMovieByGenre(){
     });
 }
 
-$(window).scroll(function() {
-
-    if ( $(window).scrollTop() == $(document).height() - $(window).height() ) {
-        page ++;
-        getMovieByGenre();
-    }
-
-});
+// $(window).scroll(function() {
+//     let scrollTop = $(window).scrollTop();
+//     let innerHeight = $(window).innerHeight();
+//     let scrollHeight = $('body').prop('scrollHeight');
+//
+//     if (scrollTop + innerHeight >= scrollHeight-5) {
+//         page++;
+//         getMovieByGenre();
+//     }
+// });

@@ -4,7 +4,7 @@ function getDrama(tv_id){
     console.log(dramaid);
 
     $.ajax({
-        url: "https://api.themoviedb.org/3/tv/"+dramaid+"?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko",
+        url: "https://api.themoviedb.org/3/tv/"+dramaid+"?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&include_null_first_air_dates=false&language=ko",
         method: "GET",
         timeout: 0
     }).done(function (res) {
@@ -19,8 +19,19 @@ function getDrama(tv_id){
         const season = res.number_of_seasons;
         const epi = res.number_of_episodes;
         const directors = res.created_by;
+        const rating = (res.vote_average+"").substring(0,3);
         console.log(translate("test"));
         // const nation = translate(res.origin_country);
+        const seasons = [];
+        res.seasons.forEach(e => {
+            $('#season').append(
+                `<div>
+                    <p>${e.name}</p>
+                    <p>방영일: ${e.air_date}</p>
+                </div>`
+            );
+        })
+
 
         $('.drama-view').append(
             `<div id = "drama-title">${title}</div>
@@ -32,22 +43,22 @@ function getDrama(tv_id){
                                 <td>첫 방영일</td>
                                 <td>${releasedate}</td>
                             </tr>
-                            <tr>
-                                <td>감독</td>
-                                <td id="director"></td>
-                            </tr>
+<!--                            <tr>-->
+<!--                                <td>감독</td>-->
+<!--                                <td id="director"></td>-->
+<!--                            </tr>-->
                             <tr>
                                 <td>별점</td>
-                                <td>가져오기</td>
+                                <td>${rating}점</td>
                             </tr>
                             <tr>
                                 <td>장르</td>
                                 <td>${genre}</td>
                             </tr>
-                            <tr>
-                                <td>국가</td>
-                                <td></td>
-                            </tr>
+<!--                            <tr>-->
+<!--                                <td>국가</td>-->
+<!--                                <td></td>-->
+<!--                            </tr>-->
                             <tr>
                                 <td>총 에피소드</td>
                                 <td>${season}시즌 ${epi}편</td>
