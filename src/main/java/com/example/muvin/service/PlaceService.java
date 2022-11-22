@@ -20,7 +20,7 @@ public class PlaceService {
     public Boolean write(Place place){
         repository.save(place);
 
-        Place result = repository.findPlace(place.getX(),place.getY(),place.getArea_name());
+        Place result = repository.findPlace(place.getMovie_code(),place.getArea_name());
         if(result == null){
             return false;
         }

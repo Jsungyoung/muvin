@@ -28,7 +28,7 @@
             <a href="/user/signUpForm">회원가입</a>
         </form>
     </div>
-    <input type="image" id="kakaoLoginBtn" src="/images/kakao_login_medium_narrow.png" onclick="kakaoLogin()"/>
+    <input type="image" id="kakaoLoginBtn" src="/images/kakao_login_medium_wide.png" onclick="kakaoLogin()"/>
 </section>
 <script src="/javascript/kakaoLogin.js?ver=3"></script>
 </body>

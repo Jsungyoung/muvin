@@ -17,7 +17,6 @@
 <body>
 <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
     <div id="menu_wrap" class="bg_white">
         <div class="option">
             <div>
@@ -35,7 +34,7 @@
         <input type="hidden" id="placeX"/>
         <input type="hidden" id="placeY"/>
         <p id="placeAddress"></p>
-        <input type="text" placeholder="장소 이름">
+        <input type="text" id="areaName" placeholder="장소 이름">
         <input type="button" onclick="addPlace()" value="이 장소 추가하기"/>
     </div>
 </div>
