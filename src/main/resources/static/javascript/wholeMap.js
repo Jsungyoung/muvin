@@ -136,3 +136,11 @@ else if(tvid != null){
                     })
                 })
             })(marker, data[i])
+        }
+    });
+}
+
+function movePlaceSearch(){
+    let movie_id = new URL(window.location.href).searchParams.get("movie_id");
+    location.href="/placeSearch?movie_id=" + movie_id;
+}
