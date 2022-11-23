@@ -15,11 +15,6 @@ public interface Place_reviewRepository extends JpaRepository<Place_review, Long
     @Query(value ="SELECT * From place_review WHERE no=?",nativeQuery = true)
     Place_review findMyReview(long no);
 
-//    @Query(value = "UPDATE place_review SET title = ?, content = ? where `no` = ?",nativeQuery = true)
-//    Place_review updateReview(String title, String content, long no);
-
-//    @Query(value = "DELETE FROM place_review WHERE `no`=?",nativeQuery = true)
-//    Place_review deletePlace_review(long no);
     @Query(value="select * from place_review where content like %?%", nativeQuery=true)
     List<Place_review> findContent(@Param("content") String content);
 

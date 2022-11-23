@@ -24,20 +24,16 @@ public class Place_reviewService {
     @Autowired
     private Place_reviewRepository repository;
 
-
     //Create
     public void createView(Place_reviewDto reviewDto){
         Place_review review = new Place_review(reviewDto);
         repository.save(review);
     }
-
-
     //read
     public List<Place_review> readReviewAll(){
         System.out.println("repo : " + repository);
         return repository.findAll();
     }
-
     public Place_review readByNo(long no){
         Place_review result =repository.findMyReview(no);
         return result;
@@ -48,7 +44,6 @@ public class Place_reviewService {
     public List<Place_review> readByContent(String content){
         return repository.findContent(content);
     }
-
     //Update
     @Transactional
     public void UpdateByNo(Place_reviewDto reviewDto){

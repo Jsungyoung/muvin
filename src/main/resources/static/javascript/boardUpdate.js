@@ -36,8 +36,6 @@ function updateBoard(){
     let content = $('#content').val();
     let score = $('#score').val();
     console.log(no, visit_date, title, content, score);
-
-
     let settings = {
         "url": "/v1/update/board",
         "method": "POST",
