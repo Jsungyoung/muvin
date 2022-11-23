@@ -32,7 +32,7 @@
             </div>
                 <%--        </c:forEach>--%>
             <div>
-                <textarea name="content" id="content" rows="20" ><c:out value="${sessionScope.view.title}"/></textarea>
+                <textarea name="content" id="content" rows="20" ><c:out value="${sessionScope.view.content}"/></textarea>
             </div>
             <div>
                 점수 : <input type="number" max="10" min="0" id="score" name="score" value="<c:out value="${sessionScope.view.score}"/>" >

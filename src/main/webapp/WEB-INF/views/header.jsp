@@ -32,6 +32,7 @@
         <li><a href="/user/mypage">마이페이지</a></li>
         <li><a href="/user/logout">로그아웃</a></li>
       </c:if>
+      <li><a href="/board">게시판</a></li>
       <li><a href="/kakaoMsg">홍보 메세지 보내기</a></li>
     </ul>
   </nav>

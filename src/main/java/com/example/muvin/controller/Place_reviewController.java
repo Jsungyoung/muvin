@@ -26,14 +26,6 @@ public class Place_reviewController {
     private Place_reviewService service;
 
 
-
-//    let no = $('#no').val();
-//    let visit_date = $('#visit_date').val();
-//    let pr_nickname=$('#pr_nickname').val();
-//    let title = $('#title').val();
-//    let content = $('#content').val();
-//    let score = $('#score').val();
-
     @PostMapping("v1/boardWrite")
     public void createReview(String visit_date, String pr_nickname, String title, String content){
         Place_reviewDto reviewDto = new Place_reviewDto(visit_date, pr_nickname, title, content);
