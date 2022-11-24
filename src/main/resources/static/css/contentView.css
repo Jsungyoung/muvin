@@ -52,3 +52,6 @@
     cursor: pointer;
     color: #dddddd;
 }
+.tab-pane .btn{
+    background-color: #282891;
+}

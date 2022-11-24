@@ -158,8 +158,13 @@ public class UserController {
     @PostMapping("/user/findId")
     public String findId(@RequestParam String name, @RequestParam String phone, Model model){
         String id = service.userId(name, phone);
-        model.addAttribute("msg", name+"님의 아이디는 "+id+"입니다.");
-        model.addAttribute("url", "/user/loginForm");
+        if(!id.equals("false")) {
+            model.addAttribute("msg", name + "님의 아이디는 " + id + "입니다.");
+            model.addAttribute("url", "/user/loginForm");
+        }else {
+            model.addAttribute("msg", "가입하신 정보가 잘못되었습니다.");
+            model.addAttribute("url", "/user/loginForm");
+        }
         return "user/redirect";
     }
     // 비밀번호 찾기
@@ -170,14 +175,14 @@ public class UserController {
     @PostMapping("/user/findPw")
     public String findPw(@RequestParam String id, @RequestParam String email, Model model){
         String pw = service.userPw(id, email);
-        if(pw != null) {
+        if(!pw.equals("false")) {
             mailService.findPassword(email, pw);
             model.addAttribute("msg", "이메일 전송이 완료되었습니다");
             model.addAttribute("url", "/user/loginForm");
-            return "user/redirect";
+        }else {
+            model.addAttribute("msg", "가입하신 정보가 잘못되었습니다.");
+            model.addAttribute("url", "/user/findPwForm");
         }
-        model.addAttribute("msg", "가입하신 정보가 잘못되었습니다.");
-        model.addAttribute("url", "/user/findPwForm");
         return "user/redirect";
     }
 }

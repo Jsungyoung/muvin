@@ -22,13 +22,13 @@ public class UserService {
 
     // id 중복확인
     public int idCheck(String id) {
-        int result = repository.findByCheckId(id);
+        int result = repository.countById(id);
         return result;
     }
 
     // 닉네임 중복확인
     public int nickCheck(String nickname) {
-        int result = repository.findByCheckNick(nickname);
+        int result = repository.countByNickname(nickname);
         return result;
     }
 
@@ -39,22 +39,31 @@ public class UserService {
     }
 
     public User userInfo(String id) {
-        User result = repository.findByUserId(id);
+        User result = repository.findAllById(id);
         return result;
     }
+
     // 아이디 찾기
-    public String userId(String name, String phone){
-        String result = repository.findByNameAndPhone(name,phone);
-        return result;
+    public String userId(String name, String phone) {
+        User result = repository.findByNameAndPhone(name, phone);
+        if(result == null){
+            return "false";
+        }
+        return result.getId();
     }
+
     // 비밀번호 찾기
-    public String userPw(String id, String email){
-        String result = repository.findByIdAndEmail(id, email);
-        return result;
+    public String userPw(String id, String email) {
+        User result = repository.findByIdAndEmail(id, email);
+        if(result == null) {
+            return "false";
+        }
+        return result.getPassword();
     }
+
     // 로그인
     public boolean login(String id, String password) {
-        User findUser = repository.findByUserId(id);
+        User findUser = repository.findAllById(id);
 
         if (findUser != null) {
             UserDto findUserDto = new UserDto(findUser);
@@ -67,12 +76,13 @@ public class UserService {
 
     // 회원정보수정
     public void updateUser(String id, String password, String name, String phone, String birth) {
-        User user = repository.findByUserId(id);
-        user.setUser(password,name,phone,birth);
+        User user = repository.findAllById(id);
+        user.setUser(password, name, phone, birth);
     }
+
     // 회원탈퇴
     public boolean deleteUser(String id, String password) {
-        User findUser = repository.findByUserId(id);
+        User findUser = repository.findAllById(id);
 
         if (password.equals(findUser.getPassword())) {
             repository.deleteById(id);

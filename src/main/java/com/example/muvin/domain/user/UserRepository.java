@@ -1,24 +1,23 @@
 package com.example.muvin.domain.user;
 
+import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.function.Function;
 
 public interface UserRepository extends JpaRepository<User, String> {
-    @Query(value = "SELECT * FROM user WHERE `id`=?",nativeQuery = true)
-    public User findByUserId(String id);
 
-    @Query(value = "SELECT count(`id`) FROM user WHERE `id`=?",nativeQuery = true)
-    public int findByCheckId(String id);
+    public User findAllById(String id);
 
-    @Query(value = "SELECT count(`nickname`) FROM user WHERE `nickname`=?",nativeQuery = true)
-    public int findByCheckNick(String nickname);
+    public int countById(String id);
 
-    @Query(value = "SELECT `id` FROM user WHERE `name`=? AND `phone`=?",nativeQuery = true)
-    public String findByNameAndPhone(String name, String phone);
+    public int countByNickname(String nickname);
 
-    @Query(value = "SELECT `password` FROM user WHERE `id`=? AND `email`=?",nativeQuery = true)
-    public String findByIdAndEmail(String id, String email);
+    public User findByNameAndPhone(String name, String phone);
+
+    public User findByIdAndEmail(String id, String email);
 }

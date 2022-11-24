@@ -1,23 +1,3 @@
-//이메일 입력방식 선택
-// $('#selectEmail').change(function(){
-//     $("#selectEmail option:selected").each(function () {
-//
-//         if($(this).val()=== '1'){
-//             $("#str_email02").val('');
-//             $("#str_email02").attr("disabled",false);
-//         }else{
-//             $("#str_email02").val($(this).text());
-//             $("#str_email02").attr("disabled",true);
-//         }
-//
-//         const email1 = $("#str_email01").val();
-//         const middle = $("#middle").text();
-//         const email2 = $("#str_email02").val();
-//         if(email1 !=="" && email2 !==""){
-//             $("#email").val(email1+middle+email2);
-//         }
-//     });
-// });
 
     // ID 중복검사
     $("#id").keyup(function () {
@@ -42,7 +22,6 @@
                 }
             });
     });
-
 
     // 닉네임
     $("#nickname").keyup(function () {
@@ -76,6 +55,32 @@
             });
         }
     });
+
+function phone_keyup(obj) {
+    let number = obj.value.replace(/[^0-9]/g, "");
+    let phone = "";
+
+    if(number.length < 4) {
+        return number;
+    } else if(number.length < 7) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3);
+    } else if(number.length < 11) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 3);
+        phone += "-";
+        phone += number.substr(6);
+    } else {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 4);
+        phone += "-";
+        phone += number.substr(7);
+    }
+    obj.value = phone;
+}
 
 $("#id").keyup(function(event){
     if (!(event.keyCode >=37 && event.keyCode<=40)) {
@@ -130,13 +135,10 @@ function sign_check() {
     let nameChk = document.getElementById("nameChk");
     let phoneChk = document.getElementById("phoneChk");
 
-
-
     // 정규식
     let pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
     let nameCheck = (/^[가-힣]+$/);
     let nickCheck = (/^[ㄱ-ㅎ가-힣a-z0-9-_]+$/);
-    let phoneCheck = /^(01[016789]-)(\d{3,4}-)(\d{4})$/;
     let emailCheck =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
     if (id.value === "") {
@@ -202,11 +204,6 @@ function sign_check() {
     }
     if (phone.value === "") {
         phoneChk.innerHTML = '전화번호를 입력하세요.';
-        phoneChk.style.color = 'red';
-        phone.focus();
-        return false;
-    }else if(!phoneCheck.test(phone.value)){
-        phoneChk.innerHTML = '하이픈(-)을 입력해주세요';
         phoneChk.style.color = 'red';
         phone.focus();
         return false;

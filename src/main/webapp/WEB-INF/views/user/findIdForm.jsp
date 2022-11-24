@@ -19,7 +19,7 @@
     <h2>아이디 찾기</h2>
     <form method="post" action="/user/findId" id="login-form">
       <input type="text" name="name" id="name" placeholder="name">
-      <input type="text" name="phone" id="phone" placeholder="phone">
+      <input type="text" name="phone" id="phone" onkeyup="phone_keyup(this)" maxlength="13" placeholder="phone">
       <input type="submit" id="check" value="아이디 찾기">
       <button type="button" onclick="location.href='/user/loginForm '">취소</button>
     </form>

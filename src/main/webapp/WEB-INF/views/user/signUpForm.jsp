@@ -41,8 +41,8 @@
             <input type="text" name="nickname" id="nickname" placeholder="닉네임">
             <div><span id="myNick" value="N"></span></div>
 
-            <h4>핸드폰</h4>
-            <input type="text" name="phone" id="phone" placeholder="전화번호">
+            <h4>전화번호</h4>
+            <input type="text" name="phone" id="phone" onkeyup="phone_keyup(this)" maxlength="13" placeholder="전화번호">
             <div><span id="phoneChk"></span></div>
 
             <h4>생년월일</h4>

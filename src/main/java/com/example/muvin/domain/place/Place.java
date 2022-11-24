@@ -35,8 +35,6 @@ public class Place extends Timestamp{
 
     private int selmord;
 
-
-
     public Place(PlaceDto placeDto) {
         this.x = placeDto.getX();
         this.y = placeDto.getY();

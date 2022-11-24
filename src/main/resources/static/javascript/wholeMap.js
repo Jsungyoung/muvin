@@ -33,7 +33,6 @@ setTimeout(function(){
 
 
 
-
 const urlParams = new URL(window.location.href).searchParams;
 const movieid = urlParams.get('movie_id');
 const tvid = urlParams.get('tv_id');
