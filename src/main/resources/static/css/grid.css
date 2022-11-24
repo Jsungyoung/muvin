@@ -22,11 +22,17 @@ body {
 }
 
 header {
+    position: relative;
     grid-area: header;
     text-align: center;
     margin: 50px;
 }
-
+.log{
+    position: absolute;
+    right: 110px;
+    top: 40px;
+    display: inline;
+}
 .customer {
     grid-area: cust;
 }

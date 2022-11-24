@@ -19,31 +19,27 @@
         <h2>마이페이지</h2>
         <div>
             <h4>아이디</h4>
-            <input type="text" id="id" name="id" value="${user.id}" readonly>
-        </div>
-        <div>
-            <h4>비밀번호</h4>
-            <input type="password" id="password" value="${user.password}" readonly>
+            <input value="${user.id}" readonly>
         </div>
         <div>
             <h4>이름</h4>
-            <input type="text" name="name" id="name" value="${user.name}" readonly>
+            <input value="${user.name}" readonly>
         </div>
         <div>
             <h4>닉네임</h4>
-            <input type="text" name="nickname" id="nickname" value="${user.nickname}" readonly>
+            <input value="${user.nickname}" readonly>
         </div>
         <div>
             <h4>전화번호</h4>
-            <input type="text" name="phone" id="phone" value="${user.phone}" readonly>
+            <input value="${user.phone}" readonly>
         </div>
         <div>
             <h4>생년월일</h4>
-            <input type="text" name="birth" id="birth" value="${user.birth}" readonly>
+            <input value="${user.birth}" readonly>
         </div>
         <div>
             <h4>이메일</h4>
-            <input type="text" name="email" id="email" value="${user.email}" readonly>
+            <input value="${user.email}" readonly>
         </div>
     </div>
     <div>

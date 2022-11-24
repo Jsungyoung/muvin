@@ -103,7 +103,7 @@ public class UserController {
     @GetMapping("/user/logout")
     public String logout(HttpSession session, Model model) {
         session.removeAttribute("log");
-        model.addAttribute("msg", "로그아웃 되셨습니다");
+        model.addAttribute("msg", "로그아웃 되었습니다");
         model.addAttribute("url", "/");
         return "user/redirect";
     }

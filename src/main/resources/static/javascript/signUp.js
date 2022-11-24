@@ -1,68 +1,58 @@
 //이메일 입력방식 선택
-$('#selectEmail').change(function(){
-    $("#selectEmail option:selected").each(function () {
-
-        if($(this).val()=== '1'){ //직접입력일 경우
-            $("#str_email02").val('');                //값 초기화
-            $("#str_email02").attr("disabled",false); //활성화
-        }else{ //직접입력이 아닐경우
-            $("#str_email02").val($(this).text());   //선택값 입력
-            $("#str_email02").attr("disabled",true); //비활성화
-        }
-
-        const email1 = $("#str_email01").val();
-        const middle = $("#middle").text();
-        const email2 = $("#str_email02").val();
-        if(email1 !=="" && email2 !==""){
-            $("#email").val(email1+middle+email2);
-        }
-    });
-});
-
+// $('#selectEmail').change(function(){
+//     $("#selectEmail option:selected").each(function () {
+//
+//         if($(this).val()=== '1'){
+//             $("#str_email02").val('');
+//             $("#str_email02").attr("disabled",false);
+//         }else{
+//             $("#str_email02").val($(this).text());
+//             $("#str_email02").attr("disabled",true);
+//         }
+//
+//         const email1 = $("#str_email01").val();
+//         const middle = $("#middle").text();
+//         const email2 = $("#str_email02").val();
+//         if(email1 !=="" && email2 !==""){
+//             $("#email").val(email1+middle+email2);
+//         }
+//     });
+// });
 
     // ID 중복검사
-    $("#checkId").click(function () {
+    $("#id").keyup(function () {
         let id = $("#id").val();
         id = id.trim();
-        if (id === "") {
-            alert("ID를 입력하세요");
-            $("#id").focus();
-            return false;
-        } else {
+
             $.ajax({
                 type: "post",
                 url: "/checkId",
                 datatype: "text",
                 data: {"id": id},
                 success: function (result) {
-                    if (result === 1) {    // 중복 ID
-                        $("#checkId").val("Y");
+                    if (result === 1) {
                         $("#myid").val("N");
                         $("#myid").text("중복된 아이디입니다.");
                         $("#myid").css('color','red');
-                    } else {            // 사용 가능한 ID
-                        $("#checkId").val("Y");
+                    } else {
                         $("#myid").val("Y");
                         $("#myid").text("사용 가능한 아이디입니다.");
                         $("#myid").css('color','green');
                     }
                 }
             });
-        }
     });
 
 
     // 닉네임
-    $("#checkNick").click(function () {
+    $("#nickname").keyup(function () {
         let nickCheck = (/^[ㄱ-ㅎ가-힣a-z0-9-_]+$/);
         let nick = $("#nickname").val();
         nick = nick.trim();
-        if (nick === "") {
-            alert("닉네임을 입력하세요");
-            $("#nickname").focus();
-            return false;
-        }else if(!nickCheck.test(nick)){
-            alert("닉네임은 특수문자를 넣을 수 없습니다");
+
+        if(!nickCheck.test(nick)){
+            $("#myNick").text("특수문자를 넣을 수 없습니다.");
+            $("#myNick").css('color','red');
             $("#nickname").focus();
             return false;
         } else {
@@ -73,15 +63,13 @@ $('#selectEmail').change(function(){
                 datatype: "text",
                 data: {"nickname": nick},
                 success: function (result) {
-                    if (result === 1) {    // 중복 ID
-                        $("#checkNick").val("Y");
+                    if (result === 1) {
                         $("#myNick").val("N");
-                        $("#myNick").text("중복된 아이디입니다.");
+                        $("#myNick").text("중복된 닉네임입니다.");
                         $("#myNick").css('color','red');
-                    } else {            // 사용 가능한 ID
-                        $("#checkNick").val("Y");
+                    } else {
                         $("#myNick").val("Y");
-                        $("#myNick").text("사용 가능한 아이디입니다.");
+                        $("#myNick").text("사용 가능한 닉네임입니다.");
                         $("#myNick").css('color','green');
                     }
                 }
@@ -133,127 +121,132 @@ function sign_check() {
     let nickname = document.getElementById("nickname");
     let phone = document.getElementById("phone");
     let email = document.getElementById("email");
-    let email1 = document.getElementById("str_email01");
-    let email2 = document.getElementById("str_email02");
-    let idCheck = document.getElementById("checkId");
     let mailCheck = document.getElementById("mail-Check-Btn");
     let warn = document.getElementById("mail-check-warn");
     let myId = document.getElementById("myid");
     let myNick = document.getElementById("myNick");
-    let checkNick = document.getElementById("checkNick");
+    let space = document.getElementById("space");
+    let same = document.getElementById("same");
+    let nameChk = document.getElementById("nameChk");
+    let phoneChk = document.getElementById("phoneChk");
+
+
 
     // 정규식
     let pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
     let nameCheck = (/^[가-힣]+$/);
     let nickCheck = (/^[ㄱ-ㅎ가-힣a-z0-9-_]+$/);
     let phoneCheck = /^(01[016789]-)(\d{3,4}-)(\d{4})$/;
-    let emailCheck =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    let emailCheck =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
     if (id.value === "") {
-        alert("아이디를 입력하세요.");
-        id.focus();
-        return false;
-    }else if(idCheck.value === "N"){
-        alert("아이디 중복확인을 해주세요");
+        myId.innerHTML = '아이디를 입력하세요.';
+        myId.style.color = 'red';
         id.focus();
         return false;
     }else if(myId.value === "N"){
-        alert("중복된 아이디입니다. 다시 확인해주세요.");
+        myId.innerHTML = '중복된 아이디입니다. 다시 확인해주세요.';
+        myId.style.color = 'red';
         id.focus();
         return false;
     }
 
     if (pw.value === "") {
-        alert("비밀번호를 입력하세요.");
+        space.innerHTML = '비밀번호를 입력해주세요.';
+        space.style.color = 'red';
         pw.focus();
         return false;
     }
     if (!pwdCheck.test(pw.value)) {
-        alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~20자리 사용해야 합니다.");
-        pw.focus();
-        return false;
-    } else if (/(\w)\1\1/.test(pw.value)) {
-        alert('같은 문자를 3번 이상 사용하실 수 없습니다.');
+        space.innerHTML = '비밀번호는 영문자+숫자+특수문자 조합으로 8~20자리 사용해야 합니다.';
+        space.style.color = 'red';
         pw.focus();
         return false;
     } else if (pwCheck.value !== pw.value) {
-        alert("비밀번호가 일치하지 않습니다.");
+        same.innerHTML = '비밀번호가 일치하지 않습니다.';
+        same.style.color = 'red';
         pwCheck.focus();
         return false;
     } else if (pw.value.search(" ") !== -1) {
-        alert("비밀번호에 공백을 넣을 수 없습니다.");
-        pw.focus();
-        return false;
-    } else if (pw.value.search(id.value.substring(0, 3)) > -1) {
-        alert("아이디와 3자리 이상 같습니다.");
+        space.innerHTML = '비밀번호에 공백을 넣을 수 없습니다.';
+        space.style.color = 'red';
         pw.focus();
         return false;
     }
     if (name.value === "") {
-        alert("이름을 입력하세요.");
+        nameChk.innerHTML = '이름을 입력하세요.';
+        nameChk.style.color = 'red';
         name.focus();
         return false;
     }else if(!nameCheck.test(name.value)){
-        alert("한글만 입력해주세요");
+        nameChk.innerHTML = '한글만 입력해주세요';
+        nameChk.style.color = 'red';
         name.focus();
         return false;
     }
     if (nickname.value === "") {
-        alert("닉네임을 입력하세요.");
+        myNick.innerHTML = '닉네임을 입력하세요.';
+        myNick.style.color = 'red';
         nickname.focus();
         return false;
     }else if(!nickCheck.test(nickname.value)){
-        alert("닉네임은 특수문자를 넣을 수 없습니다");
-        nickname.focus();
-        return false;
-    }else if(checkNick.value === "N") {
-        alert("닉네임 중복확인을 해주세요");
+        myNick.innerHTML = '닉네임은 특수문자를 넣을 수 없습니다.';
+        myNick.style.color = 'red';
         nickname.focus();
         return false;
     }else if(myNick.value === "N"){
-        alert("중복된 닉네임입니다. 다시 확인해주세요.");
+        myNick.innerHTML = '중복된 닉네임입니다. 다시 확인해주세요.';
+        myNick.style.color = 'red';
         nickname.focus();
         return false;
     }
     if (phone.value === "") {
-        alert("전화번호를 입력하세요.");
+        phoneChk.innerHTML = '전화번호를 입력하세요.';
+        phoneChk.style.color = 'red';
         phone.focus();
         return false;
     }else if(!phoneCheck.test(phone.value)){
-        alert("올바른 휴대폰 번호를 입력해주세요.");
+        phoneChk.innerHTML = '하이픈(-)을 입력해주세요';
+        phoneChk.style.color = 'red';
         phone.focus();
         return false;
     }
 
-    if (email1.value === "") {
-        alert("이메일 주소를 입력하세요.");
+    if (email.value === "") {
+        warn.innerHTML = '이메일 주소를 입력하세요.';
+        warn.style.color = 'red';
         email.focus();
         return false;
-    }else if(!emailCheck.test(email2.value)){
-        alert("올바른 이메일 형식이 아닙니다");
-        email2.focus();
+    }else if(!emailCheck.test(email.value)){
+        warn.innerHTML = '올바른 이메일 형식이 아닙니다.';
+        warn.style.color = 'red';
+        email.focus();
         return false;
     }
     if(mailCheck.value === "N"){
-        alert("이메일 인증을 해주세요.");
+        warn.innerHTML = '이메일 인증을 해주세요.';
+        warn.style.color = 'red';
         return false;
     }else if(warn.value ==="N"){
-        alert("인증번호가 틀렸습니다.")
+        warn.innerHTML = '인증번호가 틀렸습니다.';
+        warn.style.color = 'red';
         warn.focus();
         return false;
     }
     //입력 값 전송
-    document.signup.submit(); //유효성 검사의 포인트
+    document.signup.submit();
 }
 
 $('#mail-Check-Btn').click(function() {
-    const email = $('#str_email01').val()+$("#middle").text()+$('#str_email02').val(); // 이메일 주소값 얻어오기!
-    console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
-    const checkInput = $('#mail-check-input') // 인증번호 입력하는곳
+    let mailCheck = document.getElementById("mail-check-warn");
+    const email = $('#email').val();
+    console.log('완성된 이메일 : ' + email);
+    const checkInput = $('#mail-check-input')
 
-    if($('#str_email01').val() === ""){
-        alert("이메일을 입력해주세요");
-        $('#str_email01').focus();
+    if($('#email').val() === ""){
+        mailCheck.innerHTML = '이메일을 입력해주세요';
+        mailCheck.style.color = 'red';
+        $('#email').focus();
         return false;
     }else {
 
