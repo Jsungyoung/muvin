@@ -25,7 +25,6 @@
 <%--        <div>별점 매기는 거...........</div>--%>
     </div>
     <div>
-    <%-- 콘텐츠 주요 정보 하단에 선택할 nav 탭--%>
         <ul class="nav nav-pills">
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#details">상세정보</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#mapz">촬영지</a></li>

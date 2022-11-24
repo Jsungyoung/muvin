@@ -13,17 +13,9 @@ import java.util.Date;
 @Setter
 public class MovieDto {
 
-    private String code;
-    private String name;
-    private String poster;
-    private String director;
-    private Date regdate;
-    private String genre;
-    private String actors;
-    private int audiAcc;
-    private double rating;
-    private String age_limit;
-    private int run_time;
-    private String keyword;
-    private String content;
+    private int code;
+    private String userId;
+    private int content_id;
+    private String content_type;
+    private String type;
 }

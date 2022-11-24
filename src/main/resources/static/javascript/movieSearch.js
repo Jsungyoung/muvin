@@ -44,13 +44,16 @@ function getMovie(movie_id){
                                 <td>상영 시간</td>
                                 <td>${runtime}분</td>
                             </tr>
+                            <tr colspan="2">
+                                <td><button value="+찜하기"/></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>`
         );
 
-
+        console.log(releasedate);
 
         $.ajax({
             url: "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&detail=Y&ServiceKey=CKA71K1PJ7OSNRPAAK9W&query="+title+"&releaseDts="+releasedate+"&createDte="+releasedate,
@@ -60,7 +63,6 @@ function getMovie(movie_id){
                 "Cookie": "JSESSIONID=233DDC54CCE62B6C804553C557BC113F"
             }}).done(function (response) {
             const obj = JSON.parse(response);
-            // console.log(obj);
             console.log(obj);
             const details = obj.Data[0].Result[0];
             $('.info-table').append(

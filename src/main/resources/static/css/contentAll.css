@@ -8,6 +8,8 @@
 
 .genre, .nation{
     display: flex;
+
+
     flex-wrap: wrap;
     width: 90vw;
     margin: 0 auto;

@@ -20,7 +20,7 @@
 <%--        <c:forEach items="${}" var="">--%>
 <%--            <div class="movie" onclick="location.href='movieView?movie_id=${movie_id}';">--%>
 <%--                <script src="/javascript/movieSearch.js">const path = getPosterById(${movie_id})</script>--%>
-<%--                <div><img class="poster-img" src="https://image.tmdb.org/t/p/original/"path)></div>--%>
+<%--                <div><img class="poster-img" src=`https://image.tmdb.org/t/p/original/${path}`></div>--%>
 <%--            </div>--%>
 <%--        </c:forEach>--%>
 <%--    </div>--%>
@@ -44,5 +44,5 @@
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="></script>
 </body>
 <script src="/javascript/movieSearch.js"></script>
-<script src="/javascript/slide.js"></script>
+<script src="/javascript/loadMain.js"></script>
 </html>
