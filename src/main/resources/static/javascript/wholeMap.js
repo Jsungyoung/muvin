@@ -142,5 +142,10 @@ else if(tvid != null){
 
 function movePlaceSearch(){
     let movie_id = new URL(window.location.href).searchParams.get("movie_id");
-    location.href="/placeSearch?movie_id=" + movie_id;
+    let tv_id = new URL(window.location.href).searchParams.get("tv_id");
+    if(movie_id!=null){
+        location.href="/placeSearch?movie_id=" + movie_id;
+    }else if(tv_id!=null){
+        location.href="/placeSearch?tv_id=" + tv_id;
+    }
 }

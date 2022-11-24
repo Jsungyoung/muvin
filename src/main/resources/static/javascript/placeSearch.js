@@ -20,36 +20,80 @@ let infowindow = new kakao.maps.InfoWindow({zIndex: 1});
 
 function addPlace() {
     let movie_id = new URL(window.location.href).searchParams.get("movie_id");
+    let tv_id = new URL(window.location.href).searchParams.get("tv_id");
     let x = $('#placeX').text();
     let y = $('#placeY').text();
     let title = $('#areaName');
     let address = $('#placeAddress').text();
-    console.log(movie_id, x, y, title.val(), address);
     if(title.val() === ""){
         alert("장소 이름을 입력해주세요");
         title.focus();
         return false;
     }
 
+    if(movie_id!=null) {
 
-    $.ajax({
-        method : "POST",
-        url : "http://localhost:8084/add/place",
-        data : {
-            x : x,
-            y : y,
-            place_name : address,
-            area_name : title.val(),
-            movie_code: movie_id,
-        }
-    }).done(function(res) {
-        console.log(res);
-        if(res=="success"){
-            location.href="/movieView?movie_id=" + movie_id;
-        }else{
-            alert("다시 시도해 주세요");
-        }
-    })
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:8084/add_movie/place",
+            data: {
+                x: x,
+                y: y,
+                place_name: address,
+                area_name: title.val(),
+                movie_code: movie_id,
+            }
+        }).done(function (res) {
+            if (res.status == "success") {
+                alert("정상적으로 등록되었습니다.");
+                location.href = "/movieView?movie_id=" + movie_id;
+            } else {
+                alert("다시 시도해 주세요");
+            }
+
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:8084/add/place_current",
+                data: {
+                    placeNo: res.id
+                }
+            });
+        });
+
+
+
+    }else if(tv_id!=null){
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:8084/add_tv/place",
+            data: {
+                x: x,
+                y: y,
+                place_name: address,
+                area_name: title.val(),
+                movie_code: tv_id,
+            }
+        }).done(function (res) {
+
+            console.log(res);
+            alert("!!!");
+            if (res.status == "success") {
+                alert("정상적으로 등록되었습니다.");
+                location.href = "/tvView?tv_id=" + tv_id;
+            } else {
+                alert("다시 시도해 주세요");
+            }
+
+
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:8084/add/place_current",
+                data: {
+                    placeNo: res.id
+                }
+            });
+        });
+    }
 }
 
 

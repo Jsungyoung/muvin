@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.time.temporal.ValueRange;
 import java.util.List;
 
-public interface PlaceRepository extends JpaRepository<Place, String> {
+public interface PlaceRepository extends JpaRepository<Place, Integer> {
 
     @Query(value = "SELECT * FROM place WHERE movie_code = ?", nativeQuery = true)
     List<Place> findPlaceByMovie_code(String movie_code);
