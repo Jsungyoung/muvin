@@ -18,6 +18,8 @@
   <div class="container">
     <form method="get" class="write_form">
 
+
+
         <c:set var="view" value="${review}" scope="session"/>
 
         <input type="hidden" id="no" value="<c:out value="${sessionScope.view.no}"/> ">
@@ -26,6 +28,7 @@
         <div>
             <input type="text" id="title" name="title" readonly value="<c:out value="${sessionScope.view.title}"/>"/>
         </div>
+
         <div>
             <%--
                             수정일과 작성일이 같은경우 작성일 출력
@@ -45,6 +48,9 @@
             방문일 : <c:out value="${sessionScope.view.visit_date}"/>
         </div>
 <%--        </c:forEach>--%>
+        <c:forEach items="${images}"  var="img">
+            <input type="image"  src="<c:out value="${img.url}"/>" onclick="return false">
+        </c:forEach>
         <div>
         <textarea name="content" id="content" rows="20"  readonly><c:out value="${sessionScope.view.content}"/></textarea>
         </div>

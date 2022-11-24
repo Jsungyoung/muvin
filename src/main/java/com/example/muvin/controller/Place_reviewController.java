@@ -1,6 +1,8 @@
 package com.example.muvin.controller;
 
+import com.example.muvin.domain.img_info.Img_info;
 import com.example.muvin.domain.place_review.Place_reviewDto;
+import com.example.muvin.service.Img_infoService;
 import lombok.RequiredArgsConstructor;
 
 import com.example.muvin.domain.place_review.Place_review;
@@ -24,6 +26,8 @@ public class Place_reviewController {
 
     @Autowired
     private Place_reviewService service;
+    @Autowired
+    private Img_infoService imgService;
 
 
     @PostMapping("v1/boardWrite")
@@ -40,6 +44,7 @@ public class Place_reviewController {
     public void board(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ELException {
          List<Place_review> list = getReviewAll();
          request.setAttribute("list", list);
+
         // request.getRequestDispatcher("board").forward(request, response);
         request.getRequestDispatcher("/WEB-INF/views/board.jsp").forward(request, response);
     }
@@ -69,6 +74,11 @@ public class Place_reviewController {
     public void boardView(@RequestParam long no, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Place_review review = readReviewByNo(no); // 대충 번호를 통해서 원하는 개시물 번호에 저장된 값 출력해야되는데 어떠케함
+
+        imgService.readByNo(no);
+        List<Img_info> list = imgService.readByNo(no);;
+        request.setAttribute("images",list);
+
         session.setAttribute("review",review);
         request.getRequestDispatcher("/WEB-INF/views/boardView.jsp").forward(request, response);
     }

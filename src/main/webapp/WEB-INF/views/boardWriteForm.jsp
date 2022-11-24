@@ -13,9 +13,7 @@
     <link rel="stylesheet" href="css/boardWrite.css">
 
     <!-- 서머노트를 위해 추가해야할 부분 -->
-<%--    <script src="javascript/summernote-lite.js"></script>--%>
-<%--    <script src="javascript/summernote-ko-KR.js"></script>--%>
-<%--    <link rel="stylesheet" href="css/summernote-lite.css">--%>
+
     <!--  -->
 </head>
 <body>
@@ -62,22 +60,11 @@
     </div>
 
 
-
-<%--    <script>--%>
-<%--        $(document).ready(function() {--%>
-<%--            $("#summernote").summernote({--%>
-<%--                height:350--%>
-<%--            });--%>
-<%--        });--%>
-<%--    </script>--%>
-
 </section>
 
 
 <%--서머노트 --%>
-<%--<script src="javascript/summernote-lite.js"></script>--%>
-<%--<script src="javascript/summernote-ko-KR.js"></script>--%>
-<%--<link rel="stylesheet" href="css/summernote-lite.css">--%>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
 <script src="javascript/createBoard.js"></script>
