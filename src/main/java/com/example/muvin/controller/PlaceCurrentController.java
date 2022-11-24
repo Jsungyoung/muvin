@@ -4,6 +4,7 @@ import com.example.muvin.domain.place.Place;
 import com.example.muvin.domain.place_current.PlaceCurrent;
 import com.example.muvin.domain.place_current.PlaceCurrentDto;
 import com.example.muvin.domain.place_current.PlaceCurrentRepository;
+import com.example.muvin.service.MovieService;
 import com.example.muvin.service.PlaceCurrentService;
 import com.example.muvin.service.PlaceService;
 import lombok.RequiredArgsConstructor;
@@ -21,14 +22,15 @@ public class PlaceCurrentController {
     @Autowired
     private PlaceCurrentService service;
 
+
     @PostMapping("/add/place_current")
-    public void addPlaceCurrent(int placeNo, HttpServletRequest req){
+    public void addPlaceCurrent(int placeNo, int selmord, HttpServletRequest req){
         HttpSession session = req.getSession();
         String userId = (String)session.getAttribute("log");
         PlaceCurrentDto placeCurrentDto = new PlaceCurrentDto();
         placeCurrentDto.setUserId(userId);
         placeCurrentDto.setPlaceNo(placeNo);
-        System.out.println("userId : " + userId + "/ placeNo : " + placeNo);
+        placeCurrentDto.setSelmord(selmord);
         PlaceCurrent placeCurrent = new PlaceCurrent(placeCurrentDto);
         service.addPlaceCurrent(placeCurrent);
     }
@@ -38,6 +40,7 @@ public class PlaceCurrentController {
     public List<PlaceCurrent> getMyPlaceList(HttpServletRequest request){
         HttpSession session = request.getSession();
         String userId = (String)session.getAttribute("log");
+        System.out.println(userId);
         List<PlaceCurrent> placeList = service.findMyPlaceAll(userId);
         return placeList;
     }

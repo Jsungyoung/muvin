@@ -1,12 +1,11 @@
 package com.example.muvin.domain.place;
 
 
-import com.example.muvin.util.Timestamp;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter

@@ -17,11 +17,13 @@ public class PlaceCurrent {
     private int code;
     private String userId;
     private int placeNo;
+    private int selmord;
 
 
     public PlaceCurrent(PlaceCurrentDto placeCurrentDto){
         this.code = placeCurrentDto.getCode();
         this.userId = placeCurrentDto.getUserId();
         this.placeNo = placeCurrentDto.getPlaceNo();
+        this.selmord = placeCurrentDto.getSelmord();
     }
 }
