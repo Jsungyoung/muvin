@@ -52,8 +52,9 @@
             <button type="button" onclick="location.href='/user/deleteForm'">회원탈퇴</button>
         </div>
     </form>
-    <button onclick="location.href='/MyMovieList'">찜한 영화 보러가기</button>
-    <button onclick="location.href='/MyTvList'">찜한 드라마 보러가기</button>
+    <button onclick="location.href='../myMovieList'">찜한 영화 보러가기</button>
+    <button onclick="location.href='../myTvList'">찜한 드라마 보러가기</button>
 </section>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 </html>

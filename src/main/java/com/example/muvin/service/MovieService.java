@@ -19,6 +19,7 @@ public class MovieService {
     // CREATE
     public void createMovie(MovieDto movieDto){
         Movie movie = new Movie(movieDto);
+        repository.save(movie);
     }
 
     // READ
@@ -29,6 +30,10 @@ public class MovieService {
     public List<Movie> readMovieByUserId(String userId){
         List<Movie> movies = repository.findByUserId(userId);
         return movies;
+    }
+
+    public List<Movie> readMovieByUserIdAndContentType(String userId, String contentType){
+        return repository.findByUserIdAndContentType(userId, contentType);
     }
 
     // DELETE

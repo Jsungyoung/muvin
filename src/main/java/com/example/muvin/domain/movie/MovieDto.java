@@ -15,7 +15,10 @@ public class MovieDto {
 
     private int code;
     private String userId;
-    private int content_id;
-    private String content_type;
+    private String contentId;
+    private String contentType;
     private String type;
+
+//    public MovieDto
+
 }
