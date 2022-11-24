@@ -1,4 +1,7 @@
-let mapContainer = document.getElementById('map'), // 지도의 중심좌표
+
+
+
+ const mapContainer = document.getElementById('map'), // 지도의 중심좌표
     mapOption = {
         center: new kakao.maps.LatLng(36.6002, 127.8855), // 지도의 중심좌표
         level: 14 // 지도의 확대 레벨
@@ -15,7 +18,6 @@ const tvid = urlParams.get('tv_id');
 if(movieid != null) {
     let url = "http://localhost:8084/v1/wholemap?movie_code=" + movieid;
 
-    console.log(movieid)
     $.get(url, function (data) {
 
         // 데이터에서 좌표 값을 가지고 마커를 표시합니다
@@ -64,7 +66,6 @@ if(movieid != null) {
                             '    </div>' +
                             '</div>'
                     });
-                    console.log(overlay);
                     overlay.setMap(map);
                     kakao.maps.event.addListener(map, 'mouseout', function (mouseEvent) {
                         overlay.setMap(null)
@@ -80,7 +81,6 @@ if(movieid != null) {
 else if(tvid != null){
     let url = "http://localhost:8084/v1/wholemap?movie_code=" + tvid;
 
-    console.log(tvid)
     $.get(url, function (data) {
 
         // 데이터에서 좌표 값을 가지고 마커를 표시합니다
@@ -129,7 +129,6 @@ else if(tvid != null){
                             '    </div>' +
                             '</div>'
                     });
-                    console.log(overlay);
                     overlay.setMap(map);
                     kakao.maps.event.addListener(map, 'dblclick', function (mouseEvent) {
                         overlay.setMap(null)

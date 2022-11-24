@@ -5,14 +5,12 @@ import com.example.muvin.domain.place.Place;
 import com.example.muvin.service.PlaceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -29,11 +27,12 @@ public class WholeMapController {
     }
 
 
-    @RequestMapping("/wholeMap")
+    @RequestMapping("/wholemap")
     public void wholeMap(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Place> list = getPlaceByMovieCode("2");
-        request.setAttribute("list", list);
+        String movie_code = "333";
+        List<Place> maplist = getPlaceByMovieCode(movie_code);
+        request.setAttribute("maplist", maplist);
         request.getRequestDispatcher("/WEB-INF/views/map/wholeMap.jsp").forward(request, response);
     }
 
@@ -57,6 +56,8 @@ public class WholeMapController {
     @RequestMapping("/map")
     public void map(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+        HttpSession session = request.getSession();
         List<Place> placeList = getPlaceAll();
         request.setAttribute("placeList", placeList);
         request.getRequestDispatcher("/WEB-INF/views/map/map.jsp").forward(request, response);

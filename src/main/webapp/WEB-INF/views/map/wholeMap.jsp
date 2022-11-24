@@ -17,6 +17,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
@@ -31,6 +33,50 @@
 
 
 <div id="map" style="width:500px ;height:500px;"></div>
+
+
+<table class="board_list" id="board_list">
+    <colgroup>
+        <col width="10%"/>
+        <col width="*"/>
+        <col width="10%"/>
+
+    </colgroup>
+    <thead>
+    <tr>
+
+        <th scope="col">이미지</th>
+        <th scope="col">장소이름</th>
+        <th scope="col">별점</th>
+        <th scope="col">장소이름</th>
+        <th scope="col">별점</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+
+
+    <form method="get"  class="write_form">
+
+        <c:forEach items="${maplist}" var="mplace" >
+            <tr>
+                <td><img src="${mplace.place_URL}"> </td>
+                <td><c:out value="${mplace.place_name}"/></td>
+                <td><c:out value="${mplace.area_name}"/></td>
+                <input type="hidden" name="no" id="movie_code" value="${mplace.movie_code}"/>
+                <td><a href="http://localhost:8084/boardView?no=${mplace.no}"><c:out value="${mplace.title}"/></a></td>
+            </tr>
+
+        </c:forEach>
+
+    </form>
+    </tbody>
+
+</table>
+
+
+
 
 <script src="/javascript/wholeMap.js"></script>
 </body>

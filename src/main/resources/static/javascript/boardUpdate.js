@@ -1,4 +1,4 @@
-// function updateBoard(){
+d// function updateBoard(){
 //     let no = $('#no').val();
 //     let visit_date = $('#visit_date').val();
 //     let title = $('#title').val();
