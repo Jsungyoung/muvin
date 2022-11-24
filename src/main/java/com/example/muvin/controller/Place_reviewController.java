@@ -48,6 +48,14 @@ public class Place_reviewController {
     public List<Place_review> readTitle(String title){
         return service.readByTitle(title);
     }
+
+    
+//    닉네임을 통해서 리스트값 get하기 작동 확인
+    @GetMapping("v1/board/readNickname")
+    public List<Place_review> readByNickname(@RequestParam String pr_nickname){
+        return service.readByNickName(pr_nickname);
+    }
+
     @GetMapping("v1/board/readContent")
     public List<Place_review> readContent(String content){
         return service.readByContent(content);
