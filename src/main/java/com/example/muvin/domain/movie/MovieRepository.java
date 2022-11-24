@@ -2,5 +2,12 @@ package com.example.muvin.domain.movie;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MovieRepository  extends JpaRepository<Movie, String> {
+import java.util.List;
+
+public interface MovieRepository  extends JpaRepository<Movie, Integer> {
+
+    public List<Movie> findByUserId(String userId);
+
+
+
 }

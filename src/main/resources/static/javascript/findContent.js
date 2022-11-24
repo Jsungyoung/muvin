@@ -14,7 +14,6 @@ function findContent(){
         list.forEach(e => {
             const poster_path = e.poster_path;
             const title = e.title;
-            const releasedate = e.release_date;
             const id = e.id;
             const media_type = e.media_type;
 

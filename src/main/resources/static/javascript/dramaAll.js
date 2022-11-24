@@ -8,6 +8,8 @@ function handleNation(event){
         e.classList.remove("click_nation");
     });
     event.target.classList.add("click_nation");
+    page = 1;
+    $('.content_all').empty();
     getDramaByGenre();
 }
 
@@ -26,6 +28,8 @@ function handleGenre(event) {
         e.classList.remove("click_genre");
     });
     event.target.classList.add("click_genre");
+    page = 1;
+    $('.content_all').empty();
     getDramaByGenre();
 }
 
@@ -55,12 +59,12 @@ function getDramaByGenre(){
     console.log(nation);
 
     $.ajax({
-        url: "https://api.themoviedb.org/3/discover/tv?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&page=1&watch_region=KR&without_genres=16,10763,10764,10767&with_genres="+genre+"&with_original_language="+nation,
+        url: "https://api.themoviedb.org/3/discover/tv?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&page="+page+"&watch_region=KR&without_genres=16,10763,10764,10767&with_genres="+genre+"&with_original_language="+nation,
         method: "GET",
-        timeout: 0,
+        timeout: 1000,
     }).done(function (response) {
         console.log(response);
-        $('.content_all').empty();
+
         const list = response.results;
         list.forEach(e => {
             const poster_path = e.poster_path;
@@ -76,3 +80,14 @@ function getDramaByGenre(){
         });
     });
 }
+
+$(window).scroll(function() {
+    let scrollTop = $(window).scrollTop();
+    let innerHeight = $(window).innerHeight();
+    let scrollHeight = $('body').prop('scrollHeight');
+
+    if (scrollTop + innerHeight >= scrollHeight-5) {
+        page++;
+        getDramaByGenre();
+    }
+});

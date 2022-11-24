@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class MovieService {
@@ -14,11 +16,24 @@ public class MovieService {
     @Autowired
     private MovieRepository repository;
 
-    // movie에 crud가 필요한가? 필요하겠지? ,, 일단 만들어두기
-
     // CREATE
     public void createMovie(MovieDto movieDto){
         Movie movie = new Movie(movieDto);
+    }
+
+    // READ
+    public Movie readMovieByCode(int code){
+        return repository.getReferenceById(code);
+    }
+
+    public List<Movie> readMovieByUserId(String userId){
+        List<Movie> movies = repository.findByUserId(userId);
+        return movies;
+    }
+
+    // DELETE
+    public void DeleteMovieByCode(int code){
+        repository.deleteById(code);
     }
 
 
