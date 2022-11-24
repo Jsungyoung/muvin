@@ -64,11 +64,7 @@
         </thead>
         <tbody>
 
-
 <%--        <div id='result'>0</div>--%>
-
-
-
         <form method="get"  class="write_form">
 
         <c:forEach items="${list}" var="place" >
@@ -83,9 +79,7 @@
                     <td><c:out value="${place.score}"/></td>
                     <td><c:out value="${place.reg_date}"/></td>
             </tr>
-
         </c:forEach>
-
         </form>
         </tbody>
 
@@ -97,6 +91,7 @@
     <button type="button" style="color: black" onclick="location.href='/boardWriteForm'">글쓰기</button>
 <%--    <input type="button" value="submit" onclick="createBoard()">--%>
     <input type="button" style="color: black" value="home" onclick="location.href='/board'">
+    <input type="image" src="https://i.ibb.co/ZVmpFB5/1.png" />
     <script src="javascript/boardView.js"></script>
     <script src="javascript/count.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
