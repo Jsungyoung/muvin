@@ -13,7 +13,7 @@
 </head>
 <body>
 <c:set var="user" value="${user}" scope="session"/>
-
+<jsp:include page="../header.jsp" />
 <form>
     <div>
         <h2>마이페이지</h2>
@@ -51,6 +51,17 @@
         <button type="button" onclick="location.href='/user/deleteForm'">회원탈퇴</button>
     </div>
     </div>
+    <table id="myPlaceBox">
+        <thead>
+            <th>번호</th>
+            <th>장소 이름</th>
+            <th>영화 이름</th>
+            <th>수정/삭제</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </form>
+<script src="/javascript/mypage.js"></script>
 </body>
 </html>

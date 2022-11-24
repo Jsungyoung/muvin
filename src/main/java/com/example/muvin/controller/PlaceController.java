@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequiredArgsConstructor
 public class PlaceController {
@@ -14,14 +17,23 @@ public class PlaceController {
     @Autowired
     private PlaceService placeService;
 
-    @RequestMapping("/add/place")
+    @RequestMapping("/add_movie/place")
     @ResponseBody
-    public String addPlace(PlaceDto placeDto){
+    public Map<String, Object> addMoviePlace(PlaceDto placeDto){
+        placeDto.setSelmord(1);
         Place place = new Place(placeDto);
-        if(placeService.write(place)){
-            return "success";
-        }
-        return "fail";
+
+        return placeService.write(place);
     }
+
+    @RequestMapping("/add_tv/place")
+    @ResponseBody
+    public Map<String, Object> addTvPlace(PlaceDto placeDto){
+        placeDto.setSelmord(2);
+        Place place = new Place(placeDto);
+
+        return placeService.write(place);
+    }
+
 
 }

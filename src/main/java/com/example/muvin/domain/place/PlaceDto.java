@@ -19,6 +19,6 @@ public class PlaceDto {
     private String movie_code;
     private String place_name;
     private String place_URL;
-
+    private int selmord;
 
 }

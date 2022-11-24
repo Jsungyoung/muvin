@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -17,14 +19,17 @@ public class PlaceService {
     @Autowired
     private PlaceRepository repository;
 
-    public Boolean write(Place place){
+    public Map<String, Object> write(Place place){
+        Map<String, Object> data = new HashMap<>();
         repository.save(place);
-
         Place result = repository.findPlace(place.getMovie_code(),place.getArea_name());
+
         if(result == null){
-            return false;
+            data.put("status", "failed");
         }
-        return true;
+        data.put("status", "success");
+        data.put("id", result.getCode());
+        return data;
     }
 
     public List<Place> placeList(){
@@ -43,4 +48,8 @@ public class PlaceService {
 
 
     public List<Place> getPlaceByPlaceCode(String place_code){return repository.findByPlaceCode();}
+
+//    public Place getPlaceByCode(int code){
+//        return
+//    }
 }
