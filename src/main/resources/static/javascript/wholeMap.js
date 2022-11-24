@@ -1,13 +1,37 @@
+// $(document).ready(function(){
+//
+// });
 
 
+    // const mapContainer = document.getElementById('map'), // 지도의 중심좌표
+    //     mapOption = {
+    //         center: new kakao.maps.LatLng(41.1626276235169, 123.88085529289597), // 지도의 중심좌표
+    //         level: 14 // 지도의 확대 레벨
+    //     };
+    //
+    // let map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    // // map.setBounds(bounds[, paddingTop, paddingRight, paddingBottom, paddingLeft]);
 
- const mapContainer = document.getElementById('map'), // 지도의 중심좌표
-    mapOption = {
-        center: new kakao.maps.LatLng(36.6002, 127.8855), // 지도의 중심좌표
-        level: 14 // 지도의 확대 레벨
+var container = document.getElementById('map'),
+    options = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 14
     };
+var map = new kakao.maps.Map(container, options);
 
-let map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+container.style.width = '500px';
+container.style.height = '500px';
+
+setTimeout(function(){
+    map.relayout();
+    map.setCenter(new kakao.maps.LatLng(33.450701, 126.570667));
+    map.setLevel(14);
+}, 100);
+
+
+
+
+
 
 
 const urlParams = new URL(window.location.href).searchParams;
@@ -148,3 +172,4 @@ function movePlaceSearch(){
         location.href="/placeSearch?tv_id=" + tv_id;
     }
 }
+

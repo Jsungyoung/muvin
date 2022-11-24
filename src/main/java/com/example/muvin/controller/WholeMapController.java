@@ -38,7 +38,7 @@ public class WholeMapController {
 
     @GetMapping("/wholeMap/navi")
     public void navi(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String place_code = request.getParameter("place_code");
+        int place_code = Integer.parseInt(request.getParameter("place_code"));
 
 
         List<Place> list = placeService.getPlaceByPlaceCode(place_code);
@@ -47,20 +47,24 @@ public class WholeMapController {
 
 
 
+    @GetMapping("v1/map2/")
+    public List<Place> getPlaceAllByAreaName(String areaName){
+        return placeService.getAllPlaceByAreaName(areaName);
+    }
 
     @GetMapping("v1/map")
     public List<Place> getPlaceAll() {
+        System.out.println("getPlaceAll()");
         return placeService.getAllPlace();
     }
 
-    @RequestMapping("/map")
+    @RequestMapping(method = RequestMethod.GET, path="/map")
     public void map(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Place> placeList = getPlaceAllByAreaName(request.getParameter("areaName"));
+        System.out.println("placeList.size() : " + placeList.size());
 
-
-        HttpSession session = request.getSession();
-        List<Place> placeList = getPlaceAll();
         request.setAttribute("placeList", placeList);
-        request.getRequestDispatcher("/WEB-INF/views/map/map.jsp").forward(request, response);
+        request.getRequestDispatcher("map/map").forward(request, response);
 
     }
 }

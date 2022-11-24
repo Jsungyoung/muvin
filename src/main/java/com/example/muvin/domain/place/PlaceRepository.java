@@ -12,14 +12,17 @@ public interface PlaceRepository extends JpaRepository<Place, Integer> {
     @Query(value = "SELECT * FROM place WHERE movie_code = ?", nativeQuery = true)
     List<Place> findPlaceByMovie_code(String movie_code);
 
-    @Query(value = "SELECT * from `place`", nativeQuery = true)
-    List<Place> findAllPlace();
+
+    List<Place> findAll();
+
+    List<Place> findByareaNameContaining(String areaName);
 
     @Query(value = "SELECT * FROM place where `code` = ? ", nativeQuery = true)
     List<Place> findByPlaceCode();
 
     @Query(value = "SELECT * FROM place WHERE movie_code=? and area_name=?", nativeQuery = true)
     Place findPlace(String movie_code, String area_name);
+
 
 
     @Query(value = "SELECT movie_code FROM place where selmord = 1", nativeQuery = true)

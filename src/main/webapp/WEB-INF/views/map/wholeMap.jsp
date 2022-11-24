@@ -24,7 +24,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>지도</title>
-    <link rel="stylesheet" href="/css/wholeMap.css">
+<%--    <link rel="stylesheet" href="/css/wholeMap.css">--%>
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e0146e3fc3c4cc6c4776c917bccae6c&libraries=services,clusterer,drawing"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

@@ -19,12 +19,12 @@ public class PlaceService {
     @Autowired
     private PlaceRepository repository;
 
-    public Map<String, Object> write(Place place){
+    public Map<String, Object> write(Place place) {
         Map<String, Object> data = new HashMap<>();
         repository.save(place);
-        Place result = repository.findPlace(place.getMovie_code(),place.getArea_name());
+        Place result = repository.findPlace(place.getMovieCode(), place.getAreaName());
 
-        if(result == null){
+        if (result == null) {
             data.put("status", "failed");
         }
         data.put("status", "success");
@@ -32,24 +32,27 @@ public class PlaceService {
         return data;
     }
 
-    public List<Place> placeList(){
+    public List<Place> placeList() {
 
         return repository.findAll();
     }
 
-    public List<Place> placeListByMovie_code(String movie_code){
+    public List<Place> placeListByMovie_code(String movie_code) {
         List<Place> result = repository.findPlaceByMovie_code(movie_code);
         return result;
     }
 
-    public List<Place> getAllPlace(){
-        return repository.findAllPlace();
+    public List<Place> getAllPlace() {
+        return repository.findAll();
+    }
+
+    public List<Place> getAllPlaceByAreaName(String areaName){
+        return repository.findByareaNameContaining(areaName);
     }
 
 
-    public List<Place> getPlaceByPlaceCode(String place_code){return repository.findByPlaceCode();}
-
-//    public Place getPlaceByCode(int code){
-//        return
-//    }
+    public List<Place> getPlaceByPlaceCode(int place_code) {
+        return repository.findByPlaceCode();
+    }
 }
+

@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MapController {
 
-    @GetMapping("/map")
-    public String map(){return "map/map";}
+    @GetMapping("/map/map")
+    public String main(){
+        return "map/map";
+    }
 
 }
