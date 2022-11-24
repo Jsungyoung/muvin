@@ -52,6 +52,7 @@ public class MovieController {
     }
 
     @PostMapping("/v1/movie/add")
+    @ResponseBody
     public void addMovie(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
         MovieDto movie = new MovieDto();
         movie.setUserId(userId);

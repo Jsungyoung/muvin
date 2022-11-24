@@ -7,11 +7,15 @@ function addWishMovie(){
     console.log(id);
 
     $.ajax({
-        url: "/v1/movie/add?userId="+user+"&contentId="+id+"&contentType=movie&type=wish",
+        url: "/v1/movie/add",
         method: "POST",
-        dataType: 'json',
         timeout: 0,
-
+        data: {
+            "userId" : user,
+            "contentId" : id,
+            "contentType" : "movie",
+            "type" : "wish"
+        }
     }).success(function(res){
         console.log(res);
     })
