@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Entity
 @NoArgsConstructor
 @Getter
-@JsonAutoDetect
 public class Place extends Timestamp{
     @Id
     private int code; //pk

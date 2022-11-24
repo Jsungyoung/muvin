@@ -44,20 +44,22 @@ function addPlace() {
                 movie_code: movie_id,
             }
         }).done(function (res) {
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:8084/add/place_current",
+                data: {
+                    placeNo: res.id,
+                    selmord: 1
+                }
+            });
+
             if (res.status == "success") {
                 alert("정상적으로 등록되었습니다.");
                 location.href = "/movieView?movie_id=" + movie_id;
             } else {
                 alert("다시 시도해 주세요");
-            }
 
-            $.ajax({
-                method: "POST",
-                url: "http://localhost:8084/add/place_current",
-                data: {
-                    placeNo: res.id
-                }
-            });
+            }
         });
 
 
@@ -74,24 +76,21 @@ function addPlace() {
                 movie_code: tv_id,
             }
         }).done(function (res) {
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:8084/add/place_current",
+                data: {
+                    placeNo: res.id,
+                    selmord: 2
+                }
+            })
 
-            console.log(res);
-            alert("!!!");
             if (res.status == "success") {
                 alert("정상적으로 등록되었습니다.");
                 location.href = "/tvView?tv_id=" + tv_id;
             } else {
                 alert("다시 시도해 주세요");
             }
-
-
-            $.ajax({
-                method: "POST",
-                url: "http://localhost:8084/add/place_current",
-                data: {
-                    placeNo: res.id
-                }
-            });
         });
     }
 }

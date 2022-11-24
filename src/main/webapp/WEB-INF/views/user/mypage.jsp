@@ -51,9 +51,22 @@
             <button type="button" onclick="location.href='/user/updateForm'">회원정보 수정</button>
             <button type="button" onclick="location.href='/user/deleteForm'">회원탈퇴</button>
         </div>
+        <table>
+            <thead>
+                <th>번호</th>
+                <th>영화 이름</th>
+                <th>장소 이름</th>
+                <th>주소</th>
+                <th>삭제</th>
+            </thead>
+            <tbody id="placesInfo">
+
+            </tbody>
+        </table>
     </form>
     <button onclick="location.href='/MyMovieList'">찜한 영화 보러가기</button>
     <button onclick="location.href='/MyTvList'">찜한 드라마 보러가기</button>
 </section>
+<script src="/javascript/mypage.js"></script>
 </body>
 </html>

@@ -26,6 +26,10 @@ public class MovieService {
         return repository.getReferenceById(code);
     }
 
+    public Movie readMovieByCodeAndContentType(int contentId, String contentType){
+        return repository.findByContentIdAndContentType(contentId, contentType);
+    }
+
     public List<Movie> readMovieByUserId(String userId){
         List<Movie> movies = repository.findByUserId(userId);
         return movies;

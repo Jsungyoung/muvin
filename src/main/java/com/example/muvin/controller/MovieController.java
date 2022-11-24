@@ -1,10 +1,16 @@
 package com.example.muvin.controller;
 
+import com.example.muvin.domain.movie.Movie;
+import com.example.muvin.service.MovieService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MovieController {
+
+    @Autowired
+    private MovieService service;
 
     @GetMapping("/movieView")
     public String movieView() {
@@ -39,5 +45,17 @@ public class MovieController {
     @GetMapping("/myMovieList")
     public String myMovieList() {
         return "movie/myMovieList";
+    }
+
+    @PostMapping("/find/movie")
+    @ResponseBody
+    public Movie getMovie(@RequestParam int contentId,int selmord){
+        String contentType="";
+        if(selmord==1){
+            contentType="movie";
+        }else{
+            contentType="tv";
+        }
+        return service.readMovieByCodeAndContentType(contentId, contentType);
     }
 }

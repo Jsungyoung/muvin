@@ -35,5 +35,10 @@ public class PlaceController {
         return placeService.write(place);
     }
 
+    @GetMapping("/find/place")
+    public Place getMyPlace(@RequestParam int code){
+        return placeService.getPlaceByCode(code);
+    }
+
 
 }

@@ -49,7 +49,10 @@ public class PlaceService {
 
     public List<Place> getPlaceByPlaceCode(String place_code){return repository.findByPlaceCode();}
 
-//    public Place getPlaceByCode(int code){
-//        return
-//    }
+
+    public Place getPlaceByCode(int code){
+        return repository.findById(code).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 Place입니다.")
+        );
+    }
 }

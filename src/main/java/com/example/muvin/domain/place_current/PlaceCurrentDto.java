@@ -13,4 +13,5 @@ public class PlaceCurrentDto {
     private int code;
     private String userId;
     private int placeNo;
+    private int selmord;
 }
