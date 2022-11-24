@@ -1,6 +1,7 @@
 package com.example.muvin.domain.movie;
 
 import com.example.muvin.util.Timestamp;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
@@ -13,13 +14,16 @@ import java.util.Date;
 @Table(name = "movie")
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Setter
 public class Movie  extends Timestamp {
 
     @Id
     private int code;
+
     private String userId;
-    private int contentId;
+
+    private String contentId;
     private String contentType;
     private String type;
 
@@ -30,4 +34,6 @@ public class Movie  extends Timestamp {
         this.contentType = movieDto.getContentType();
         this.type = movieDto.getType();
     }
+
+
 }

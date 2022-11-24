@@ -1,10 +1,14 @@
 package com.example.muvin.controller;
 
 import com.example.muvin.domain.movie.Movie;
+import com.example.muvin.domain.movie.MovieDto;
 import com.example.muvin.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class MovieController {
@@ -47,15 +51,18 @@ public class MovieController {
         return "movie/myMovieList";
     }
 
-    @PostMapping("/find/movie")
+    @PostMapping("/v1/movie/add")
     @ResponseBody
-    public Movie getMovie(@RequestParam int contentId,int selmord){
-        String contentType="";
-        if(selmord==1){
-            contentType="movie";
-        }else{
-            contentType="tv";
-        }
-        return service.readMovieByCodeAndContentType(contentId, contentType);
+    public void addMovie(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
+        MovieDto movie = new MovieDto();
+        movie.setUserId(userId);
+        movie.setContentId(contentId);
+        movie.setContentType(contentType);
+        movie.setType(type);
+        System.out.println(userId);
+        System.out.println(contentId);
+        System.out.println(movie.getContentId());
+        System.out.println(movie.getUserId());
+        service.createMovie(movie);
     }
 }
