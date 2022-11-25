@@ -13,6 +13,8 @@ public interface MovieRepository  extends JpaRepository<Movie, Integer> {
 
     public Movie findByContentIdAndContentType(String ContentId, String contentType);
 
-    public boolean existsByUserIdAndAndContentIdAndContentTypeAndType(String userId, String contentId, String contentType, String type);
+    public boolean existsByUserIdAndContentIdAndContentTypeAndType(String userId, String contentId, String contentType, String type);
+
+    public void deleteByUserIdAndContentIdAndContentTypeAndType(String userId, String contentId, String contentType, String type);
 
 }

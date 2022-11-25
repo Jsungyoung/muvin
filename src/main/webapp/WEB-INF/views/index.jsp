@@ -40,7 +40,7 @@
 
 </section>
 <footer>
-    선준 진규 성영 진아 승우
+    <strong>선준</strong> komlov@naver.com <strong>진규</strong> yjhigh95@gmail.com <strong>성영</strong> sungyoung961@naver.com <strong>진아</strong> beathummus@gmail.com  <strong>승우</strong> hansw0626@daum.net
 </footer>
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="></script>
 </body>

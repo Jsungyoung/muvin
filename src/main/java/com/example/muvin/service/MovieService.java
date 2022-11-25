@@ -17,9 +17,9 @@ public class MovieService {
     private MovieRepository repository;
 
     // CREATE
-    public void createMovie(MovieDto movieDto){
+    public Movie createMovie(MovieDto movieDto){
         Movie movie = new Movie(movieDto);
-        repository.save(movie);
+        return repository.save(movie);
     }
 
     // READ
@@ -32,7 +32,7 @@ public class MovieService {
     }
 
     public boolean checkContent(String userId, String contentId, String contentType, String type){
-        return repository.existsByUserIdAndAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
+        return repository.existsByUserIdAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
     }
 
     public List<Movie> readMovieByUserId(String userId){
@@ -45,8 +45,21 @@ public class MovieService {
     }
 
     // DELETE
-    public void DeleteMovieByCode(int code){
+    public void deleteMovieByCode(int code){
         repository.deleteById(code);
+    }
+
+//    public void deleteContent(String userId, String contentId, String contentType, String type){
+//        System.out.println(userId);
+//        System.out.println(contentId);
+//        System.out.println(contentType);
+//        System.out.println(type);
+//        repository.deleteByUserIdAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
+//    }
+
+    public void deleteContent(MovieDto movieDto){
+        Movie movie = new Movie(movieDto);
+        repository.delete(movie);
     }
 
 }

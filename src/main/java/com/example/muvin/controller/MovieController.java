@@ -18,8 +18,13 @@ public class MovieController {
 
     @GetMapping("/movieView")
     public String movieView() {
-//        boolean checkWish = String
         return "movie/movieView";
+    }
+
+    @GetMapping("/v1/movie/checkContent")
+    @ResponseBody
+    public boolean checkContent(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
+        return service.checkContent(userId, contentId, contentType, type);
     }
 
     @GetMapping("/movieAll")
@@ -57,10 +62,22 @@ public class MovieController {
         return "movie/myTvList";
     }
 
-    @PostMapping("/v1/movie/add")
+    @PostMapping("/v1/content/add")
     @ResponseBody
-    public void addMovie(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
+    public Movie addContent(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
         MovieDto movie = new MovieDto(userId, contentId, contentType, type);
-        service.createMovie(movie);
+        return service.createMovie(movie);
     }
+
+    @DeleteMapping("/v1/content/remove")
+    @ResponseBody
+    public void removeContent(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
+        System.out.println(userId);
+        System.out.println(contentId);
+        System.out.println(contentType);
+        System.out.println(type);
+        MovieDto movie = new MovieDto(userId, contentId, contentType, type);
+        service.deleteContent(movie);
+    }
+
 }

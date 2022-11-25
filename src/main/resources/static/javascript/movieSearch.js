@@ -2,6 +2,30 @@ function getMovie(movie_id){
     const urlParams = new URL(window.location.href).searchParams;
     const movieid = urlParams.get('movie_id');
     console.log(movieid);
+    const user = document.getElementById('user').value;
+    console.log(user);
+    $.ajax({
+        url: "/v1/movie/checkContent",
+        method: "get",
+        data: {
+            "userId" : user,
+            "contentId" : movieid,
+            "contentType" : "movie",
+            "type" : "wish"
+        }
+    }).done(function(res){
+        console.log(res);
+        if(res === true) {
+            $('.mylist').append(
+                `<button class="remove" onclick="removeWish()">v 담았어요</button>`
+            );
+        } else{
+            $('.mylist').append(
+                `<button class="add" onclick="addWish()">+ 담을래요</button>`
+            );
+        }
+    })
+
 
     $.ajax({
         url: "https://api.themoviedb.org/3/movie/" + movieid + "?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko",
@@ -15,7 +39,7 @@ function getMovie(movie_id){
         const runtime = res.runtime;
         const poster_path = res.poster_path;
         const detail = res.overview;
-        const releasedate = res.release_date;
+        const releasedate = res.release_date+"";
         const rating = (res.vote_average+"").substring(0,3);
 
         $('.movie-view').append(
@@ -53,10 +77,11 @@ function getMovie(movie_id){
             </div>`
         );
 
-        console.log(releasedate);
+        const date = releasedate.substring(0,4) + releasedate.substring(5,7) + releasedate.substring(8,10);
+        console.log(date);
 
         $.ajax({
-            url: "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&detail=Y&ServiceKey=CKA71K1PJ7OSNRPAAK9W&query="+title+"&releaseDts="+releasedate+"&createDte="+releasedate,
+            url: "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&detail=Y&ServiceKey=CKA71K1PJ7OSNRPAAK9W&query="+title+"&releaseDts="+date+"&createDte="+date,
             method: "GET",
             timeout: 0,
             headers: {
