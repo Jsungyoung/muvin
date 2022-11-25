@@ -27,7 +27,7 @@ public class WholeMapController {
     }
 
 
-    @RequestMapping("/wholemap")
+    @RequestMapping(method = RequestMethod.GET, path="/wholeMap")
     public void wholeMap(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String movie_code = "333";

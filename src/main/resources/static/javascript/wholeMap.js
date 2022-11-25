@@ -73,14 +73,14 @@ if(movieid != null) {
                         content: '<div class="wrap">' +
                             '    <div class="info">' +
                             '        <div class="title">' +
-                            place.place_name +
+                            place.placeName +
                             '        </div>' +
                             '        <div class="body">' +
                             '            <div class="img">' +
-                            '                <img referrerpolicy="no-referrer" src="' + place.place_URL + '" width="73" height="70">' +
+                            '                <img referrerpolicy="no-referrer" src="' + place.placeURL + '" width="73" height="70">' +
                             '           </div>' +
                             '            <div class="desc">' +
-                            '                <div class="ellipsis">' + place.area_name + '</div>' +
+                            '                <div class="ellipsis">' + place.areaName + '</div>' +
                             '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
                             '                <div><a href="" id="place.code" class="link" > 길찾기 </a></div>' +
                             '                <div><a href="wholeMap/roadView?x='+place.x+'&y='+place.y+'"' +' class="link" > 로드뷰 보기 </a></div>' +
@@ -136,14 +136,14 @@ else if(tvid != null){
                         content: '<div class="wrap">' +
                             '    <div class="info">' +
                             '        <div class="title">' +
-                            place.place_name +
+                            place.placeName +
                             '        </div>' +
                             '        <div class="body">' +
                             '            <div class="img">' +
-                            '                <img referrerpolicy="no-referrer" src="' + place.place_URL + '" width="73" height="70">' +
+                            '                <img referrerpolicy="no-referrer" src="' + place.placeURL + '" width="73" height="70">' +
                             '           </div>' +
                             '            <div class="desc">' +
-                            '                <div class="ellipsis">' + place.area_name + '</div>' +
+                            '                <div class="ellipsis">' + place.areaName + '</div>' +
                             '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
                             '                <div><a href="" id="place.code" class="link" > 길찾기 </a></div>' +
                             '                <div><a href="wholeMap/roadView?x='+place.x+'&y='+place.y+'"' +' class="link" > 로드뷰 보기 </a></div>' +
@@ -171,4 +171,6 @@ function movePlaceSearch(){
         location.href="/placeSearch?tv_id=" + tv_id;
     }
 }
+
+
 

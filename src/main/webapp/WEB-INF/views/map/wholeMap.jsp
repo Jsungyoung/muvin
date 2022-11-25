@@ -30,9 +30,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 </head>
+<body>
 
-
+<div class="tvmovie"></div>
 <div id="map" style="width:500px ;height:500px;"></div>
+
 
 
 <table class="board_list" id="board_list">
@@ -79,5 +81,20 @@
 
 
 <script src="/javascript/wholeMap.js"></script>
+<script>
+
+    const urlParams = new URL(window.location.href).searchParams;
+    const movieid = urlParams.get('movie_id');
+    const tvid = urlParams.get('tv_id');
+
+    let output = '';
+    if(movieid !== null) {
+        output = "<input type='hidden' value='${movieid}' />"
+    } else if (tvid !== null){
+        output = "<input type='hidden' value='${tvid}' />"
+    }
+    $('.tvmovie').append(output);
+
+</script>
 </body>
 </html>
