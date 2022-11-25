@@ -40,7 +40,6 @@ function getPlace(placeNo){
         }
     }).done(function(res) {
         data = {code: res.code, placeName: res.place_name, areaName: res.area_name, contentId: res.movie_code};
-
     });
     return data;
 }
