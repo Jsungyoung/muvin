@@ -13,7 +13,7 @@
 <body>
 <jsp:include page="../header.jsp" />
     <section>
-        <form method="post" action="javascript:findContent()">
+        <form method="post" id="search" action="javascript:findContent()">
             <input type="text" id="query">
             <input type="submit" value="검색하기">
         </form>

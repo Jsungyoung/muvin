@@ -34,10 +34,12 @@
         <li><a href="/movieAll">영화</a></li>
         <li><a href="/dramaAll">TV</a></li>
         <li><a href="map">지도</a></li>
-        <c:if test="${id != null }">
+        <c:if test="${id != null && id ne 'admin'}">
             <li><a href="/user/mypage">마이페이지</a></li>
         </c:if>
-        <li><a href="/board">게시판</a></li>
+        <c:if test="${id eq 'admin'}">
+            <li><a href="/manager">관리</a></li>
+        </c:if>
     </ul>
 </nav>
 </body>

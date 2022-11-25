@@ -55,3 +55,9 @@
     background-color: #cccccc;
     color: #252525;
 }
+
+#search > input[type="submit"]{
+    color: #fff;
+    font-size: 16px;
+    background-color: #6A24FE;
+}
