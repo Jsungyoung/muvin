@@ -40,7 +40,6 @@ public class PlaceCurrentController {
     public List<PlaceCurrent> getMyPlaceList(HttpServletRequest request){
         HttpSession session = request.getSession();
         String userId = (String)session.getAttribute("log");
-        System.out.println(userId);
         List<PlaceCurrent> placeList = service.findMyPlaceAll(userId);
         return placeList;
     }

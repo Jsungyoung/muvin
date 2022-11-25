@@ -39,6 +39,7 @@ const tvid = urlParams.get('tv_id');
 
 
 if(movieid != null) {
+    let contentType = 1;
     let url = "http://localhost:8084/v1/wholemap?movie_code=" + movieid;
 
     $.get(url, function (data) {
