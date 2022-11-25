@@ -14,38 +14,38 @@
     <link rel="stylesheet" href="css/wholeMap.css">
 </head>
 <body>
-<jsp:include page="../header.jsp" />
-
 <div class="map" id="map" style="width:700px;height:700px;"></div>
 
 <div class="xy"></div>
 
 
 <div>
+
+    <form>
+    <select class="areaName" onchange="printResult()">
+        <option value="">전체</option>
+        <option value="서울">서울</option>
+        <option value="경기">경기</option>
+        <option value="인천">인천</option>
+        <option value="부산">부산</option>
+        <option value="대전">대전</option>
+        <option value="광주">광주</option>
+        <option value="대구">대구</option>
+        <option value="경상">경상</option>
+        <option value="전라">전라</option>
+        <option value="제주">제주</option>
+        <option value="강원">강원</option>
+    </select>
+
+    </form>
+
     requestScope.placeList.size() : ${requestScope.placeList.size()}
-
-
-        <button class="areaName" onclick="printResult()" value="서울">서울</button>
-        <button class="areaName" value="경기">경기</button>
-        <button class="areaName" value="인천">인천</button>
-        <button class="areaName" value="부산">부산</button>
-        <button class="areaName" value="대전">대전</button>
-        <button class="areaName" value="광주">광주</button>
-        <button class="areaName" value="대구">대구</button>
-        <button class="areaName" value="경상">경상</button>
-        <button class="areaName" value="전라">전라</button>
-        <button class="areaName" value="제주">제주</button>
-        <button class="areaName" value="충청">충청</button>
-        <button class="areaName" value="강원">강원</button>
-
-
 
     <table class="all_map" id="all_map">
         <thead class="title1">
         </thead>
         <tbody class="container">
         </tbody>
-
 
 
         <%--
@@ -69,22 +69,20 @@
     function printResult() {
         $('.title1').empty();
         $('.container').empty();
-        let areaName =$('.areaName').val();
+        let areaName = $('.areaName').val();
 
-
+        console.log(areaName);
         let settings = {
-            url: "http://localhost:8084/v1/map2/?areaName=" + areaName ,
+            url: "http://localhost:8084/v1/map2/?areaName=" + areaName,
             method: "GET",
             timeout: 0,
             headers: {
                 "X-NCP-APIGW-API-KEY-ID": "yv0yf4rscg",
                 "X-NCP-APIGW-API-KEY": "f09FxtmNmNjgmwc78UDv2IHazt5BrnbsAMP9vS8L",
-                "Cookie": "JSESSIONID=4F6D07857C9FB21FD2E10BCF0C294D06"
             },
         };
 
         $.ajax(settings).done(function (response) {
-            async : false,
             console.log(response);
             const list = response;
 
@@ -94,6 +92,7 @@
                     <th>장소명</th>
                     <th>주소</th>
                     <th>영화바로가기</th>
+                    <th>신고하기</th>
                 </tr>`
             );
 
@@ -106,15 +105,23 @@
                 let areaName = e.areaName;
                 let movieCode = e.movieCode;
                 let areaCode = e.areaCode;
+                let placeNo = e.code;
+                let selmord = e.selmord;
 
 
+                str = '<tr>'
+                str += "<td>" + '<img style="width : 50px; height : 50px;" src=' + placeURL + '>' + "</td>";
+                str += "<td>" + placeName + "</td>";
+                str += "<td>" + areaName + "</td>";
+                str += "<td>" + movieCode + "</td>";
+                if(selmord === 1) {
+                    str += "<td>" + "<a href=movieView?movie_id=" + movieCode + '>' + movieCode + "</a></td>";
+                } else if(selmord === 2){
+                    str += "<td>" + "<a href=tvView?tv_id=" + movieCode + '>' + movieCode + "</a></td>";
 
-                str='<tr>'
-                str+="<td>"+'<img style="width : 50px; height : 50px;" src='+placeURL+'>'+"</td>";
-                str+="<td>"+placeName+"</td>";
-                str+="<td>"+areaName+"</td>";
-                str+="<td>"+movieCode+"</td>";
-                str+="</tr>";
+                }
+                str += "<img src='../../../../resources/static/images/siren.png'>";
+                str += "</tr>";
                 $('.container').append(str);
 
 

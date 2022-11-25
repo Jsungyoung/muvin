@@ -16,6 +16,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Getter
 public class Place extends Timestamp{
+    // pk
     @Id
     private int code; //pk
     private double x;
