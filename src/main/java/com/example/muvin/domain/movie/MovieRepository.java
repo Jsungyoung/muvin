@@ -10,5 +10,8 @@ public interface MovieRepository  extends JpaRepository<Movie, Integer> {
 
     public List<Movie> findByUserIdAndContentType(String userId, String contentType);
 
+    public Movie findByContentIdAndContentType(String ContentId, String contentType);
+
+    public boolean existsByUserIdAndAndContentIdAndContentTypeAndType(String userId, String contentId, String contentType, String type);
 
 }

@@ -19,6 +19,11 @@ public class MovieDto {
     private String contentType;
     private String type;
 
-//    public MovieDto
+    public MovieDto(String userId, String contentId, String contentType, String type){
+        this.userId = userId;
+        this.contentId = contentId;
+        this.contentType = contentType;
+        this.type = type;
+    }
 
 }
