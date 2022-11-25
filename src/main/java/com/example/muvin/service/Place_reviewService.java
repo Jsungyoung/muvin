@@ -42,6 +42,9 @@ public class Place_reviewService {
     public List<Place_review> readByNickName(String pr_nickname){
         return repository.findByNickname(pr_nickname);
     }
+    public int maxSearch(){
+        return repository.searchMaxNo();
+    }
 
     public List<Place_review> readByTitle(String title){
         return repository.findTitle(title);

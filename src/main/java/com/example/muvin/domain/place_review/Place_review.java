@@ -16,7 +16,7 @@ import java.util.Date;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor // 기본 생성자
-@Data
+//@Data
 public class Place_review extends Timestamp {
     @Id
     private long no; // pk

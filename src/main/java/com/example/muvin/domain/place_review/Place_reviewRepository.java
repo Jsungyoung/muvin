@@ -23,4 +23,7 @@ public interface Place_reviewRepository extends JpaRepository<Place_review, Long
 
     @Query(value="SELECT * FROM place_review where pr_nickname=?",nativeQuery = true)
     List<Place_review> findByNickname(@Param("pr_nickname") String pr_nickname);
+
+    @Query(value="SELECT max(`no`)+1 FROM place_review", nativeQuery = true)
+    int searchMaxNo();
 }

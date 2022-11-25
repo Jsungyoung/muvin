@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface MovieRepository  extends JpaRepository<Movie, Integer> {
 
+    public Movie findByContentIdAndContentType(String contentId, String contentType);
     public List<Movie> findByUserId(String userId);
 
     public List<Movie> findByUserIdAndContentType(String userId, String contentType);

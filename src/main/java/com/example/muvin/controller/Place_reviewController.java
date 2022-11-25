@@ -30,6 +30,7 @@ public class Place_reviewController {
     private Img_infoService imgService;
 
 
+
     @PostMapping("v1/boardWrite")
     public void createReview(String visit_date, String pr_nickname, String title, String content){
         Place_reviewDto reviewDto = new Place_reviewDto(visit_date, pr_nickname, title, content);
@@ -40,6 +41,13 @@ public class Place_reviewController {
     public List<Place_review> getReviewAll(){
         return service.readReviewAll();
     }
+
+
+    @GetMapping("v1/board/maxInt")
+    public int searchMaxInt(){
+        return service.maxSearch();
+    }
+
     @RequestMapping("/board")
     public void board(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ELException {
          List<Place_review> list = getReviewAll();
