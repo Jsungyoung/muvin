@@ -18,6 +18,7 @@ public class MovieController {
 
     @GetMapping("/movieView")
     public String movieView() {
+//        boolean checkWish = String
         return "movie/movieView";
     }
 
@@ -51,18 +52,15 @@ public class MovieController {
         return "movie/myMovieList";
     }
 
+    @GetMapping("/myTvList")
+    public String myTvList() {
+        return "movie/myTvList";
+    }
+
     @PostMapping("/v1/movie/add")
     @ResponseBody
     public void addMovie(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
-        MovieDto movie = new MovieDto();
-        movie.setUserId(userId);
-        movie.setContentId(contentId);
-        movie.setContentType(contentType);
-        movie.setType(type);
-        System.out.println(userId);
-        System.out.println(contentId);
-        System.out.println(movie.getContentId());
-        System.out.println(movie.getUserId());
+        MovieDto movie = new MovieDto(userId, contentId, contentType, type);
         service.createMovie(movie);
     }
 }

@@ -15,9 +15,9 @@ body {
     height: 150vh;
     display: grid;
     grid-template-columns: 100px 1fr 100px;
-    grid-template-rows: 120px 20px 20px 100px 1fr 150px;
-    grid-template-areas: "header header  header" "cust    cust     cust"
-		"nav    nav     nav" "aside  aside   aside" "section section section"
+    grid-template-rows: 120px 20px 1fr 150px;
+    grid-template-areas: "header header  header"
+		"nav    nav     nav" "section section section"
 		"footer footer  footer";
 }
 
@@ -33,17 +33,10 @@ header {
     top: 20px;
     display: inline;
 }
-.customer {
-    grid-area: cust;
-}
 
 nav {
     grid-area: nav;
     font-size: 0.8em;
-}
-
-aside {
-    grid-area: aside;
 }
 
 section {

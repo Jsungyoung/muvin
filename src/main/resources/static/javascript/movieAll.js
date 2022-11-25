@@ -103,7 +103,10 @@ function getMovieByGenre(){
 
             $('.content_all').append(
                 `<div class="content" onclick="location.href='movieView?movie_id=${movie_id}';">
-                    <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"></img>
+                    <div>
+                        <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"/>
+                    </div>
+                    <div class="title">${title}</div>
                 </div>`
             );
         });

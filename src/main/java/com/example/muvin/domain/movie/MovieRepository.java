@@ -6,10 +6,13 @@ import java.util.List;
 
 public interface MovieRepository  extends JpaRepository<Movie, Integer> {
 
-    public Movie findByContentIdAndContentType(String contentId, String contentType);
+
     public List<Movie> findByUserId(String userId);
 
     public List<Movie> findByUserIdAndContentType(String userId, String contentType);
 
-    public Movie findByContentIdAndContentType(String contentId, String contentType);
+    public Movie findByContentIdAndContentType(String ContentId, String contentType);
+
+    public boolean existsByUserIdAndAndContentIdAndContentTypeAndType(String userId, String contentId, String contentType, String type);
+
 }

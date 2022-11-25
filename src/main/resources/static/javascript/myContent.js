@@ -21,6 +21,28 @@ function addWishMovie(){
     })
 }
 
+function addWishTv(){
+
+    const user = $('.add').attr('id');
+    console.log(user);
+    const id = (new URL(window.location.href).searchParams).get('tv_id');
+    console.log(id);
+
+    $.ajax({
+        url: "/v1/movie/add",
+        method: "POST",
+        timeout: 0,
+        data: {
+            "userId" : user,
+            "contentId" : id,
+            "contentType" : "tv",
+            "type" : "wish"
+        }
+    }).success(function(res){
+        console.log(res);
+    })
+}
+
 
 function loadMyMovie(){
 
@@ -29,5 +51,9 @@ function loadMyMovie(){
         method:"",
 
     })
+
+}
+
+function loadMyTv(){
 
 }
