@@ -65,11 +65,7 @@ public class UserService {
         }
         return result.getPassword();
     }
-    // 닉네임
-    public String userNick(String id){
-        User result = repository.findAllById(id);
-        return result.getNickname();
-    }
+
     // 로그인
     public boolean login(String id, String password) {
         User findUser = repository.findAllById(id);
