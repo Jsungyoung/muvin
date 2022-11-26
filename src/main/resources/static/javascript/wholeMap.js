@@ -39,7 +39,8 @@ const tvid = urlParams.get('tv_id');
 
 
 if(movieid != null) {
-    let contentType = 1;
+    sessionStorage.setItem("contentType", "movie");
+
     let url = "http://localhost:8084/v1/wholemap?movie_code=" + movieid;
 
     $.get(url, function (data) {
@@ -103,6 +104,7 @@ if(movieid != null) {
     });
 }
 else if(tvid != null){
+    sessionStorage.setItem("contentType", "tv");
     let url = "http://localhost:8084/v1/wholemap?movie_code=" + tvid;
 
     $.get(url, function (data) {

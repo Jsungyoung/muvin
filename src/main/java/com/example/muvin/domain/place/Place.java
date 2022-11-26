@@ -37,10 +37,10 @@ public class Place extends Timestamp{
     public Place(PlaceDto placeDto) {
         this.x = placeDto.getX();
         this.y = placeDto.getY();
-        this.placeName = placeDto.getPlace_name();
+        this.placeName = placeDto.getPlaceName();
         this.areaName = placeDto.getAreaName();
-        this.movieCode = placeDto.getMovie_code();
-        this.placeURL = placeDto.getPlace_URL();
+        this.movieCode = placeDto.getMovieCode();
+        this.placeURL = placeDto.getPlaceURL();
         this.selmord = placeDto.getSelmord();
         System.out.println(this.placeURL);
         if(this.placeURL==null){

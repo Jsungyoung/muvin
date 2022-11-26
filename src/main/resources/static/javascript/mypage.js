@@ -39,7 +39,7 @@ function getPlace(placeNo){
             code : placeNo
         }
     }).done(function(res) {
-        data = {code: res.code, placeName: res.place_name, areaName: res.area_name, contentId: res.movie_code};
+        data = {code: res.code, placeName: res.placeName, areaName: res.areaName, contentId: res.movieCode};
     });
     return data;
 }

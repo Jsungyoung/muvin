@@ -15,9 +15,9 @@ public class PlaceDto {
     private double x;
     private double y;
     private String areaName;
-    private String movie_code;
-    private String place_name;
-    private String place_URL;
+    private String movieCode;
+    private String placeName;
+    private String placeURL;
     private int selmord;
 
 }

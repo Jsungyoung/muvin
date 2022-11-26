@@ -39,9 +39,9 @@ function addPlace() {
             data: {
                 x: x,
                 y: y,
-                place_name: address,
-                area_name: title.val(),
-                movie_code: movie_id,
+                placeName: address,
+                areaName: title.val(),
+                movieCode: movie_id,
             }
         }).done(function (res) {
             $.ajax({
@@ -71,9 +71,9 @@ function addPlace() {
             data: {
                 x: x,
                 y: y,
-                place_name: address,
-                area_name: title.val(),
-                movie_code: tv_id,
+                placeName: address,
+                areaName: title.val(),
+                movieCode: tv_id,
             }
         }).done(function (res) {
             $.ajax({

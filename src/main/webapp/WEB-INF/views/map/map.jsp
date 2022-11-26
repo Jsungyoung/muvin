@@ -12,6 +12,7 @@
 <head>
     <title>촬영지 지도</title>
     <link rel="stylesheet" href="css/wholeMap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
 <div class="map" id="map" style="width:700px;height:700px;"></div>
@@ -22,20 +23,20 @@
 <div>
 
     <form>
-    <select class="areaName" onchange="printResult()">
-        <option value="">전체</option>
-        <option value="서울">서울</option>
-        <option value="경기">경기</option>
-        <option value="인천">인천</option>
-        <option value="부산">부산</option>
-        <option value="대전">대전</option>
-        <option value="광주">광주</option>
-        <option value="대구">대구</option>
-        <option value="경상">경상</option>
-        <option value="전라">전라</option>
-        <option value="제주">제주</option>
-        <option value="강원">강원</option>
-    </select>
+        <select class="areaName" onchange="printResult()">
+            <option value="">전체</option>
+            <option value="서울">서울</option>
+            <option value="경기">경기</option>
+            <option value="인천">인천</option>
+            <option value="부산">부산</option>
+            <option value="대전">대전</option>
+            <option value="광주">광주</option>
+            <option value="대구">대구</option>
+            <option value="경상">경상</option>
+            <option value="전라">전라</option>
+            <option value="제주">제주</option>
+            <option value="강원">강원</option>
+        </select>
 
     </form>
 
@@ -43,6 +44,13 @@
 
     <table class="all_map" id="all_map">
         <thead class="title1">
+            <tr>
+                <th>이미지</th>
+                <th>장소명</th>
+                <th>주소</th>
+                <th>영화바로가기</th>
+                <th>신고하기</th>
+            </tr>
         </thead>
         <tbody class="container">
         </tbody>
@@ -61,9 +69,8 @@
         </tbody>
         --%>
     </table>
-
-
 </div>
+
 <script>
 
     function printResult() {
@@ -86,16 +93,6 @@
             console.log(response);
             const list = response;
 
-            $('.title1').append(
-                `<tr>
-                    <th>이미지</th>
-                    <th>장소명</th>
-                    <th>주소</th>
-                    <th>영화바로가기</th>
-                    <th>신고하기</th>
-                </tr>`
-            );
-
             let str = '';
 
             list.forEach(e => {
@@ -107,7 +104,12 @@
                 let areaCode = e.areaCode;
                 let placeNo = e.code;
                 let selmord = e.selmord;
-
+                let href = "";
+                if(selmord===1){
+                    href="movieView?movie_id=" + movieCode;
+                }else{
+                    href="tvView?tv_id=" + movieCode;
+                }
 
                 str = '<tr>'
                 str += "<td>" + '<img style="width : 50px; height : 50px;" src=' + placeURL + '>' + "</td>";
@@ -120,12 +122,12 @@
                     str += "<td>" + "<a href=tvView?tv_id=" + movieCode + '>' + movieCode + "</a></td>";
 
                 }
-                str += "<img src='../../../../resources/static/images/siren.png'>";
+                str += "<td><img class='selected' id='" + placeNo + "/" + selmord + "' onclick='showPopup(this)' src='images/siren.png'></td>";
                 str += "</tr>";
                 $('.container').append(str);
 
 
-            })
+            });
         });
     };
 
@@ -133,7 +135,7 @@
 </script>
 <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e0146e3fc3c4cc6c4776c917bccae6c&libraries=services,clusterer,drawing"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="/javascript/allMap.js"></script>
+<script src="/javascript/report.js"></script>
 </body>
 </html>

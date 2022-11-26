@@ -4,11 +4,21 @@ let placeNo = "";
 let reportCode = "";
 let content = "";
 
+function showPopup(target){
+    window.open(`/report?contentData=${target.id}`, '', "width=300px, height=300px, toolbar=no");
+}
 
-function sendReport(){
-    placeNo = $("#placeNo").val();
+function closePopup(){
+    window.close();
+}
+
+function sendReport(target){
+    let selected = target.id.split("/");
+    placeNo = selected[0];
+    reportCode = selected[1];
     content = $("#content").val();
-    category =
+
+    console.log(placeNo, reportCode, content, category);
     $.ajax({
         method:"POST",
         url: "http://localhost:8084/add/report",
@@ -24,5 +34,5 @@ function sendReport(){
 }
 
 function changeCategory(target){
-    reportCode = target.val();
+    category = target.val();
 }
