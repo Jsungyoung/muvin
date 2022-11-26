@@ -20,7 +20,9 @@
         <thead>
         <tr>
             <th>번호</th>&nbsp;&nbsp;
-            <th>내용</th>
+            <th>내용</th>&nbsp;&nbsp;
+            <th>영화이름</th>&nbsp;&nbsp;
+            <th>주소</th>
         </tr>
         </thead>
         <tbody id="container">

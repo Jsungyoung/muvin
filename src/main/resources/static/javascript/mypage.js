@@ -9,7 +9,6 @@ function getMyPlace(){
             let place = getPlace(e.placeNo);
             let placeInfo = getPlaceInfo(place.contentId, e.selmord);
 
-
             let no = e.placeNo;
             let title = placeInfo.title;
             let address = place.placeName;

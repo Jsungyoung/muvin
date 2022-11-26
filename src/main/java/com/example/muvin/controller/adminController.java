@@ -11,13 +11,12 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-public class admin {
+public class adminController {
     @Autowired
     private ReportService reportService;
 
     @GetMapping("/v1/reportAll")
     public List<Report> getReportAll(){
-        System.out.println("111");
         return reportService.readReportAll();
     }
 }
