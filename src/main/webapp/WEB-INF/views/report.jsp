@@ -9,13 +9,14 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
 <div class="background">
 <div class="window">
     <div class="popup">
         <input type="hidden" id="placeNo"/>
-        <select onchange="changeCategory()">
+        <select onchange="changeCategory(this)">
             <option value="1">컨텐츠와 상관없는 내용</option>
             <option value="2">비속어 사용</option>
             <option value="3">홍보글/도배글</option>
@@ -25,9 +26,11 @@
         </select>
         <textarea id="content"></textarea>
         <button onclick="sendReport()">보내기</button>
-        <button id="close">팝업닫기</button>
+        <button onclick="closePopup()">팝업닫기</button>
     </div>
 </div>
 </div>
+
+<script src="/javascript/report.js"></script>
 </body>
 </html>

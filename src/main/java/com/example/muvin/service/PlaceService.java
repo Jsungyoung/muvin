@@ -60,5 +60,9 @@ public class PlaceService {
                 () -> new IllegalArgumentException("존재하지 않는 Place입니다.")
         );
     }
+
+    public void delPlaceByCode(int code){
+        repository.deleteById(code);
+    }
 }
 

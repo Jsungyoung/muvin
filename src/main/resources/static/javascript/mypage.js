@@ -9,7 +9,6 @@ function getMyPlace(){
             let place = getPlace(e.placeNo);
             let placeInfo = getPlaceInfo(place.contentId, e.selmord);
 
-            console.log("place: ", e);
 
             let no = e.placeNo;
             let title = placeInfo.title;
@@ -72,5 +71,27 @@ function getPlaceInfo(contentId, type){
 
 
 function moveView(e){
-    console.log(e);
+
+    let code = "";
+    let findCode = false;
+
+    e.parentElement.parentElement.childNodes.forEach(e => {
+        if(e.tagName=="TD" && !findCode){
+            console.log(e);
+            code = e.firstChild.textContent;
+            findCode = true;
+        }
+    });
+    console.log(code);
+    $.ajax({
+        method: "DELETE",
+        url: "http://localhost:8084/del/place",
+        data: {
+            code: code
+        }
+    }).done(function(){
+        alert("삭제 되었습니다.");
+        location.reload();
+    })
+
 }
