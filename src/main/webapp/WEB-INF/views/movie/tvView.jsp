@@ -20,8 +20,8 @@
 <section>
     <div class = drama-view></div>
 
-    <div style="margin: 10px auto; display: flex; align-items: flex-end; width: 80vw;">
-        <button class="add" id="${userId}" onclick="addWishTv()">담아두기</button>
+    <div class="click" style="margin: 10px auto; display: flex; align-items: flex-end; width: 80vw;">
+        <button type="button" id="${userId}" onclick="addWishTv()">담아두기</button>
         <%--        <div>키워드</div>--%>
         <%--        <div>별점 매기는 거...........</div>--%>
     </div>
@@ -43,7 +43,7 @@
         </div>
         <div class="tab-pane fade" id="mapz">
             <jsp:include page="../map/wholeMap.jsp"/>
-            <div id="map" style="width:500px ;height:500px;"></div>
+            <div id="map" style="width:300px ;height:500px;"></div>
             <input type="button" class="btn" onclick="movePlaceSearch()" value="촬영지 등록하기"/>
             <input type="button" class="btn" onclick="location.href='/board'" value="촬영지 후기 작성"/>
         </div>

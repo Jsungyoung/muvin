@@ -23,7 +23,7 @@
     <a href="/user/loginForm"><i class="fa-solid fa-right-to-bracket">로그인</i></a>
   </c:if>
   <c:if test="${id != null }">
-      <c:out value="${id}님 환영합니다! / "/>
+      <c:out value="${id}님 / "/>
       <a href="/user/logout"><i class="fa-solid fa-right-from-bracket">로그아웃</i></a>
   </c:if>
 </div>

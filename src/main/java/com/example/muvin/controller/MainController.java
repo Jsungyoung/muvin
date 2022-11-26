@@ -16,6 +16,8 @@ public class MainController {
         return "boardWriteForm";
     }
 
-    @GetMapping("/ani")
-    public String ani(){ return "animation"; }
+    @GetMapping("/report")
+    public String report(){
+        return "report";
+    }
 }

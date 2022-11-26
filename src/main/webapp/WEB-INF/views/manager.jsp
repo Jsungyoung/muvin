@@ -11,6 +11,18 @@
     <title>Title</title>
 </head>
 <body>
+    <h1>관리자 페이지</h1>
+    <table>
+        <thead>
+        <th>번호</th>
+        <th>영화 이름</th>
+        <th>장소 이름</th>
+        <th>주소</th>
+        <th>삭제</th>
+        </thead>
+        <tbody id="container">
 
+        </tbody>
+    </table>
 </body>
 </html>

@@ -1,0 +1,27 @@
+#my > h2{
+    font-size: 24px;
+    color: #6A24FE;
+    margin-bottom: 20px;
+}
+#my > input[type="text"]{
+    width: 10%;
+    height: 25px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+    color: black;
+}
+
+#my .btn > button[type="button"]{
+    color: #fff;
+    font-size: 16px;
+    background-color: #6A24FE;
+    width: 10%;
+    height: 25px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+}
