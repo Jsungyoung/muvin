@@ -21,18 +21,18 @@ import java.util.List;
 public class Img_infoController {
     private final Img_infoService service;
 
-    @PostMapping("v1/image/create")
+    @PostMapping("/v1/image/create")
     public void createImage(@RequestBody Img_infoDto infoDto){
         System.out.println("service no : "+infoDto.getReview_no());
         System.out.println("service url : "+infoDto.getUrl());
         service.createImage(infoDto);
     }
 
-    @GetMapping("v1/image/findAll")
+    @GetMapping("/v1/image/findAll")
     public List<Img_info> getImageAll(){
         return service.readImgAll();
     }
-    @GetMapping("v1/image/findByNo")
+    @GetMapping("/v1/image/findByNo")
     public List<Img_info> getImgByNo(long review_no){
         return service.readByNo(review_no);
     }

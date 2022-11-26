@@ -31,6 +31,11 @@ public class UserService {
         int result = repository.countByNickname(nickname);
         return result;
     }
+    // 닉네임
+    public String userNick(String id){
+        User result = repository.findAllById(id);
+        return result.getNickname();
+    }
 
     // 회원가입
     public void createUser(UserDto userDto) {

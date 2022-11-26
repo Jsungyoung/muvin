@@ -34,6 +34,10 @@ public class Place_reviewService {
         System.out.println("repo : " + repository);
         return repository.findAll();
     }
+    public List<Place_review> readByIdAndType(String type, int id){
+        return repository.findByTypeAndId(type, id);
+    }
+
     public Place_review readByNo(long no){
         Place_review result =repository.findMyReview(no);
         return result;

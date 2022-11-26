@@ -68,7 +68,7 @@
     </table>
 </section>
 <jsp:include page="../footer.jsp" />
-<script src="javascript/boardView.js"></script>
+<script src="/javascript/boardView.js"></script>
 <script src="/javascript/movieSearch.js"></script>
 <script src="/javascript/myContent.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

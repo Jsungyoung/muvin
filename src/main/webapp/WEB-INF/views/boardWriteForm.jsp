@@ -7,6 +7,7 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -18,10 +19,10 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
-<%
-    HttpSession sessionCheck = request.getSession();
-    String id = (String)sessionCheck.getAttribute("log");
-%>
+<c:set var="info" scope="session" value="log"/>
+<input type="text" value="${info}">
+
+
 <section>
 <%--    <div class="container">--%>
 <%--        <textarea class="summernote" name="editordata"></textarea>--%>
@@ -38,8 +39,11 @@
         <form method="post"  class="write_form">
             <%--        <input type="hidden" id="no" name="no" value="">--%>
             <input type="date" id="visit_date" name="visit_date" value="2022-11-18">
+<%--                user service 호출--%>
             <input type="hidden" id="pr_nickname" name="pr_nickname" value="닉네임">
-
+            <input type="hidden" id="type" name="type" value="<c:out value="${info.type}"/>">
+<%--                아이디 값 받아와야됨--%>
+            <input type="hidden" id="id" name="id" value="<c:out value="${info.no}"/>">
             <div>
                 <input type="text" id="title" name="title" required>
             </div>
@@ -48,7 +52,7 @@
 
 <%--            <textarea name="contents" id="summernote"></textarea>--%>
             </div>
-            <input type="number" max="10" min="0" id="score" name="score" >
+            <input type="number" max="10" min="0" id="score" name="score"  >
             <input type="file" id="input_img" onchange="imageUpdate()" accept="image/*">
             <input type="button" value="작성" onclick="createBoard()">
             <input type="button" value="home" onclick="location.href='/board'">
@@ -58,7 +62,7 @@
 </section>
 
 <%--서머노트 --%>
-<jsp:include page="../footer.jsp" />
+<%--<jsp:include page="../footer.jsp" />--%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
 <script src="javascript/createBoard.js"></script>
