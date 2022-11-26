@@ -16,6 +16,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/672b3d82aa.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <head>
+        <!-- favicon image -->
+        <link rel="shortcut icon" href="파비콘이미지.png">
+
+        <meta property="og:title" content="링크타이틀">
+        <meta property="og:description" content="링크에대한설명">
+        <meta property="og:image" content="이미지주소">
+
+        <!-- ... -->
+    </head>
     <title>muvin</title>
 </head>
 <body>
