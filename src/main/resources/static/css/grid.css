@@ -60,3 +60,9 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+.button {
+    background-color: #6A24FE;
+    border: none;
+    padding: 5px 8px;
+}

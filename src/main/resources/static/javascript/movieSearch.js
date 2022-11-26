@@ -16,6 +16,11 @@ function getMovie(movie_id){
     }).done(function(res){
         console.log(res);
         if(res === true) {
+
+
+
+
+
             $('.mylist').append(
                 `<button class="remove" onclick="removeWish()">v 담았어요</button>`
             );

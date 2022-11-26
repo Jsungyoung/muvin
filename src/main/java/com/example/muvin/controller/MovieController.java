@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class MovieController {
@@ -25,6 +26,12 @@ public class MovieController {
     @ResponseBody
     public boolean checkContent(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
         return service.checkContent(userId, contentId, contentType, type);
+    }
+
+    @GetMapping("/v1/content/findContent")
+    @ResponseBody
+    public Movie findContent(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
+        return service.findContent(userId, contentId, contentType, type);
     }
 
     @GetMapping("/movieAll")
@@ -69,15 +76,27 @@ public class MovieController {
         return service.createMovie(movie);
     }
 
-    @DeleteMapping("/v1/content/remove")
+    @GetMapping("/v1/content/getList")
     @ResponseBody
-    public void removeContent(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
-        System.out.println(userId);
-        System.out.println(contentId);
-        System.out.println(contentType);
-        System.out.println(type);
-        MovieDto movie = new MovieDto(userId, contentId, contentType, type);
-        service.deleteContent(movie);
+    public List<Movie> getContent(@RequestParam String userId, @RequestParam String contentType){
+        return service.readMovieByUserIdAndContentType(userId, contentType);
+    }
+
+//    @DeleteMapping("/v1/content/remove")
+//    @ResponseBody
+//    public void removeContent(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
+//        System.out.println(userId);
+//        System.out.println(contentId);
+//        System.out.println(contentType);
+//        System.out.println(type);
+//        MovieDto movie = new MovieDto(userId, contentId, contentType, type);
+//        service.deleteContent(movie);
+//    }
+
+    @DeleteMapping("/v1/content/delete")
+    @ResponseBody
+    public void deleteContent(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type){
+        service.deleteByInfo(userId, contentId, contentType, type);
     }
 
 }

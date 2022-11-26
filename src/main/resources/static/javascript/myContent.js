@@ -1,3 +1,17 @@
+function findMyContent(user, contentId, c_type, type){
+    $.ajax({
+        url : "/v1/content/findContent",
+        method : "get",
+        data : {
+            "userId" : user,
+            "contentId" : contentId,
+            "contentType" : c_type,
+            "type" : type
+        }
+    }).done(function(res){
+
+    })
+}
 
 function addWish(){
 
@@ -36,7 +50,7 @@ function removeWish(){
     console.log(id);
 
     $.ajax({
-        url: "/v1/content/remove",
+        url: "/v1/content/delete",
         method: "DELETE",
         timeout: 0,
         data: {
