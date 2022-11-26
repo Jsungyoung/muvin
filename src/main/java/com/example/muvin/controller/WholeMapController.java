@@ -60,6 +60,7 @@ public class WholeMapController {
         return placeService.getAllPlace();
     }
 
+
     @RequestMapping(method = RequestMethod.GET, path="/map")
     public void map(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Place> placeList = getPlaceAllByAreaName(request.getParameter("areaName"));

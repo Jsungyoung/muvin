@@ -38,7 +38,7 @@ public class PlaceService {
     }
 
     public List<Place> placeListByMovie_code(String movie_code) {
-        List<Place> result = repository.findPlaceByMovie_code(movie_code);
+        List<Place> result = repository.findAllByMovieCode(movie_code);
         return result;
     }
 

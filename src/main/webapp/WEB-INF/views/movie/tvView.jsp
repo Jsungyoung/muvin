@@ -28,7 +28,7 @@
     <div>
         <ul class="nav nav-pills">
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#details">상세정보</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#mapz">촬영지</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" onmouseout="relayout()" href="#mapz">촬영지</a></li>
 <%--            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#actors">출연진</a></li>--%>
 <%--            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#related">관련영화</a></li>--%>
 <%--            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#reviews">리뷰</a></li>--%>

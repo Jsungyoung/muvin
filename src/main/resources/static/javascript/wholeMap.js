@@ -81,6 +81,7 @@ if(movieid !== null) {
         // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
         let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
+
         for (let i = 0; i < data.length; i++) {
             // 마커 이미지 크기
             let imageSize = new kakao.maps.Size(24, 35);
@@ -115,8 +116,7 @@ if(movieid !== null) {
                             '           </div>' +
                             '            <div class="desc">' +
                             '                <div class="ellipsis">' + place.areaName + '</div>' +
-                            '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
-                            '                <div><a href="" id="place.code" class="link" > 길찾기 </a></div>' +
+                            '                <div><a href="https://map.kakao.com/link/to/'+place.placeName+','+place.y+',' + place.x+ '"' +' id="place.code" class="link" > 카카오 길찾기 </a></div>' +
                             '                <div><a href="wholeMap/roadView?x='+place.x+'&y='+place.y+'"' +' class="link" > 로드뷰 보기 </a></div>' +
                             '            </div>' +
                             '        </div>' +
@@ -157,7 +157,8 @@ else if(tvid != null){
             const list = response;
 
             $('.title2').append(
-                `<tr>
+                `
+                <tr>
                 <th>이미지</th>
                 <th>장소명</th>
                 <th>주소</th>
@@ -251,8 +252,7 @@ else if(tvid != null){
                             '           </div>' +
                             '            <div class="desc">' +
                             '                <div class="ellipsis">' + place.areaName + '</div>' +
-                            '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
-                            '                <div><a href="" id="place.code" class="link" > 길찾기 </a></div>' +
+                            '                <div><a href="https://map.kakao.com/link/to/'+place.placeName+','+place.y+',' + place.x+ '"' +' id="place.code" class="link" > 카카오 길찾기 </a></div>' +
                             '                <div><a href="wholeMap/roadView?x='+place.x+'&y='+place.y+'"' +' class="link" > 로드뷰 보기 </a></div>' +
                             '            </div>' +
                             '        </div>' +
@@ -260,7 +260,7 @@ else if(tvid != null){
                             '</div>'
                     });
                     overlay.setMap(map);
-                    kakao.maps.event.addListener(map, 'dblclick', function (mouseEvent) {
+                    kakao.maps.event.addListener(map, 'mouseout', function (mouseEvent) {
                         overlay.setMap(null)
                     })
                 })
