@@ -30,7 +30,9 @@ public class WholeMapController {
     @RequestMapping(method = RequestMethod.GET, path="/wholeMap")
     public void wholeMap(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String movie_code = "333";
+        String movie_code = request.getParameter("idinfo");
+
+        System.out.println(movie_code);
         List<Place> maplist = getPlaceByMovieCode(movie_code);
         request.setAttribute("maplist", maplist);
         request.getRequestDispatcher("/WEB-INF/views/map/wholeMap.jsp").forward(request, response);

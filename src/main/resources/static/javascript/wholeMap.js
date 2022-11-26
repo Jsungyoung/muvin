@@ -1,34 +1,3 @@
-// $(document).ready(function(){
-//
-// });
-
-
-    // const mapContainer = document.getElementById('map'), // 지도의 중심좌표
-    //     mapOption = {
-    //         center: new kakao.maps.LatLng(41.1626276235169, 123.88085529289597), // 지도의 중심좌표
-    //         level: 14 // 지도의 확대 레벨
-    //     };
-    //
-    // let map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-    // // map.setBounds(bounds[, paddingTop, paddingRight, paddingBottom, paddingLeft]);
-
-var container = document.getElementById('map'),
-    options = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667),
-        level: 14
-    };
-var map = new kakao.maps.Map(container, options);
-
-container.style.width = '500px';
-container.style.height = '500px';
-
-setTimeout(function(){
-    map.relayout();
-    map.setCenter(new kakao.maps.LatLng(33.450701, 126.570667));
-    map.setLevel(14);
-}, 100);
-
-
 
 
 
@@ -38,9 +7,72 @@ const movieid = urlParams.get('movie_id');
 const tvid = urlParams.get('tv_id');
 
 
-if(movieid != null) {
-    sessionStorage.setItem("contentType", "movie");
+if(movieid !== null) {
 
+
+    resultPrint()
+    function resultPrint(){
+        $('.title2').empty();
+        $('.container2').empty();
+
+    var settings = {
+        url: "http://localhost:8084/v1/wholemap?movie_code="+movieid,
+        method: "GET",
+        timeout: 0,
+        headers: {
+            "X-NCP-APIGW-API-KEY-ID": "yv0yf4rscg",
+            "X-NCP-APIGW-API-KEY": "f09FxtmNmNjgmwc78UDv2IHazt5BrnbsAMP9vS8L"
+        },
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        const list = response;
+
+        $('.title2').append(
+            `<tr>
+                <th>이미지</th>
+                <th>장소명</th>
+                <th>주소</th>
+                <th>장소 리뷰 보기</th>
+                <th>신고하기</th>
+            </tr>    
+            `
+        );
+
+
+        let str = '';
+
+        list.forEach(e => {
+            console.log(e);
+            let placeURL = e.placeURL;
+            let placeName = e.placeName;
+            let areaName = e.areaName;
+            let movieCode = e.movieCode;
+            let areaCode = e.areaCode;
+            let placeNo = e.placeNo;
+            let selmord = e.selmord;
+
+
+            str = '<tr>'
+            str += "<td>" + '<img style="width : 50px; height : 50px;" src=' + placeURL + '>' + "</td>";
+            str += "<td>" + placeName + "</td>";
+            str += "<td>" + areaName + "</td>";
+            str += "<td>" + movieCode + "</td>";
+
+            str += "</tr>";
+            $('.container2').append(str);
+
+
+        })
+
+    });
+
+
+    }
+
+
+    let contentType = 1;
     let url = "http://localhost:8084/v1/wholemap?movie_code=" + movieid;
 
     $.get(url, function (data) {
@@ -104,7 +136,79 @@ if(movieid != null) {
     });
 }
 else if(tvid != null){
-    sessionStorage.setItem("contentType", "tv");
+
+    resultPrint2()
+    function resultPrint2(){
+        $('.title2').empty();
+        $('.container2').empty();
+
+        let settings = {
+            url: "http://localhost:8084/v1/wholemap?movie_code="+tvid,
+            method: "GET",
+            timeout: 0,
+            headers: {
+                "X-NCP-APIGW-API-KEY-ID": "yv0yf4rscg",
+                "X-NCP-APIGW-API-KEY": "f09FxtmNmNjgmwc78UDv2IHazt5BrnbsAMP9vS8L"
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            const list = response;
+
+            $('.title2').append(
+                `<tr>
+                <th>이미지</th>
+                <th>장소명</th>
+                <th>주소</th>
+                <th>장소리뷰하기</th>
+                <th>신고하기</th>
+            </tr>    
+            `
+            );
+
+
+            let str = '';
+
+            list.forEach(e => {
+                console.log(e);
+                let placeURL = e.placeURL;
+                let placeName = e.placeName;
+                let areaName = e.areaName;
+                let movieCode = e.movieCode;
+                let areaCode = e.areaCode;
+                let placeNo = e.placeNo;
+                let selmord = e.selmord;
+
+
+                str = '<tr>'
+                str += "<td>" + '<img style="width : 50px; height : 50px;" src=' + placeURL + '>' + "</td>";
+                str += "<td>" + placeName + "</td>";
+                str += "<td>" + areaName + "</td>";
+                str += "<td>" + movieCode + "</td>";
+                if(selmord === 1) {
+                    str += "<td>" + "<a href=movieView?movie_id=" + movieCode + '>' + movieCode + "</a></td>";
+                } else if(selmord === 2){
+                    str += "<td>" + "<a href=tvView?tv_id=" + movieCode + '>' + movieCode + "</a></td>";
+
+                }
+                str += "</tr>";
+                $('.container2').append(str);
+
+
+            })
+
+        });
+
+
+    }
+
+
+
+
+
+
+
     let url = "http://localhost:8084/v1/wholemap?movie_code=" + tvid;
 
     $.get(url, function (data) {
