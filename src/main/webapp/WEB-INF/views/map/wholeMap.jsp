@@ -24,76 +24,66 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>지도</title>
-<%--    <link rel="stylesheet" href="/css/wholeMap.css">--%>
+    <link rel="stylesheet" href="/css/wholeMap.css">
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e0146e3fc3c4cc6c4776c917bccae6c&libraries=services,clusterer,drawing"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 </head>
 <body>
-
+<div id="map" style="width:100% ;height:100%;"></div>
 <div class="tvmovie"></div>
-<div id="map" style="width:500px ;height:500px;"></div>
+
+<c:if test="${!empty movieid}">
+    <c:set var="idinfo" value="${sessionScope.movieid}"/>
+    <input type="hidden" id="movieid" name="idinfo" value="${idinfo}">
+</c:if>
+
+<c:if test="${!empty tvid}">
+    <c:set var="idinfo" value="${sessionScope.tvid}"/>
+    <input type="hidden" id="tvid" name="idinfo" value="${idinfo}">
+</c:if>
 
 
-
-<table class="board_list" id="board_list">
-    <colgroup>
-        <col width="10%"/>
-        <col width="*"/>
-        <col width="10%"/>
-
-    </colgroup>
-    <thead>
-    <tr>
-
-        <th scope="col">이미지</th>
-        <th scope="col">장소이름</th>
-        <th scope="col">별점</th>
-        <th scope="col">장소이름</th>
-        <th scope="col">별점</th>
-
-    </tr>
+<table class="container-movie">
+    <thead class="title2">
     </thead>
-    <tbody>
-
-
-
-    <form method="get"  class="write_form">
-
-        <c:forEach items="${maplist}" var="mplace" >
-            <tr>
-                <td><img src="${mplace.place_URL}"> </td>
-                <td><c:out value="${mplace.place_name}"/></td>
-                <td><c:out value="${mplace.area_name}"/></td>
-                <input type="hidden" name="no" id="movie_code" value="${mplace.movie_code}"/>
-                <td><a href="http://localhost:8084/boardView?no=${mplace.no}"><c:out value="${mplace.title}"/></a></td>
-            </tr>
-
-        </c:forEach>
-
-    </form>
+    <tbody class="container2">
     </tbody>
-
 </table>
-
-
-
+<table class="container-movie2">
+    <thead class="title3">
+    </thead>
+    <tbody class="container3">
+    </tbody>
+</table>
 
 <script src="/javascript/wholeMap.js"></script>
 <script>
 
-    const urlParams = new URL(window.location.href).searchParams;
-    const movieid = urlParams.get('movie_id');
-    const tvid = urlParams.get('tv_id');
 
-    let output = '';
-    if(movieid !== null) {
-        output = "<input type='hidden' value='${movieid}' />"
-    } else if (tvid !== null){
-        output = "<input type='hidden' value='${tvid}' />"
+
+    let container = document.getElementById('map'),
+        options = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            level: 14
+        };
+    let map = new kakao.maps.Map(container, options);
+
+    function relayout() {
+        map.relayout();
+
+        map.setCenter(new kakao.maps.LatLng(36.7299, 127.9683));
     }
-    $('.tvmovie').append(output);
+    container.style.width = '500px';
+    container.style.height = '500px';
+
+    setTimeout(function(){
+        relayout();
+        map.setCenter(new kakao.maps.LatLng(33.450701, 126.570667));
+    }, 100);
+
+
 
 </script>
 </body>

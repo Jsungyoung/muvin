@@ -24,10 +24,4 @@ public interface PlaceRepository extends JpaRepository<Place, Integer> {
     Place findPlace(String movie_code, String area_name);
 
 
-
-    @Query(value = "SELECT movie_code FROM place where selmord = 1", nativeQuery = true)
-    List<String> findMovieCodeByMovie();
-
-    @Query(value = "SELECT movie_code FROM place where selmord = 2", nativeQuery = true)
-    List<String> findMovieCodeByDrama();
 }
