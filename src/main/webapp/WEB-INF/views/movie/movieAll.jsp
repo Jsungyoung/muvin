@@ -50,6 +50,7 @@
 
     <div class="content_all"></div>
   </section>
+<jsp:include page="../footer.jsp" />
 <script src="/javascript/movieAll.js"></script>
 <script src="/javascript/movieSearch.js"></script>
 </body>

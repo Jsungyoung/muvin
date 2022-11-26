@@ -30,6 +30,7 @@
     </div>
     <input type="image" id="kakaoLoginBtn" src="/images/kakao_login_medium_wide.png" onclick="kakaoLogin()"/>
 </section>
+<jsp:include page="../footer.jsp" />
 <script src="/javascript/kakaoLogin.js?ver=3"></script>
 </body>
 </html>

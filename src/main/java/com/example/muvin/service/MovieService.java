@@ -32,7 +32,7 @@ public class MovieService {
     }
 
     public Movie findContent(String userId, String contentId, String contentType, String type){
-        return repository.findByUserIdAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
+         return repository.findByUserIdAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
     }
 
     public boolean checkContent(String userId, String contentId, String contentType, String type){
@@ -45,7 +45,7 @@ public class MovieService {
     }
 
     public List<Movie> readMovieByUserIdAndContentType(String userId, String contentType){
-        return repository.findByUserIdAndContentType(userId, contentType);
+        return repository.findMoviesByUserIdAndContentType(userId, contentType);
     }
 
     // DELETE
@@ -54,10 +54,6 @@ public class MovieService {
     }
 
     public void deleteByInfo(String userId, String contentId, String contentType, String type){
-        System.out.println(userId);
-        System.out.println(contentId);
-        System.out.println(contentType);
-        System.out.println(type);
         repository.deleteByUserIdAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
     }
 

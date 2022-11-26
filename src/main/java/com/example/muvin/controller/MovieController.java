@@ -7,11 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
+@CrossOrigin
 public class MovieController {
 
     @Autowired
@@ -59,14 +58,14 @@ public class MovieController {
         return "movie/search";
     }
 
-    @GetMapping("/myMovieList")
+    @GetMapping("/mymovieList")
     public String myMovieList() {
-        return "movie/myMovieList";
+        return "movie/mymovieList";
     }
 
-    @GetMapping("/myTvList")
+    @GetMapping("/mytvList")
     public String myTvList() {
-        return "movie/myTvList";
+        return "movie/mytvList";
     }
 
     @PostMapping("/v1/content/add")
@@ -95,6 +94,7 @@ public class MovieController {
 
     @DeleteMapping("/v1/content/delete")
     @ResponseBody
+
     public void deleteContent(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type){
         service.deleteByInfo(userId, contentId, contentType, type);
     }

@@ -1,6 +1,7 @@
 package com.example.muvin.domain.movie;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -10,7 +11,8 @@ public interface MovieRepository  extends JpaRepository<Movie, Integer> {
 
     public List<Movie> findByUserId(String userId);
 
-    public List<Movie> findByUserIdAndContentType(String userId, String contentType);
+//    @Query(value = "SELECT * FROM movie WHERE user_id=? AND content_type=?", nativeQuery = true)
+    public List<Movie> findMoviesByUserIdAndContentType(String userId, String contentType);
 
     public Movie findByContentIdAndContentType(String ContentId, String contentType);
 

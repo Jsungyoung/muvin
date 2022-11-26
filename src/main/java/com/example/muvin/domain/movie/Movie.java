@@ -2,6 +2,7 @@ package com.example.muvin.domain.movie;
 
 import com.example.muvin.util.Timestamp;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
@@ -15,7 +16,7 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
+@Getter
 public class Movie  extends Timestamp {
 
     @Id

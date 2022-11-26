@@ -67,3 +67,28 @@
     margin-bottom: 16px;
     border-radius: 6px;
 }
+
+.img_container{
+    width: 10%;
+    vertical-align: top;
+    margin: 1%;
+    overflow: auto;
+    cursor: pointer;
+}
+
+.recommend {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90vw;
+    margin: 0 auto;
+    justify-content:space-between;
+    border-radius: 10px;
+}
+
+.add, .remove{
+    background-color: #007bff;
+    padding: 5px 8px;
+    margin: 0 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}

@@ -11,8 +11,11 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
-<body onload="javascript:loadMyMovie()">
+<body onload="javascript:loadMyContent()">
 <jsp:include page="../header.jsp"/>
+<c:set var="userId" value="${log}" scope="session"/>
+<input type="hidden" value="${userId}" id="user">
+
     <section>
         <h3>내가 찜한 영화</h3>
         <div>
@@ -24,18 +27,14 @@
 
         <div class="tab-content">
             <div class="tab-pane fade show active" id="wish">
-                <c:set var="wishlist" value="" scope="request"/>
-                <div>
-                <c:forEach items="${wishlist}" var="item" varStatus="info" begin="1" end="1">
-
-                </c:forEach>
-                </div>
             </div>
             <div class="tab-pane fade" id="watch">
                 봤다고 한 콘텐츠
             </div>
         </div>
     </section>
+<jsp:include page="../footer.jsp" />
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="/javascript/myContent.js"></script>
 </body>
 </html>
