@@ -37,5 +37,5 @@ function reqBoard(obj){
     }).fail(error => {
         console.log(error);
     });
-
 }
+

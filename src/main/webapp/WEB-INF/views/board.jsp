@@ -40,8 +40,8 @@
             </select>
             <input type="text" style="color: black" id="keyword" value="" name="keyword"/>
             <input type="button" style="color: black" onclick="searchExe(form.type.value)" value="검색">
-
         </form>
+            <input type="button" style="color: black" onclick="getSearchTitle2()" value="출력테스트">
     </div>
     <table class="board_list" id="board_list">
         <colgroup>
@@ -88,7 +88,7 @@
 
 
 
-    <button type="button" style="color: black" onclick="location.href='/boardWriteForm'">글쓰기</button>
+<%--    <button type="button" style="color: black" onclick="location.href='/boardWriteForm'">글쓰기</button>--%>
 <%--    <input type="button" value="submit" onclick="createBoard()">--%>
     <input type="button" style="color: black" value="home" onclick="location.href='/board'">
     <input type="image" src="https://i.ibb.co/ZVmpFB5/1.png" />

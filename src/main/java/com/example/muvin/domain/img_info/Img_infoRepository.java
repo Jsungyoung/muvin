@@ -10,4 +10,6 @@ public interface Img_infoRepository extends JpaRepository<Img_info, Integer> {
     @Query(value = "select * from img_info where review_no=?",nativeQuery = true)
     List<Img_info> findByNo(long review_no);
 
+    @Query(value = "DELETE FROM img_info where review_no=?",nativeQuery = true)
+    void deleteByNo(int review_no);
 }
