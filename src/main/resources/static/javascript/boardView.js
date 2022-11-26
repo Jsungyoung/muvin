@@ -85,9 +85,8 @@ function getSearchContent(){
 function getSearchTitle2(){
     // let keywords = $('#keywords').val();
     // console.log(keywords);
-
-
-    // str="<button type='button' style='color: black' onclick=\"location.href='/boardWriteForm'\">글쓰기</button>"
+    getWriteButton();
+    $('#board_list ').empty();
 
     str="<thead>"
     str+="<tr>"
@@ -111,20 +110,24 @@ function getSearchTitle2(){
 
                 result.forEach(function(item){
 
-                    str+='<tbody>'
-                    str+='<tr>'
+                    str+='<tbody>';
+                    str+='<tr>';
                     str+= "<td>"+item.no+"</td>";
                     str+="<td><a href='boardView?no="+item.no+"'>"+ item.title + "</a></td>";
                     str+="<td>"+item.pr_nickname+"</td>";
                     str+="<td>"+item.visit_date+"</td>";
                     str+="<td>"+item.score+"</td>";
                     str+="<td>"+item.reg_date+"</td>";
-                    str+="</tr>"
-                    str+="</tbody>"
+                    str+="</tr>";
+                    str+="</tbody>";
                 })
                     $('#board_list').append(str);
 
         }
     })
-
+}
+function getWriteButton(){
+    $('#write_button').empty();
+    str = "<button type='button' style='color: black' onClick='location.href=`/boardWriteForm`'>글쓰기</button>";
+    $('#write_button').append(str);
 }

@@ -14,8 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Img_infoService {
 
-    @Autowired
-    Img_infoRepository repository;
+    private final Img_infoRepository repository;
 
     //create
     public void createImage(Img_infoDto infoDto){
@@ -42,7 +41,7 @@ public class Img_infoService {
     @Transactional
     public void deleteByNum(int review_no){
 
-        repository.deleteByNo(review_no);
+        repository.deleteByReview_no(review_no);
     }
 
 }

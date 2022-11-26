@@ -17,4 +17,13 @@ function delBoard(){
 }
 function delImage(no){
 
+    let settings = {
+        "url": `http://localhost:8084/v1/image/delete?review_no=${no}`,
+        "method": "DELETE",
+
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
 }

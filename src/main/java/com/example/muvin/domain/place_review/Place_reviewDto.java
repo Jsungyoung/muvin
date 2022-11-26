@@ -16,15 +16,23 @@ import java.util.Date;
 public class Place_reviewDto {
 
     private long no; // pk
-    private String visit_date;
     private String pr_nickname;
+    private String visit_date;
     private String title;
     private String content;
-    private double score;
-
+    private float score;
     private String type;
+    private int id;
 
-    private String keyword;
+    public Place_reviewDto(String pr_nickname, String title, String content, String type, float score, String visit_date, int id){
+        this.pr_nickname = pr_nickname;
+        this.visit_date = visit_date;
+        this.title = title;
+        this.content = content;
+        this.type = type;
+        this.score = score;
+        this.id = id;
+    }
 
     public Place_reviewDto(long no, String visit_date, String pr_nickname, String title, String content){
         this.no = no;
@@ -47,11 +55,13 @@ public class Place_reviewDto {
         this.title = title;
         this.content = content;
     }
-    public Place_reviewDto(String visit_date, String pr_nickname, String title, String content, double score){
+    public Place_reviewDto(String visit_date, String pr_nickname, String title, String content, float score){
         this.visit_date = visit_date;
         this.pr_nickname = pr_nickname;
         this.title = title;
         this.content = content;
         this.score = score;
     }
+
+
 }

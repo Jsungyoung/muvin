@@ -19,8 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 public class Img_infoController {
-    @Autowired
-    private Img_infoService service;
+    private final Img_infoService service;
 
     @PostMapping("v1/image/create")
     public void createImage(@RequestBody Img_infoDto infoDto){

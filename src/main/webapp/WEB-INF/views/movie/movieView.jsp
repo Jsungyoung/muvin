@@ -39,6 +39,7 @@
         </ul>
     </div>
 
+
     <div class="tab-content">
         <div class="tab-pane fade show active" id="details">
             <div id="keywords"></div>
@@ -60,8 +61,14 @@
 <%--        </div>--%>
 
     </div>
+    <input type="button" style="color: black" onclick="getSearchTitle2()" value="출력테스트">
+    <div class="write_button" id="write_button">
+    </div>
+    <table class="board_list" id="board_list">
+    </table>
 </section>
 <jsp:include page="../footer.jsp" />
+<script src="javascript/boardView.js"></script>
 <script src="/javascript/movieSearch.js"></script>
 <script src="/javascript/myContent.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
