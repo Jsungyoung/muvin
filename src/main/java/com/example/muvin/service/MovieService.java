@@ -6,6 +6,7 @@ import com.example.muvin.domain.movie.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,11 +18,10 @@ public class MovieService {
     private MovieRepository repository;
 
     // CREATE
-    public void createMovie(MovieDto movieDto){
+    public Movie createMovie(MovieDto movieDto){
         Movie movie = new Movie(movieDto);
-        repository.save(movie);
+        return repository.save(movie);
     }
-
     // READ
     public Movie readMovieByCode(int code){
         return repository.getReferenceById(code);
@@ -31,8 +31,12 @@ public class MovieService {
         return repository.findByContentIdAndContentType(contentId, contentType);
     }
 
+    public Movie findContent(String userId, String contentId, String contentType, String type){
+        return repository.findByUserIdAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
+    }
+
     public boolean checkContent(String userId, String contentId, String contentType, String type){
-        return repository.existsByUserIdAndAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
+        return repository.existsByUserIdAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
     }
 
     public List<Movie> readMovieByUserId(String userId){
@@ -45,8 +49,21 @@ public class MovieService {
     }
 
     // DELETE
-    public void DeleteMovieByCode(int code){
+    public void deleteMovieByCode(int code){
         repository.deleteById(code);
     }
+
+    public void deleteByInfo(String userId, String contentId, String contentType, String type){
+        System.out.println(userId);
+        System.out.println(contentId);
+        System.out.println(contentType);
+        System.out.println(type);
+        repository.deleteByUserIdAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
+    }
+
+//    public void deleteContent(MovieDto movieDto){
+//        Movie movie = new Movie(movieDto);
+//        repository.delete(movie);
+//    }
 
 }

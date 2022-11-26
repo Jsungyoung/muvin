@@ -18,13 +18,13 @@
 <body onload="javascript:getMovie(${movie_id})">
 <jsp:include page="../header.jsp" />
 <c:set var="userId" value="${log}" scope="session"/>
-
+<input type="hidden" value="${userId}" id="user">
 
 <section>
     <div class = movie-view></div>
 
-    <div style="margin: 10px auto; display: flex; align-items: flex-end; width: 80vw;">
-        <button class="add" id="${userId}" onclick="addWishMovie()">담아두기</button>
+    <div class="mylist" style="margin: 10px auto; display: flex; align-items: flex-end; width: 80vw;">
+
 <%--        <div>키워드</div>--%>
 <%--        <div>별점 매기는 거...........</div>--%>
     </div>
