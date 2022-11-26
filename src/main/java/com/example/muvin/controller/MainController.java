@@ -16,8 +16,4 @@ public class MainController {
         return "boardWriteForm";
     }
 
-    @GetMapping("/report")
-    public String report(){
-        return "report";
-    }
 }
