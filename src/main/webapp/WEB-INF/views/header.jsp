@@ -17,6 +17,14 @@
     <script src="https://kit.fontawesome.com/672b3d82aa.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <title>muvin</title>
+    <!-- favicon image -->
+    <link rel="shortcut icon" href="주소">
+
+    <meta property="og:title" content="링크타이틀">
+    <meta property="og:description" content="링크에대한설명">
+    <meta property="og:image" content="/images/facicon.png">
+
+    <!-- ... -->
 </head>
 <body>
 <c:set var="id" value="${sessionScope.log}"/>

@@ -18,7 +18,7 @@ public interface MovieRepository  extends JpaRepository<Movie, Integer> {
 
     public Movie findByUserIdAndContentIdAndContentTypeAndType(String userId, String contentId, String contentType, String type);
 
-    public boolean existsByUserIdAndContentIdAndContentTypeAndType(String userId, String contentId, String contentType, String type);
+    public boolean existsByUserIdAndContentIdAndContentType(String userId, String contentId, String contentType);
 
     @Transactional
     public void deleteByUserIdAndContentIdAndContentTypeAndType(String userId, String contentId, String contentType, String type);

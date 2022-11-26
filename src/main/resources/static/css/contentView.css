@@ -49,7 +49,6 @@
     border-radius: 13px;
     background-color: #585858;
     margin: 3px 6px;
-    cursor: pointer;
     color: #dddddd;
 }
 .tab-pane .btn{
@@ -85,7 +84,7 @@
     border-radius: 10px;
 }
 
-.add, .remove{
+.watch, .wish{
     background-color: #007bff;
     padding: 5px 8px;
     margin: 0 5px;

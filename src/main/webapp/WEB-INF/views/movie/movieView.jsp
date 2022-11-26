@@ -24,9 +24,8 @@
     <div class = movie-view></div>
 
     <div class="mylist" style="margin: 10px auto; display: flex; align-items: flex-end; width: 80vw;">
-
-<%--        <div>키워드</div>--%>
-<%--        <div>별점 매기는 거...........</div>--%>
+        <div class="wish"></div>
+        <div class="watch"></div>
     </div>
     <div>
         <ul class="nav nav-pills">
@@ -55,10 +54,6 @@
         </div>
         <div class="tab-pane fade" id="related">
         </div>
-<%--        <div class="tab-pane fade" id="reviews">--%>
-<%--            <p>리뷰 작성하기</p>--%>
-<%--            <p>리뷰 로드하기</p>--%>
-<%--        </div>--%>
 
     </div>
     <input type="button" style="color: black" onclick="getSearchTitle2()" value="출력테스트">
