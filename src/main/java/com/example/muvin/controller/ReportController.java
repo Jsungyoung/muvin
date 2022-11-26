@@ -24,14 +24,13 @@ public class ReportController {
     }
 
     @RequestMapping("/add/report")
-    public void addReport(@RequestParam ReportDto reportDto){
+    public void addReport(ReportDto reportDto){
         Report report = new Report(reportDto);
         reportService.addReport(report);
     }
 
     @GetMapping("/report")
     public String myTvList(@RequestParam String contentData) {
-        String url = "report?contentData = " + contentData;
-        return url;
+        return "report";
     }
 }

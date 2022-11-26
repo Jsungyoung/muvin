@@ -68,5 +68,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="/javascript/wholeMap.js"></script>
 <script src="/javascript/myContent.js"></script>
+<script src="/javascript/report.js"></script>
 </body>
 </html>

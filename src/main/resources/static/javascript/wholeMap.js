@@ -50,16 +50,16 @@ if(movieid !== null) {
             let areaName = e.areaName;
             let movieCode = e.movieCode;
             let areaCode = e.areaCode;
-            let placeNo = e.placeNo;
+            let placeNo = e.code;
             let selmord = e.selmord;
 
 
             str = '<tr>'
             str += "<td>" + '<img style="width : 50px; height : 50px;" src=' + placeURL + '>' + "</td>";
-            str += "<td>" + placeName + "</td>";
             str += "<td>" + areaName + "</td>";
+            str += "<td>" + placeName + "</td>";
             str += "<td>" + movieCode + "</td>";
-
+            str += "<td><img class='selected' id='" + placeNo + "/" + selmord + "' onclick='showPopup(this)' src='images/siren.png'></td>";
             str += "</tr>";
             $('.container2').append(str);
 
@@ -178,21 +178,21 @@ else if(tvid != null){
                 let areaName = e.areaName;
                 let movieCode = e.movieCode;
                 let areaCode = e.areaCode;
-                let placeNo = e.placeNo;
+                let placeNo = e.code;
                 let selmord = e.selmord;
 
 
                 str = '<tr>'
                 str += "<td>" + '<img style="width : 50px; height : 50px;" src=' + placeURL + '>' + "</td>";
-                str += "<td>" + placeName + "</td>";
                 str += "<td>" + areaName + "</td>";
+                str += "<td>" + placeName + "</td>";
                 str += "<td>" + movieCode + "</td>";
                 if(selmord === 1) {
                     str += "<td>" + "<a href=movieView?movie_id=" + movieCode + '>' + movieCode + "</a></td>";
                 } else if(selmord === 2){
                     str += "<td>" + "<a href=tvView?tv_id=" + movieCode + '>' + movieCode + "</a></td>";
-
                 }
+                str += "<td><img class='selected' id='" + placeNo + "/" + selmord + "' onclick='showPopup(this)' src='images/siren.png'></td>";
                 str += "</tr>";
                 $('.container2').append(str);
 

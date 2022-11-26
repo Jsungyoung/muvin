@@ -41,4 +41,8 @@ public class PlaceController {
     }
 
 
+    @DeleteMapping("/del/place")
+    public void delPlaceByCode(@RequestParam int code){
+        placeService.delPlaceByCode(code);
+    }
 }

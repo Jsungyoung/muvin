@@ -2,6 +2,7 @@ package com.example.muvin.domain.report;
 
 import com.example.muvin.util.Timestamp;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Getter
 public class Report extends Timestamp {
 
     @Id

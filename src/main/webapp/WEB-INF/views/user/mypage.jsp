@@ -50,7 +50,7 @@
             <th>영화 이름</th>&nbsp;&nbsp;
             <th>장소 이름</th>&nbsp;&nbsp;
             <th>주소</th>&nbsp;&nbsp;
-            <th>삭제</th>&nbsp;&nbsp;
+            <th>삭제</th>&nbsp;
             </thead>
             <tbody id="placesInfo">
 

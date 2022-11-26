@@ -21,9 +21,7 @@ public class Movie  extends Timestamp {
 
     @Id
     private int code;
-
     private String userId;
-
     private String contentId;
     private String contentType;
     private String type;
