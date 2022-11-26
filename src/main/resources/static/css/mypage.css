@@ -1,6 +1,10 @@
+#my{
+    text-align: center;
+}
+
 #my > h2{
     font-size: 24px;
-    color: #6A24FE;
+    color: #180DFF;
     margin-bottom: 20px;
 }
 #my > input[type="text"]{
@@ -17,8 +21,19 @@
 #my .btn > button[type="button"]{
     color: #fff;
     font-size: 16px;
-    background-color: #6A24FE;
+    background-color: #007bff;
     width: 10%;
+    min-width: 300px;
+    height: 25px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+}
+
+button[type="button"]{
+    color: #fff;
+    background-color: #007bff; width: 10%;
     height: 25px;
     padding: 0 10px;
     box-sizing: border-box;

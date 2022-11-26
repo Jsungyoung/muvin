@@ -40,25 +40,24 @@
             <button type="button" onclick="location.href='/user/updateForm'">회원정보 수정</button>
             <button type="button" onclick="location.href='/user/deleteForm'">회원탈퇴</button>
         </div>
-        <div class="btn">
-            <button type="button" onclick="location.href='../mymovieList'">찜한 영화 보러가기</button>
-            <button type="button" onclick="location.href='../mytvList'">찜한 드라마 보러가기</button>
-        </div>
-        <table>
-            <thead>
-            <th>번호</th>&nbsp;&nbsp;
-            <th>영화 이름</th>&nbsp;&nbsp;
-            <th>장소 이름</th>&nbsp;&nbsp;
-            <th>주소</th>&nbsp;&nbsp;
-            <th>삭제</th>&nbsp;
-            </thead>
-            <tbody id="placesInfo">
-
-            </tbody>
-        </table>
-
-
     </form>
+    <table>
+        <thead>
+        <th>번호</th>&nbsp;&nbsp;
+        <th>영화 이름</th>&nbsp;&nbsp;
+        <th>장소 이름</th>&nbsp;&nbsp;
+        <th>주소</th>&nbsp;&nbsp;
+        <th>삭제</th>&nbsp;
+        </thead>
+        <tbody id="placesInfo">
+
+        </tbody>
+    </table>
+
+    <div class="btn">
+        <button type="button" onclick="location.href='../mymovieList'">찜한 영화 보러가기</button>
+        <button type="button" onclick="location.href='../mytvList'">찜한 드라마 보러가기</button>
+    </div>
 </section>
 <jsp:include page="../footer.jsp" />
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
