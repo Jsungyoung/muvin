@@ -33,11 +33,7 @@
 <%--        });--%>
 <%--    </script>--%>
 
-
-
-
-
-
+    <input type="hidden" id="no" name="no" value="">
     <div class="container">
         <form method="post"  class="write_form">
             <%--        <input type="hidden" id="no" name="no" value="">--%>
@@ -59,9 +55,7 @@
         </form>
     </div>
 
-
 </section>
-
 
 <%--서머노트 --%>
 

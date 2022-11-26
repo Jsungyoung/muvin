@@ -81,3 +81,50 @@ function getSearchContent(){
         }
     })
 }
+
+function getSearchTitle2(){
+    // let keywords = $('#keywords').val();
+    // console.log(keywords);
+
+
+    // str="<button type='button' style='color: black' onclick=\"location.href='/boardWriteForm'\">글쓰기</button>"
+
+    str="<thead>"
+    str+="<tr>"
+    str+="<th scope='col'>글번호!</th>"
+    str+="<th scope='col'>제목</th>"
+    str+="<th scope='col'>작성자</th>"
+    str+="<th scope='col'>방문일</th>"
+    str+="<th scope='col'>별점</th>"
+    str+="<th scope='col'>작성일</th>"
+    str+="</tr>"
+    str+="</thead>"
+    $.ajax({
+        type: 'GET',
+        // ${search}
+        url : `/v1/board/reviewAll`,
+        // data : $("form[name=search-form]").serialize(),
+        success : function(result){
+            //테이블 초기화
+
+            // $('#board_list ').empty();
+
+                result.forEach(function(item){
+
+                    str+='<tbody>'
+                    str+='<tr>'
+                    str+= "<td>"+item.no+"</td>";
+                    str+="<td><a href='boardView?no="+item.no+"'>"+ item.title + "</a></td>";
+                    str+="<td>"+item.pr_nickname+"</td>";
+                    str+="<td>"+item.visit_date+"</td>";
+                    str+="<td>"+item.score+"</td>";
+                    str+="<td>"+item.reg_date+"</td>";
+                    str+="</tr>"
+                    str+="</tbody>"
+                })
+                    $('#board_list').append(str);
+
+        }
+    })
+
+}

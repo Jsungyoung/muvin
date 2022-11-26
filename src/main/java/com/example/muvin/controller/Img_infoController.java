@@ -24,12 +24,10 @@ public class Img_infoController {
 
     @PostMapping("v1/image/create")
     public void createImage(@RequestBody Img_infoDto infoDto){
-        System.out.println("service code : "+infoDto.getCode());
         System.out.println("service no : "+infoDto.getReview_no());
         System.out.println("service url : "+infoDto.getUrl());
         service.createImage(infoDto);
     }
-
 
     @GetMapping("v1/image/findAll")
     public List<Img_info> getImageAll(){
@@ -46,6 +44,11 @@ public class Img_infoController {
         request.setAttribute("images",list);
 
         request.getRequestDispatcher("/WEB-INF/views/boardView.jsp").forward(request, response);
+    }
+    @DeleteMapping("/v1/image/delete")
+    public void deleteImage(@RequestParam int review_no){
+        System.out.println("reviewNo : " + review_no);
+        service.deleteByNum(review_no);
     }
 
 }

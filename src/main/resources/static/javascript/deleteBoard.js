@@ -1,5 +1,6 @@
 function delBoard(){
     let no = $('#no').val();
+    delImage(no);
     let settings = {
         "url": `/v1/delete/board?no=${no}`,
         "method": "DELETE"
@@ -13,4 +14,7 @@ function delBoard(){
     }).fail(error => {
         console.log(error);
     });
+}
+function delImage(no){
+
 }

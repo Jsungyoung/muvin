@@ -5,8 +5,10 @@ import com.example.muvin.domain.img_info.Img_infoDto;
 import com.example.muvin.domain.img_info.Img_infoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 @Service
 @RequiredArgsConstructor
@@ -37,5 +39,10 @@ public class Img_infoService {
         return repository.findByNo(review_no);
     }
 
+    @Transactional
+    public void deleteByNum(int review_no){
+
+        repository.deleteByNo(review_no);
+    }
 
 }
