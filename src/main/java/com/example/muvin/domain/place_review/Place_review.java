@@ -24,17 +24,26 @@ public class Place_review extends Timestamp {
     private String pr_nickname;
     private String title;
     private String content;
-    private double score;
+    private float score;
+
+    private String type;
+
+    private int id;
+
 
 
     public Place_review(Place_reviewDto reviewDto){
-        this.no = reviewDto.getNo();
+
+        this.no=reviewDto.getNo();
         this.visit_date = reviewDto.getVisit_date();
         this.pr_nickname = reviewDto.getPr_nickname();
         this.title = reviewDto.getTitle();
         this.content = reviewDto.getContent();
         this.score=reviewDto.getScore();
+        this.type=reviewDto.getType();
+        this.id=reviewDto.getId();
     }
+
 
     //update 용 setter
     public void setPlace_review(Place_reviewDto reviewDto){

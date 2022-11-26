@@ -31,11 +31,20 @@ public class Place_reviewController {
 
 
 
+//    @PostMapping("v1/boardWrite")
+//    public void createReview(String visit_date, String pr_nickname, String title, String content){
+//        Place_reviewDto reviewDto = new Place_reviewDto(visit_date, pr_nickname, title, content);
+//        service.createView(reviewDto);
+//    }
+
+
     @PostMapping("v1/boardWrite")
-    public void createReview(String visit_date, String pr_nickname, String title, String content){
-        Place_reviewDto reviewDto = new Place_reviewDto(visit_date, pr_nickname, title, content);
+//    public void createReview(String pr_nickname, String title,  String content, String type, float score,String visit_date, int id){
+    public void createReview(@RequestBody Place_reviewDto reviewDto){
+//        Place_reviewDto reviewDto = new Place_reviewDto(pr_nickname, title, content, type, score, visit_date, id);
         service.createView(reviewDto);
     }
+
 
     @GetMapping("v1/board/reviewAll")
     public List<Place_review> getReviewAll(){

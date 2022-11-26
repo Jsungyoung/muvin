@@ -43,6 +43,9 @@
         </form>
             <input type="button" style="color: black" onclick="getSearchTitle2()" value="출력테스트">
     </div>
+    <div class="write_button" id="write_button">
+
+    </div>
     <table class="board_list" id="board_list">
         <colgroup>
             <col width="15%"/>
