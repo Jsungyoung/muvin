@@ -60,8 +60,6 @@
 <script src="/javascript/wholeMap.js"></script>
 <script>
 
-
-
     let container = document.getElementById('map'),
         options = {
             center: new kakao.maps.LatLng(33.450701, 126.570667),

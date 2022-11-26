@@ -22,8 +22,7 @@ public class WholeMapController {
     private PlaceService placeService;
 
     @GetMapping("/v1/wholemap")
-    public List<Place> getPlaceByMovieCode(String movie_code) {
-        return placeService.placeListByMovie_code(movie_code);
+    public List<Place> getPlaceByMovieCode(String movie_code) {return placeService.placeListByMovie_code(movie_code);
     }
 
 

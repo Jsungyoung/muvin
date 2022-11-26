@@ -8,21 +8,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <title>Title</title>
 </head>
 <body>
-    <h1>관리자 페이지</h1>
+<jsp:include page="header.jsp"/>
+<section>
+
     <table>
+        <h1>관리자 페이지</h1>
         <thead>
-        <th>번호</th>
-        <th>영화 이름</th>
-        <th>장소 이름</th>
-        <th>주소</th>
-        <th>삭제</th>
+        <tr>
+            <th>번호</th>&nbsp;&nbsp;
+            <th>내용</th>
+        </tr>
         </thead>
         <tbody id="container">
-
         </tbody>
     </table>
+</section>
+<script src="/javascript/reportAll.js"></script>
 </body>
 </html>
