@@ -22,9 +22,6 @@ function printResult() {
 
     let areaName = $('.areaName').val();
 
-    console.log("areaName :" + areaName);
-
-
     // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
     $.get("http://localhost:8084/v1/map2/?areaName=" + areaName, function(data) {
 
@@ -50,8 +47,7 @@ function printResult() {
                     '           </div>' +
                     '            <div class="desc">' +
                     '                <div class="ellipsis"></div>' +
-                    '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
-                    '                <div><a href="" class="link" > 길찾기 </a></div>' +
+                    '                <div><a href="https://map.kakao.com/link/to/'+data[i].placeName+','+data[i].y+',' + data[i].x+ '"' +'  class="link" > 길찾기 </a></div>' +
                     '                <div><a href="wholeMap/roadView?x='+data[i].x+'&y='+data[i].y+'"' +' class="link" > 로드뷰 보기 </a></div>' +
                     '            </div>' +
                     '        </div>' +
@@ -109,10 +105,21 @@ function printResult() {
     $.ajax(settings).done(function (response) {
         const list = response;
 
+        $('.title1').append(
+            `
+                <tr>
+                <th>이미지</th>
+                <th>장소명</th>
+                <th>주소</th>
+                <th>영화바로가기</th>
+                <th>신고하기</th>
+            </tr>    
+            `
+        );
+
         let str = '';
 
         list.forEach(e => {
-            console.log(e);
             let placeURL = e.placeURL;
             let placeName = e.placeName;
             let areaName = e.areaName;
@@ -131,14 +138,12 @@ function printResult() {
             str += "<td>" + '<img style="width : 50px; height : 50px;" src=' + placeURL + '>' + "</td>";
             str += "<td>" + placeName + "</td>";
             str += "<td>" + areaName + "</td>";
-            str += "<td>" + movieCode + "</td>";
             if(selmord === 1) {
-                str += "<td>" + "<a href=movieView?movie_id=" + movieCode + '>' + movieCode + "</a></td>";
+                str += "<td>" + "<a href=movieView?movie_id=" + movieCode + '>' + '정보보기' + "</a></td>";
             } else if(selmord === 2){
-                str += "<td>" + "<a href=tvView?tv_id=" + movieCode + '>' + movieCode + "</a></td>";
-
+                str += "<td>" + "<a style='text-decoration: none;' href=tvView?tv_id=" + movieCode + '>' + '정보보기' + "</a></td>";
             }
-            str += "<td><img class='selected' id='" + placeNo + "/" + selmord + "' onclick='showPopup(this)' src='images/siren.png'></td>";
+            str += "<td><img  style='cursor:pointer ; width: 20px; height: 20px;' class='selected' id='" + placeNo + "/" + selmord + "' onclick='showPopup(this)' src='images/siren.png'></td>";
             str += "</tr>";
             $('.container').append(str);
 

@@ -34,7 +34,6 @@ if(movieid !== null) {
                 <th>이미지</th>
                 <th>장소명</th>
                 <th>주소</th>
-                <th>장소 리뷰 보기</th>
                 <th>신고하기</th>
             </tr>    
             `
@@ -56,10 +55,9 @@ if(movieid !== null) {
 
             str = '<tr>'
             str += "<td>" + '<img style="width : 50px; height : 50px;" src=' + placeURL + '>' + "</td>";
-            str += "<td>" + areaName + "</td>";
             str += "<td>" + placeName + "</td>";
-            str += "<td>" + movieCode + "</td>";
-            str += "<td><img class='selected' id='" + placeNo + "/" + selmord + "' onclick='showPopup(this)' src='images/siren.png'></td>";
+            str += "<td>" +  areaName  + "</td>";
+            str += "<td><img style='content-align:center; cursor: pointer; width: 30px; height: 30px;' class='selected' id='" + placeNo + "/" + selmord + "' onclick='showPopup(this)' src='images/siren.png'></td>";
             str += "</tr>";
             $('.container2').append(str);
 
@@ -162,7 +160,6 @@ else if(tvid != null){
                 <th>이미지</th>
                 <th>장소명</th>
                 <th>주소</th>
-                <th>장소리뷰하기</th>
                 <th>신고하기</th>
             </tr>    
             `
@@ -184,15 +181,9 @@ else if(tvid != null){
 
                 str = '<tr>'
                 str += "<td>" + '<img style="width : 50px; height : 50px;" src=' + placeURL + '>' + "</td>";
+                str += "<td>" +  placeName + "</td>";
                 str += "<td>" + areaName + "</td>";
-                str += "<td>" + placeName + "</td>";
-                str += "<td>" + movieCode + "</td>";
-                if(selmord === 1) {
-                    str += "<td>" + "<a href=movieView?movie_id=" + movieCode + '>' + movieCode + "</a></td>";
-                } else if(selmord === 2){
-                    str += "<td>" + "<a href=tvView?tv_id=" + movieCode + '>' + movieCode + "</a></td>";
-                }
-                str += "<td><img class='selected' id='" + placeNo + "/" + selmord + "' onclick='showPopup(this)' src='images/siren.png'></td>";
+                str += "<td><img style='text-align:center; cursor: pointer; width: 30px; height: 30px;' id='" + placeNo + "/" + selmord + "' onclick='showPopup(this)' src='images/siren.png'></td>";
                 str += "</tr>";
                 $('.container2').append(str);
 

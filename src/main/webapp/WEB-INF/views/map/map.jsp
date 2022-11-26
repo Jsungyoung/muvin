@@ -12,18 +12,16 @@
 <head>
     <title>촬영지 지도</title>
     <link rel="stylesheet" href="css/wholeMap.css">
+    <link rel="stylesheet" href="css/map.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
-<div class="map" id="map" style="width:700px;height:700px;"></div>
-
-<div class="xy"></div>
+<jsp:include page="../header.jsp" />
 
 
-<div>
 
-    <form>
-    <select class="areaName" onchange="printResult()">
+<section>
+    <select class="areaName" id="areaName" onchange="printResult()">
         <option>선택</option>
         <option value="">전체</option>
         <option value="서울">서울</option>
@@ -38,9 +36,14 @@
         <option value="제주">제주</option>
         <option value="강원">강원</option>
     </select>
+    <div class="vvoard">
 
-    </form>
+    <div class="map" id="map" style="width:700px;height:550px;"></div>
 
+  <!--  <form> -->
+
+
+   <!-- </form> -->
     <table class="all_map" id="all_map">
         <thead class="title1">
             <tr>
@@ -54,9 +57,8 @@
         <tbody class="container">
         </tbody>
     </table>
-
-
 </div>
+</section>
 
 <script>
 

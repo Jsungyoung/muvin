@@ -1,0 +1,33 @@
+*{
+    text-decoration: none;
+}
+map{
+    align-content: center;
+}
+
+.areaName{
+    color: #222222;
+    width: 100px;
+}
+
+option{
+    color: #222222;
+}
+
+table{
+    align-items: center;
+    width: 1000px;
+}
+
+.vvoard{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+section{
+    height: 1000px;
+    margin-top: 20px;
+
+}
+
