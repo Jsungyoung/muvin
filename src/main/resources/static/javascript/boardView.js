@@ -1,22 +1,4 @@
-// function boardView(){
-//
-//     // let no = .val();
-//     console.log("번호 값");
-//     let settings = {
-//         "url": `http://localhost:8084/v1/board/reviewNo?no=${no}`,
-//         "method": "GET",
-//         "timeout": 0,
-//         "headers": {
-//             "": ""
-//         },
-//
-//     };
-//     $.ajax(settings).done(function (response) {
-//         console.log(response);
-//         location.href=`http://localhost:8084/boardView?no=${no}`
-//     });
-//
-// }
+
 function getSearchTitle(){
     let keyword = $('#keyword').val();
     console.log(keyword);
@@ -82,10 +64,18 @@ function getSearchContent(){
     })
 }
 
+//
+urlParam = new URL(window.location.href).searchParams;
+let movieid = urlParam.get('movie_id');
+let tvid = urlParam.get('tv_id');
+
 function getSearchTitle2(){
+
+
     // let keywords = $('#keywords').val();
     // console.log(keywords);
     getWriteButton();
+
     $('#board_list ').empty();
 
     str="<thead>"
@@ -101,7 +91,7 @@ function getSearchTitle2(){
     $.ajax({
         type: 'GET',
         // ${search}
-        url : `/v1/board/reviewAll`,
+        url : `/v1/board/TypeAndId`,
         // data : $("form[name=search-form]").serialize(),
         success : function(result){
             //테이블 초기화
