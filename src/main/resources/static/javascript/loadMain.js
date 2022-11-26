@@ -1,7 +1,5 @@
 function loadMainMovie(){
 
-
-
     // 영진위 일일 박스오피스
     const date = new Date();
     const day = "" + date.getFullYear() + (date.getMonth()+1) + (date.getDate()-1);
@@ -38,13 +36,9 @@ function loadMainMovie(){
                 );
             })
         }
-        getPoster(res);
     });
 
-
-
-
-    // tmdb 상위 랭킹
+    // tmdb 별점순
     $.ajax({
         url: "https://api.themoviedb.org/3/movie/top_rated?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&page=1&region=KR",
         method: "GET",
@@ -63,22 +57,6 @@ function loadMainMovie(){
 				</div>`
             );
         }
-
-
-        // list.forEach(e => {
-        //     const poster_path = e.poster_path;
-        //     const title = e.title;
-        //     const audAcc = e.popularity;
-        //     const regdate = e.release_date;
-        //     const content = e.overview;
-        //     const movie_id = e.id;
-        //
-        //     $('.popular').append(
-        //         `<div class="movie" onclick="location.href='movieView?movie_id=${movie_id}';">
-        //             <div><img class="poster-img" src="https://image.tmdb.org/t/p/original/${poster_path}"></div>
-		// 		</div>`
-        //     );
-        // });
     });
 
     // tmdb 인기순

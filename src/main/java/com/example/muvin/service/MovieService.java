@@ -35,8 +35,8 @@ public class MovieService {
          return repository.findByUserIdAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
     }
 
-    public boolean checkContent(String userId, String contentId, String contentType, String type){
-        return repository.existsByUserIdAndContentIdAndContentTypeAndType(userId, contentId, contentType, type);
+    public boolean checkContent(String userId, String contentId, String contentType){
+        return repository.existsByUserIdAndContentIdAndContentType(userId, contentId, contentType);
     }
 
     public List<Movie> readMovieByUserId(String userId){

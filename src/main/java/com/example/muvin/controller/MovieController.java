@@ -23,8 +23,8 @@ public class MovieController {
 
     @GetMapping("/v1/movie/checkContent")
     @ResponseBody
-    public boolean checkContent(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType, @RequestParam String type) {
-        return service.checkContent(userId, contentId, contentType, type);
+    public boolean checkContent(@RequestParam String userId, @RequestParam String contentId, @RequestParam String contentType) {
+        return service.checkContent(userId, contentId, contentType);
     }
 
     @GetMapping("/v1/content/findContent")

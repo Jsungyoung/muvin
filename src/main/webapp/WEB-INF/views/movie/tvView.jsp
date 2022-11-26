@@ -22,8 +22,10 @@
     <div class = drama-view></div>
 
     <div class="mylist" style="margin: 10px auto; display: flex; align-items: flex-end; width: 80vw;">
-        <%--        <div>별점 매기는 거...........</div>--%>
+        <div class="wish"></div>
+        <div class="watch"></div>
     </div>
+
     <div>
         <ul class="nav nav-pills">
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#details">상세정보</a></li>

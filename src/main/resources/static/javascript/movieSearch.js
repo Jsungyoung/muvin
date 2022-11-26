@@ -48,9 +48,6 @@ function getMovie(movie_id){
                                 <td>상영 시간</td>
                                 <td>${runtime}분</td>
                             </tr>
-                            <tr colspan="2">
-                                <td><button value="+찜하기"/></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

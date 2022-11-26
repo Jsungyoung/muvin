@@ -27,6 +27,14 @@
         <!-- ... -->
     </head>
     <title>muvin</title>
+    <!-- favicon image -->
+    <link rel="shortcut icon" href="주소">
+
+    <meta property="og:title" content="링크타이틀">
+    <meta property="og:description" content="링크에대한설명">
+    <meta property="og:image" content="/images/facicon.png">
+
+    <!-- ... -->
 </head>
 <body>
 <c:set var="id" value="${sessionScope.log}"/>
