@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-@import
-url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Open+Sans:wght@400;600&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -45,7 +42,7 @@ section {
 
 footer {
     grid-area: footer;
-    font-size: 0.2em;
+    font-size: 0.5em;
     padding:20px;
     text-align:center;
 }

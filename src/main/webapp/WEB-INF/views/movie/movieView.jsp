@@ -33,7 +33,7 @@
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#details">상세정보</a></li>
             <li class="nav-item"><a class="nav-link" onmouseout="relayout()"  data-toggle="tab" href="#mapz">촬영지</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#actors">출연진</a></li>
-<%--            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#related">관련영화</a></li>--%>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#related">관련영화</a></li>
 <%--            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#reviews">리뷰</a></li>--%>
 <%--            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#season">시즌</a></li>--%>
         </ul>
@@ -52,9 +52,8 @@
         </div>
         <div class="tab-pane fade" id="actors">
         </div>
-<%--        <div class="tab-pane fade" id="related">--%>
-<%--            <p>관련 영화 리스트 . . .  ajax? 이거 하려면,, 흠..api 확인하기</p>--%>
-<%--        </div>--%>
+        <div class="tab-pane fade" id="related">
+        </div>
 <%--        <div class="tab-pane fade" id="reviews">--%>
 <%--            <p>리뷰 작성하기</p>--%>
 <%--            <p>리뷰 로드하기</p>--%>
@@ -62,6 +61,7 @@
 
     </div>
 </section>
+<jsp:include page="../footer.jsp" />
 <script src="/javascript/movieSearch.js"></script>
 <script src="/javascript/myContent.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

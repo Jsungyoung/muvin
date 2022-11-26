@@ -41,8 +41,8 @@
             <button type="button" onclick="location.href='/user/deleteForm'">회원탈퇴</button>
         </div>
         <div class="btn">
-            <button type="button" onclick="location.href='../myMovieList'">찜한 영화 보러가기</button>
-            <button type="button" onclick="location.href='../myTvList'">찜한 드라마 보러가기</button>
+            <button type="button" onclick="location.href='../mymovieList'">찜한 영화 보러가기</button>
+            <button type="button" onclick="location.href='../mytvList'">찜한 드라마 보러가기</button>
         </div>
         <table>
             <thead>
@@ -60,6 +60,7 @@
 
     </form>
 </section>
+<jsp:include page="../footer.jsp" />
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="/javascript/mypage.js"></script>
 </body>

@@ -2,6 +2,9 @@ function getDrama(tv_id){
     const urlParams = new URL(window.location.href).searchParams;
     const dramaid = urlParams.get('tv_id');
     console.log(dramaid);
+    const user = document.getElementById('user').value;
+    console.log(user);
+    checkContent();
 
     $.ajax({
         url: "https://api.themoviedb.org/3/tv/"+dramaid+"?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&include_null_first_air_dates=false&language=ko",
@@ -20,8 +23,10 @@ function getDrama(tv_id){
         const epi = res.number_of_episodes;
         const directors = res.created_by;
         const rating = (res.vote_average+"").substring(0,3);
-        console.log(translate("test"));
-        // const nation = translate(res.origin_country);
+        // console.log(translate("test"));
+        // const origin = res.origin_country;
+        // const nation = translate(origin);
+        // console.log(nation);
         const seasons = [];
         res.seasons.forEach(e => {
             $('#season').append(
@@ -108,20 +113,26 @@ function getGenre(genre){
 }
 
 function translate(text){
+    // let translated = "";
     $.ajax(
         {
-        url: "https://proxy.cors.sh/https://openapi.naver.com/v1/papago/n2mt?source=en&target=ko&text="+text,
+        url: "https://proxy.cors.sh/https://openapi.naver.com/v1/papago/n2mt?source=en&target=ko",
         method: "POST",
         timeout: 0,
-            headers: {
+        async: false,
+        headers: {
             ContentType: "application/x-www-form-urlencoded; charset=UTF-8",
             "X-Naver-Client-Id": "8EC16e7lKtU2dC65mKOb",
             "X-Naver-Client-Secret": "A7XMMs4A58"
+        },
+        data: {
+            "text" : text
         }
-
-    }
-    ).done(function (response) {
+    }).done(function (response) {
+        console.log(response);
         const result = response.message.result.translatedText;
-        return result;
+        console.log(result);
+        // translated = result;
     });
+    // return translated;
 }

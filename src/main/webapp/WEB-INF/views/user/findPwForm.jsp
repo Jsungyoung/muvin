@@ -24,6 +24,7 @@
         </form>
     </div>
 </section>
+<jsp:include page="../footer.jsp" />
 <script type="text/javascript" src="/javascript/find.js"></script>
 </body>
 </html>

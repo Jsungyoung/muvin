@@ -20,7 +20,7 @@
 
         <div class="content_all"></div>
     </section>
-
+<jsp:include page="../footer.jsp" />
 <script src="/javascript/findContent.js"></script>
 </body>
 </html>

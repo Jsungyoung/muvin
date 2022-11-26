@@ -27,21 +27,18 @@
 <%--    </div>--%>
 
 
+    <div><strong>일일 박스오피스</strong></div>
+    <div class="movie-container boxoffice"></div>
 
-    <div style="font-size: 20px;"><strong>상위 랭킹</strong></div>
+    <div style="font-size: 20px;"><strong>별점순</strong></div>
     <div class="movie-container rated"></div>
 
-<%--    <div><strong>일일 박스오피스</strong></div>--%>
-<%--    <div class="movie-container boxoffice"></div>--%>
-
-    <div style="font-size: 20px;"><strong>인기 영화</strong></div>
+    <div style="font-size: 20px;"><strong>인기순</strong></div>
     <div class="movie-container popular"></div>
 
 
 </section>
-<footer>
-    <strong>선준</strong> komlov@naver.com <strong>진규</strong> yjhigh95@gmail.com <strong>성영</strong> sungyoung961@naver.com <strong>진아</strong> beathummus@gmail.com  <strong>승우</strong> hansw0626@daum.net
-</footer>
+<jsp:include page="footer.jsp" />
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="></script>
 </body>
 <script src="/javascript/movieSearch.js"></script>

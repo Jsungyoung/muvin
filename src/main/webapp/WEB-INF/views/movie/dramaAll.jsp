@@ -43,6 +43,7 @@
 
     <div class="content_all"></div>
   </section>
+<jsp:include page="../footer.jsp" />
 <script src="/javascript/dramaAll.js"></script>
 <script src="/javascript/dramaSearch.js"></script>
 </body>

@@ -16,13 +16,12 @@
 <body onload="javascript:getDrama(${drama_id})">
 <jsp:include page="../header.jsp" />
 <c:set var="userId" value="${log}" scope="session"/>
+<input type="hidden" value="${userId}" id="user">
 
 <section>
     <div class = drama-view></div>
 
-    <div class="click" style="margin: 10px auto; display: flex; align-items: flex-end; width: 80vw;">
-        <button type="button" id="${userId}" onclick="addWishTv()">담아두기</button>
-        <%--        <div>키워드</div>--%>
+    <div class="mylist" style="margin: 10px auto; display: flex; align-items: flex-end; width: 80vw;">
         <%--        <div>별점 매기는 거...........</div>--%>
     </div>
     <div>
@@ -63,6 +62,7 @@
         </div>
     </div>
 </section>
+<jsp:include page="../footer.jsp" />
 <script src="/javascript/dramaSearch.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

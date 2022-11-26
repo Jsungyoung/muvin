@@ -58,7 +58,7 @@
 </section>
 
 <%--서머노트 --%>
-
+<jsp:include page="../footer.jsp" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
 <script src="javascript/createBoard.js"></script>

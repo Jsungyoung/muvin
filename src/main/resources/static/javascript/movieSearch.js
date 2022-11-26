@@ -4,36 +4,11 @@ function getMovie(movie_id){
     console.log(movieid);
     const user = document.getElementById('user').value;
     console.log(user);
-    $.ajax({
-        url: "/v1/movie/checkContent",
-        method: "get",
-        data: {
-            "userId" : user,
-            "contentId" : movieid,
-            "contentType" : "movie",
-            "type" : "wish"
-        }
-    }).done(function(res){
-        console.log(res);
-        if(res === true) {
 
-
-
-
-
-            $('.mylist').append(
-                `<button class="remove" onclick="removeWish()">v 담았어요</button>`
-            );
-        } else{
-            $('.mylist').append(
-                `<button class="add" onclick="addWish()">+ 담을래요</button>`
-            );
-        }
-    })
-
+    checkContent();
 
     $.ajax({
-        url: "https://api.themoviedb.org/3/movie/" + movieid + "?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko",
+        url: "https://api.themoviedb.org/3/movie/" + movieid + "?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&append_to_response=recommendations",
         method: 'GET',
         timeout: 0
     }).done(function (res) {
@@ -82,6 +57,19 @@ function getMovie(movie_id){
             </div>`
         );
 
+        const recommend = res.recommendations.results;
+        recommend.forEach(e => {
+            const rec_poster = e.poster_path;
+            const rec_title = e.title;
+            const rec_id = e.id;
+            $('#related').append(
+                `<div class="recommend" onclick="location.href='movieView?movie_id=${rec_id}';">
+                    <div class="img_container"><img class="image" src="https://image.tmdb.org/t/p/original/${rec_poster}"/></div>
+                    <div class="rec_title">${rec_title}</div>
+                </div>`
+            )
+        })
+
         const date = releasedate.substring(0,4) + releasedate.substring(5,7) + releasedate.substring(8,10);
         console.log(date);
 
@@ -121,8 +109,6 @@ function getMovie(movie_id){
         $('#plot').append(
             `<p>${detail}</p>`
         );
-
-
     });
 }
 
