@@ -19,7 +19,7 @@
 #movie-title, #drama-title{
     font-size: 20px;
     text-align: center;
-    margin: 10px auto;
+    margin: 30px auto;
 }
 
 .movie-info, .drama-info{
@@ -67,20 +67,20 @@
     border-radius: 6px;
 }
 
-.img_container{
-    width: 10%;
-    vertical-align: top;
-    margin: 1%;
-    overflow: auto;
-    cursor: pointer;
+.recommend{
+    width: 150px
+    /*vertical-align: top;*/
+    /*margin: 1%;*/
+    /*overflow: auto;*/
+    /*cursor: pointer;*/
 }
 
-.recommend {
+#related {
     display: flex;
     flex-wrap: wrap;
     width: 90vw;
     margin: 0 auto;
-    justify-content:space-between;
+    justify-content: flex-start;
     border-radius: 10px;
 }
 
@@ -90,4 +90,14 @@
     margin: 0 5px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.container{
+    margin: 20px 20px 35px 20px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.rec_title{
+    text-align: center;
 }

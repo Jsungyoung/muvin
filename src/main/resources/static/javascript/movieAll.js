@@ -20,8 +20,8 @@ nonClickNation.forEach((e) => {
 });
 
 
-const genre = document.getElementsByClassName("genre_name");
-const nonClickGenre = document.querySelectorAll(".genre_name");
+const genre = document.getElementsByClassName('.genre_name');
+const nonClickGenre = document.querySelectorAll('.genre_name');
 
 function handleGenre(event) {
     nonClickGenre.forEach((e) => {
@@ -35,22 +35,28 @@ function handleGenre(event) {
 
 nonClickGenre.forEach((e) => {
     e.addEventListener("click", e => {
-        handleGenre(e) ;
-    } );
-});
+        handleGenre(e);
+    })
+})
 
-function init() {
-    for (let i = 0; i < genre.length; i++) {
-        genre[i].addEventListener("click", e => {
-            handleGenre(e) ;
-        });
-    }
-    for (let i = 0; i < nation.length; i++) {
-        nation[i].addEventListener("click", e => {
-            handleNation(e) ;
-        });
-    }
-}
+// nonClickGenre.forEach((e) => {
+//     e.addEventListener("click", e => {
+//         handleGenre(e) ;
+//     } );
+// });
+
+// function init() {
+//     for (let i = 0; i < genre.length; i++) {
+//         genre[i].addEventListener("click", e => {
+//             handleGenre(e) ;
+//         });
+//     }
+//     for (let i = 0; i < nation.length; i++) {
+//         nation[i].addEventListener("click", e => {
+//             handleNation(e) ;
+//         });
+//     }
+// }
 
 
 
@@ -85,10 +91,9 @@ function getMovieByGenre(){
     const nation = $('.click_nation').attr('id');
     console.log(genre);
     console.log(nation);
-    console.log(page);
 
     $.ajax({
-        url: "https://api.themoviedb.org/3/discover/movie?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&include_adult=false&region=KR&with_original_language="+nation+"&page="+page+"&with_genres"+genre,
+        url: "https://api.themoviedb.org/3/discover/movie?api_key=1ed33ea0d82bd16f75e379e2025d9f9f&language=ko&include_adult=false&region=KR&with_original_language="+nation+"&page="+page+"&with_genres="+genre,
         method: "GET",
         timeout: 1000,
     }).done(function (response) {
@@ -98,38 +103,18 @@ function getMovieByGenre(){
         list.forEach(e => {
             const poster_path = e.poster_path;
             const title = e.title;
-            const releasedate = e.release_date;
+            const release = (e.release_date+"").substring(0,4);
             const movie_id = e.id;
 
             $('.content_all').append(
-                `<div class="content" onclick="location.href='movieView?movie_id=${movie_id}';">
-                    <div>
-                        <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"/>
-                    </div>
-                    <div class="title">${title}</div>
-                </div>`
+                `<div class="container"><div class="content" onclick="location.href='movieView?movie_id=${movie_id}';">
+                    <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"/>
+                </div><div class="title">${title}(${release})</div></div>`
             );
         });
 
     });
 }
-
-// $('.content_all').scroll(function() {
-//     // var scrollTop = $(this).scrollTop();
-//     // var scrollHeight = $(this).height();
-//     // var contentHeight = $('#divContent').height();
-//     // if(scrollTop + scrollHeight +1 >= contentHeight) {
-//     //     page++;
-//     //     getMovieByGenre();
-//     // }
-//     let scrollTop = $(window).scrollTop();
-//     let height =
-//
-//     if (scrollTop + $(window).innerHeight() >= $(window).prop('scrollHeight')) {
-//         page++;
-//         getMovieByGenre();
-//     }
-// });
 
 $(window).scroll(function() {
     let scrollTop = $(window).scrollTop();

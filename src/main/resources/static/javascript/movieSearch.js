@@ -60,10 +60,9 @@ function getMovie(movie_id){
             const rec_title = e.title;
             const rec_id = e.id;
             $('#related').append(
-                `<div class="recommend" onclick="location.href='movieView?movie_id=${rec_id}';">
-                    <div class="img_container"><img class="image" src="https://image.tmdb.org/t/p/original/${rec_poster}"/></div>
-                    <div class="rec_title">${rec_title}</div>
-                </div>`
+                `<div class="container"><div class="recommend" onclick="location.href='movieView?movie_id=${rec_id}';">
+                    <img class="image" src="https://image.tmdb.org/t/p/original/${rec_poster}"/>
+                    <div class="rec_title">${rec_title}</div></div>`
             )
         })
 
