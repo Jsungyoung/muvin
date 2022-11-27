@@ -73,10 +73,11 @@ public class UserController {
         return "user/redirect";
     }
     @PostMapping("/user/login")
-    public String singIn(@RequestParam String id, @RequestParam String password, HttpServletRequest request, Model model){
+    public String singIn(@RequestParam String id,  @RequestParam String password, HttpServletRequest request, Model model){
         if(service.login(id,password)){
             HttpSession session = request.getSession();
             session.setAttribute("log", id);
+
             model.addAttribute("msg", id+"님 환영합니다");
             model.addAttribute("url", "/");
             return "user/redirect";
@@ -102,7 +103,8 @@ public class UserController {
     // 로그아웃
     @GetMapping("/user/logout")
     public String logout(HttpSession session, Model model) {
-        session.removeAttribute("log");
+        session.invalidate();
+//        session.removeAttribute("log");
         model.addAttribute("msg", "로그아웃 되었습니다");
         model.addAttribute("url", "/");
         return "user/redirect";
@@ -112,6 +114,8 @@ public class UserController {
     public void getInfo(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = (String)session.getAttribute("log");
         User info = service.userInfo(id);
+
+
         session.setAttribute("user",info);
         request.getRequestDispatcher("/WEB-INF/views/user/mypage.jsp").forward(request, response);
     }
@@ -184,5 +188,11 @@ public class UserController {
             model.addAttribute("url", "/user/findPwForm");
         }
         return "user/redirect";
+    }
+
+    @GetMapping("/find/nickname")
+    @ResponseBody
+    public String getNicknameById(String id){
+        return service.userNick(id);
     }
 }

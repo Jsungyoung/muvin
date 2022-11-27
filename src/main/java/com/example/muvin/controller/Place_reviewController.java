@@ -3,6 +3,7 @@ package com.example.muvin.controller;
 import com.example.muvin.domain.img_info.Img_info;
 import com.example.muvin.domain.place_review.Place_reviewDto;
 import com.example.muvin.service.Img_infoService;
+import com.example.muvin.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 import com.example.muvin.domain.place_review.Place_review;
@@ -30,6 +31,9 @@ public class Place_reviewController {
     @Autowired
     private Img_infoService imgService;
 
+    @Autowired
+    private UserService userService;
+
 
 
 //    @PostMapping("v1/`boardWrite`")
@@ -37,7 +41,17 @@ public class Place_reviewController {
 //        Place_reviewDto reviewDto = new Place_reviewDto(visit_date, pr_nickname, title, content);
 //        service.createView(reviewDto);
 //    }
-
+//    @GetMapping("v1/moveBoardWriteForm")
+//    public void moveBoardWrite(int id,String type, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+//        HttpSession session = request.getSession();
+//
+//        String userId = (String)session.getAttribute("log");
+//        String nickname = userService.userNick(userId);
+//        request.setAttribute("nickname",nickname);
+//        System.out.println("nickname" + nickname);
+//        request.getRequestDispatcher("/WEB-INF/views/boardWriteForm.jsp?").forward(request, response);
+//
+//    }
 
     @PostMapping("/v1/boardWrite")
 //    public void createReview(String pr_nickname, String title,  String content, String type, float score,String visit_date, int id){
@@ -71,6 +85,18 @@ public class Place_reviewController {
         // request.getRequestDispatcher("board").forward(request, response);
         request.getRequestDispatcher("/WEB-INF/views/board.jsp").forward(request, response);
     }
+
+//    @RequestMapping("/user/mypage")
+//    public void getNickById(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException, ELException{
+//        HttpSession session = request.getSession();
+//        String id = (String)session.getAttribute("log");
+//        String nickname = userService.userNick(id);
+//        System.out.println(nickname);
+//
+//        session.setAttribute("nickname",nickname);
+//
+//        request.getRequestDispatcher("/WEB-INF/views/boardWriteForm.jsp").forward(request,response);
+//    }
 
     @GetMapping("/v1/board/readTitle")
     public List<Place_review> readTitle(String title){
