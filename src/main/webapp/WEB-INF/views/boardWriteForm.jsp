@@ -23,6 +23,8 @@
 
 
 <section>
+    <c:set var="userId" value="${log}" scope="session"/>
+    <input type="hidden" value="${userId}" id="user">
 <c:set var="nickname" value="${nickname}" scope="request"/>
 
 

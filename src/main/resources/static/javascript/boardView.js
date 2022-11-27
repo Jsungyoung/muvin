@@ -131,7 +131,10 @@ function getSearchTitle2(){
     })
 }
 function getWriteButton(){
-    $('#write_button').empty();
-    str = `<button type='button' style='color: black' onClick="location.href='/boardWriteForm?id=${id}&type=${type}'">글쓰기</button>`;
-    $('#write_button').append(str);
+    if($("#user").val()!=""){
+        $('#write_button').empty();
+        str = `<button type='button' style='color: black' onClick="location.href='/boardWriteForm?id=${id}&type=${type}'">글쓰기</button>`;
+        $('#write_button').append(str);
+    }
+
 }

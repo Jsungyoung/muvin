@@ -85,7 +85,7 @@ function createBoard(){
 function getNickname(){
 
     let id = $("#user").val();
-    console.log(id);
+    console.log($("#user"));
     let pr_nickname = null;
     console.log("pr_nickname" + pr_nickname);
 
