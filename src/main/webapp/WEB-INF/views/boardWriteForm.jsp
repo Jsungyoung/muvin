@@ -19,31 +19,26 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
-<c:set var="info" scope="session" value="log"/>
-<input type="text" value="${info}">
+
 
 
 <section>
-<%--    <div class="container">--%>
-<%--        <textarea class="summernote" name="editordata"></textarea>--%>
-<%--    </div>--%>
-<%--    <script>--%>
-<%--        $('.summernote').summernote({--%>
-<%--            height: 150,--%>
-<%--            lang: "ko-KR"--%>
-<%--        });--%>
-<%--    </script>--%>
+    <c:set var="userId" value="${log}" scope="session"/>
+    <input type="hidden" value="${userId}" id="user">
+<c:set var="nickname" value="${nickname}" scope="request"/>
+
 
     <input type="hidden" id="no" name="no" value="">
     <div class="container">
         <form method="post"  class="write_form">
             <%--        <input type="hidden" id="no" name="no" value="">--%>
-            <input type="date" id="visit_date" name="visit_date" value="2022-11-18">
+            <input type="date" id="visit_date" name="visit_date" value="2022-11-27">
 <%--                user service 호출--%>
-            <input type="hidden" id="pr_nickname" name="pr_nickname" value="닉네임">
-            <input type="hidden" id="type" name="type" value="<c:out value="${info.type}"/>">
+            <input type="button" id="pr_nickname" name="pr_nickname" value="닉네임"/>">
+
+            <%--            <input type="text" id="type" name="type" value="${type}">--%>
 <%--                아이디 값 받아와야됨--%>
-            <input type="hidden" id="id" name="id" value="<c:out value="${info.no}"/>">
+<%--            <input type="text" id="id" name="id" value="${id}"/>">--%>
             <div>
                 <input type="text" id="title" name="title" required>
             </div>
@@ -55,7 +50,7 @@
             <input type="number" max="10" min="0" id="score" name="score"  >
             <input type="file" id="input_img" onchange="imageUpdate()" accept="image/*">
             <input type="button" value="작성" onclick="createBoard()">
-            <input type="button" value="home" onclick="location.href='/board'">
+<%--            <input type="button" value="home" onclick="location.href='/board'">--%>
         </form>
     </div>
 

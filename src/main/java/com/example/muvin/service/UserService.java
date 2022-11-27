@@ -34,6 +34,7 @@ public class UserService {
     // 닉네임
     public String userNick(String id){
         User result = repository.findAllById(id);
+        System.out.println("유저 닉네임" + result);
         return result.getNickname();
     }
 

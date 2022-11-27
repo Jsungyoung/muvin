@@ -39,38 +39,21 @@
 //         console.log(error);
 //     });
 // }
-const urlParams = new URL(window.location.href).searchParams;
-const movieid = urlParams.get('movie_id');
-const tvid = urlParams.get('tv_id');
 
-function setInfo(){
-
-    let id = null;
-    let type = null;
-    if(movieid!=null){
-        id = movieid;
-        type = "movie";
-    }else if(tvid!=null){
-        id = tvid;
-        type = "tv";
-    }
-    $.ajax({
-        url: "http://localhost:8084/v1/board/getInfo",
-        method: "GET",
-
-    })
-
-}
 
 function createBoard(){
 
-    let pr_nickname=$('#pr_nickname').val();
+
+    const urlParams = new URL(window.location.href).searchParams;
+    // let id = (String)session.
+
+    let pr_nickname=getNickname();
     let title = $('#title').val();
     let content = $('#content').val();
-    let type = $('#type').val();
+    let type = urlParams.get('type');
     let score = $('#score').val();
     let visit_date = $('#visit_date').val();
-    let id = $('#id').val();
+    let id = urlParams.get('id');
     console.log("createBoard submit");
 
     let settings = {
@@ -97,4 +80,25 @@ function createBoard(){
         console.log(response);
         location.href=`http://localhost:8084/`;
     });
+}
+
+function getNickname(){
+
+    let id = $("#user").val();
+    console.log($("#user"));
+    let pr_nickname = null;
+    console.log("pr_nickname" + pr_nickname);
+
+    let settings = {
+        url: `http://localhost:8084/find/nickname?id=${id}`,
+        method: "GET",
+        async: false,
+    };
+    console.log(pr_nickname);
+    $.ajax(settings).done(function (response) {
+        pr_nickname = response;
+        console.log("pr_nickname" + pr_nickname);
+        console.log("response" + response);
+    });
+    return pr_nickname;
 }

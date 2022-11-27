@@ -63,7 +63,7 @@
 <%--            <script src="javascript/boardView.js"></script>--%>
   </div>
 </section>
-<jsp:include page="../footer.jsp" />
+<jsp:include page="footer.jsp" />
 <script src="javascript/deleteBoard.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </body>

@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+    <link rel="stylesheet" href="/css/board.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/contentView.css">
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e0146e3fc3c4cc6c4776c917bccae6c&libraries=services,clusterer,drawing"></script>
@@ -63,8 +64,14 @@
         <div class="tab-pane fade" id="season">
         </div>
     </div>
+    <input type="button" style="color: black" onclick="getSearchTitle2()" value="게시판 출력">
+    <div class="write_button" id="write_button">
+    </div>
+    <table class="board_list" id="board_list">
+    </table>
 </section>
 <jsp:include page="../footer.jsp" />
+<script src="/javascript/boardView.js"></script>
 <script src="/javascript/dramaSearch.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

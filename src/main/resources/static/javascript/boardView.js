@@ -65,13 +65,27 @@ function getSearchContent(){
 }
 
 //
-urlParam = new URL(window.location.href).searchParams;
-let movieid = urlParam.get('movie_id');
-let tvid = urlParam.get('tv_id');
 
 function getSearchTitle2(){
 
 
+    urlParam = new URL(window.location.href).searchParams;
+    let movieid = urlParam.get('movie_id');
+    let tvid = urlParam.get('tv_id');
+    let id = null;
+    let type = null;
+
+    console.log("id :" + id);
+    if(movieid!=null){
+        id = movieid;
+        type = "movie";
+    }else if(tvid!=null){
+        id = tvid;
+        type = "tv";
+    }
+
+    console.log("type" + type);
+    console.log("id :" + id);
     // let keywords = $('#keywords').val();
     // console.log(keywords);
     getWriteButton();
@@ -80,7 +94,7 @@ function getSearchTitle2(){
 
     str="<thead>"
     str+="<tr>"
-    str+="<th scope='col'>글번호!</th>"
+    str+="<th scope='col'>글번호</th>"
     str+="<th scope='col'>제목</th>"
     str+="<th scope='col'>작성자</th>"
     str+="<th scope='col'>방문일</th>"
@@ -91,33 +105,36 @@ function getSearchTitle2(){
     $.ajax({
         type: 'GET',
         // ${search}
-        url : `/v1/board/TypeAndId`,
+        url : `/v1/board/TypeAndId?id=${id}&type=${type}`,
         // data : $("form[name=search-form]").serialize(),
         success : function(result){
             //테이블 초기화
 
             // $('#board_list ').empty();
 
-                result.forEach(function(item){
+            result.forEach(function(item){
 
-                    str+='<tbody>';
-                    str+='<tr>';
-                    str+= "<td>"+item.no+"</td>";
-                    str+="<td><a href='boardView?no="+item.no+"'>"+ item.title + "</a></td>";
-                    str+="<td>"+item.pr_nickname+"</td>";
-                    str+="<td>"+item.visit_date+"</td>";
-                    str+="<td>"+item.score+"</td>";
-                    str+="<td>"+item.reg_date+"</td>";
-                    str+="</tr>";
-                    str+="</tbody>";
-                })
-                    $('#board_list').append(str);
+                str+='<tbody>';
+                str+='<tr>';
+                str+= "<td>"+item.no+"</td>";
+                str+="<td><a href='boardView?no="+item.no+"'>"+ item.title + "</a></td>";
+                str+="<td>"+item.pr_nickname+"</td>";
+                str+="<td>"+item.visit_date+"</td>";
+                str+="<td>"+item.score+"</td>";
+                str+="<td>"+item.reg_date+"</td>";
+                str+="</tr>";
+                str+="</tbody>";
+            })
+            $('#board_list').append(str);
 
         }
     })
 }
 function getWriteButton(){
-    $('#write_button').empty();
-    str = "<button type='button' style='color: black' onClick='location.href=`/boardWriteForm`'>글쓰기</button>";
-    $('#write_button').append(str);
+    if($("#user").val()!=""){
+        $('#write_button').empty();
+        str = `<button type='button' style='color: black' onClick="location.href='/boardWriteForm?id=${id}&type=${type}'">글쓰기</button>`;
+        $('#write_button').append(str);
+    }
+
 }
