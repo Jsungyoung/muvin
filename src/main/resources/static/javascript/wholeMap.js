@@ -186,13 +186,8 @@ else if(tvid != null){
                 str += "<td><img style='text-align:center; cursor: pointer; width: 30px; height: 30px;' id='" + placeNo + "/" + selmord + "' onclick='showPopup(this)' src='images/siren.png'></td>";
                 str += "</tr>";
                 $('.container2').append(str);
-
-
             })
-
         });
-
-
     }
 
 

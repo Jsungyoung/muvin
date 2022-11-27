@@ -12,11 +12,11 @@
 </head>
 <body>
 
-<div id="roadview" style="width:500px;height:500px;"></div>
+<div id="roadview" style="width:100%;height:100%;"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e0146e3fc3c4cc6c4776c917bccae6c"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
+x
 <script src="/javascript/roadView.js"></script>
 
 </body>
