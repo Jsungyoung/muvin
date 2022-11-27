@@ -19,7 +19,7 @@
         <form method="post" action="/user/findPw" id="login-form">
             <input type="text" name="id" id="id" placeholder="ID">
             <input type="text" name="email" id="email" placeholder="email">
-            <input type="submit" id="check" value="비밀번호 찾기">
+            <input type="submit" id="check1" value="비밀번호 찾기">
             <button type="button" onclick="location.href='/user/loginForm '">취소</button>
         </form>
     </div>

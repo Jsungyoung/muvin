@@ -41,7 +41,8 @@
 
 <div class="log">
   <c:if test="${id == null }">
-    <a href="/user/loginForm"><i class="fa-solid fa-right-to-bracket">로그인</i></a>
+      <a href="/user/loginForm"><i class="fa-solid fa-right-to-bracket">로그인  /</i></a>
+      <a href="/user/signUpForm"><i class="fa-solid fa-user-plus">회원가입</i></a>
   </c:if>
   <c:if test="${id != null }">
       <c:out value="${id}님 / "/>

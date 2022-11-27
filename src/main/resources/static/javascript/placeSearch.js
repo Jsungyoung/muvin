@@ -25,6 +25,7 @@ function addPlace() {
     let y = $('#placeY').text();
     let title = $('#areaName');
     let address = $('#placeAddress').text();
+
     if(title.val() === ""){
         alert("장소 이름을 입력해주세요");
         title.focus();
@@ -39,8 +40,8 @@ function addPlace() {
             data: {
                 x: x,
                 y: y,
-                placeName: address,
-                areaName: title.val(),
+                placeName: title.val(),
+                areaName: address,
                 movieCode: movie_id,
             }
         }).done(function (res) {
@@ -71,8 +72,8 @@ function addPlace() {
             data: {
                 x: x,
                 y: y,
-                placeName: address,
-                areaName: title.val(),
+                placeName: title.val(),
+                areaName: address,
                 movieCode: tv_id,
             }
         }).done(function (res) {

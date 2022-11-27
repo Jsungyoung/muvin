@@ -28,7 +28,15 @@ table{
     height: 600px;
     display: flex;
 }
-
+.btn {
+    height: 28px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #007bff;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
 td, th{
     margin: 10px;
 }

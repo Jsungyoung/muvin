@@ -23,4 +23,7 @@ public class ReportService {
     public void addReport(Report report){
         repository.save(report);
     }
+    public void delReportByNo(int no){
+        repository.deleteById(no);
+    }
 }

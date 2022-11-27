@@ -1,72 +1,71 @@
+// ID 중복검사
+$("#id").keyup(function () {
+    let id = $("#id").val();
+    id = id.trim();
 
-    // ID 중복검사
-    $("#id").keyup(function () {
-        let id = $("#id").val();
-        id = id.trim();
-
-            $.ajax({
-                type: "post",
-                url: "/checkId",
-                datatype: "text",
-                data: {"id": id},
-                success: function (result) {
-                    if (result === 1) {
-                        $("#myid").val("N");
-                        $("#myid").text("중복된 아이디입니다.");
-                        $("#myid").css('color','red');
-                    } else {
-                        $("#myid").val("Y");
-                        $("#myid").text("사용 가능한 아이디입니다.");
-                        $("#myid").css('color','green');
-                    }
-                }
-            });
-    });
-
-    // 닉네임
-    $("#nickname").keyup(function () {
-        let nickCheck = (/^[ㄱ-ㅎ가-힣a-z0-9-_]+$/);
-        let nick = $("#nickname").val();
-        nick = nick.trim();
-
-        if(!nickCheck.test(nick)){
-            $("#myNick").text("특수문자를 넣을 수 없습니다.");
-            $("#myNick").css('color','red');
-            $("#nickname").focus();
-            return false;
-        } else {
-
-            $.ajax({
-                type: "post",
-                url: "/checkNick",
-                datatype: "text",
-                data: {"nickname": nick},
-                success: function (result) {
-                    if (result === 1) {
-                        $("#myNick").val("N");
-                        $("#myNick").text("중복된 닉네임입니다.");
-                        $("#myNick").css('color','red');
-                    } else {
-                        $("#myNick").val("Y");
-                        $("#myNick").text("사용 가능한 닉네임입니다.");
-                        $("#myNick").css('color','green');
-                    }
-                }
-            });
+    $.ajax({
+        type: "post",
+        url: "/checkId",
+        datatype: "text",
+        data: {"id": id},
+        success: function (result) {
+            if (result === 1) {
+                $("#myid").val("N");
+                $("#myid").text("중복된 아이디입니다.");
+                $("#myid").css('color', 'red');
+            } else {
+                $("#myid").val("Y");
+                $("#myid").text("사용 가능한 아이디입니다.");
+                $("#myid").css('color', 'green');
+            }
         }
     });
+});
+
+// 닉네임
+$("#nickname").keyup(function () {
+    let nickCheck = (/^[ㄱ-ㅎ가-힣a-z0-9-_]+$/);
+    let nick = $("#nickname").val();
+    nick = nick.trim();
+
+    if (!nickCheck.test(nick)) {
+        $("#myNick").text("특수문자를 넣을 수 없습니다.");
+        $("#myNick").css('color', 'red');
+        $("#nickname").focus();
+        return false;
+    } else {
+
+        $.ajax({
+            type: "post",
+            url: "/checkNick",
+            datatype: "text",
+            data: {"nickname": nick},
+            success: function (result) {
+                if (result === 1) {
+                    $("#myNick").val("N");
+                    $("#myNick").text("중복된 닉네임입니다.");
+                    $("#myNick").css('color', 'red');
+                } else {
+                    $("#myNick").val("Y");
+                    $("#myNick").text("사용 가능한 닉네임입니다.");
+                    $("#myNick").css('color', 'green');
+                }
+            }
+        });
+    }
+});
 
 function phone_keyup(obj) {
     let number = obj.value.replace(/[^0-9]/g, "");
     let phone = "";
 
-    if(number.length < 4) {
+    if (number.length < 4) {
         return number;
-    } else if(number.length < 7) {
+    } else if (number.length < 7) {
         phone += number.substr(0, 3);
         phone += "-";
         phone += number.substr(3);
-    } else if(number.length < 11) {
+    } else if (number.length < 11) {
         phone += number.substr(0, 3);
         phone += "-";
         phone += number.substr(3, 3);
@@ -82,11 +81,11 @@ function phone_keyup(obj) {
     obj.value = phone;
 }
 
-$("#id").keyup(function(event){
-    if (!(event.keyCode >=37 && event.keyCode<=40)) {
+$("#id").keyup(function (event) {
+    if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
         let inputVal = $(this).val();
         let check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-        if(check.test(inputVal)){
+        if (check.test(inputVal)) {
             $(this).val("");
         }
     }
@@ -100,8 +99,7 @@ function isSame() {
         if (pw === checkPw) {
             document.getElementById('same').innerHTML = '비밀번호 일치';
             document.getElementById('same').style.color = 'green';
-        }
-        else {
+        } else {
             document.getElementById('same').innerHTML = '비밀번호 불일치';
             document.getElementById('same').style.color = 'red';
         }
@@ -139,20 +137,19 @@ function sign_check() {
     let pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
     let nameCheck = (/^[가-힣]+$/);
     let nickCheck = (/^[ㄱ-ㅎ가-힣a-z0-9-_]+$/);
-    let emailCheck =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    let emailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
     if (id.value === "") {
         myId.innerHTML = '아이디를 입력하세요.';
         myId.style.color = 'red';
         id.focus();
         return false;
-    }else if(myId.value === "N"){
+    } else if (myId.value === "N") {
         myId.innerHTML = '중복된 아이디입니다. 다시 확인해주세요.';
         myId.style.color = 'red';
         id.focus();
         return false;
     }
-
     if (pw.value === "") {
         space.innerHTML = '비밀번호를 입력해주세요.';
         space.style.color = 'red';
@@ -180,7 +177,7 @@ function sign_check() {
         nameChk.style.color = 'red';
         name.focus();
         return false;
-    }else if(!nameCheck.test(name.value)){
+    } else if (!nameCheck.test(name.value)) {
         nameChk.innerHTML = '한글만 입력해주세요';
         nameChk.style.color = 'red';
         name.focus();
@@ -191,12 +188,12 @@ function sign_check() {
         myNick.style.color = 'red';
         nickname.focus();
         return false;
-    }else if(!nickCheck.test(nickname.value)){
+    } else if (!nickCheck.test(nickname.value)) {
         myNick.innerHTML = '닉네임은 특수문자를 넣을 수 없습니다.';
         myNick.style.color = 'red';
         nickname.focus();
         return false;
-    }else if(myNick.value === "N"){
+    } else if (myNick.value === "N") {
         myNick.innerHTML = '중복된 닉네임입니다. 다시 확인해주세요.';
         myNick.style.color = 'red';
         nickname.focus();
@@ -214,17 +211,17 @@ function sign_check() {
         warn.style.color = 'red';
         email.focus();
         return false;
-    }else if(!emailCheck.test(email.value)){
+    } else if (!emailCheck.test(email.value)) {
         warn.innerHTML = '올바른 이메일 형식이 아닙니다.';
         warn.style.color = 'red';
         email.focus();
         return false;
     }
-    if(mailCheck.value === "N"){
+    if (mailCheck.value === "N") {
         warn.innerHTML = '이메일 인증을 해주세요.';
         warn.style.color = 'red';
         return false;
-    }else if(warn.value ==="N"){
+    } else if (warn.value === "N") {
         warn.innerHTML = '인증번호가 틀렸습니다.';
         warn.style.color = 'red';
         warn.focus();
@@ -233,31 +230,40 @@ function sign_check() {
     //입력 값 전송
     document.signup.submit();
 }
+function check(e){
+    let emailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-$('#mail-Check-Btn').click(function() {
+}
+$('#mail-Check-Btn').click(function () {
+
     let mailCheck = document.getElementById("mail-check-warn");
     const email = $('#email').val();
     console.log('완성된 이메일 : ' + email);
     const checkInput = $('#mail-check-input')
 
-    if($('#email').val() === ""){
+    if (email === "") {
         mailCheck.innerHTML = '이메일을 입력해주세요';
         mailCheck.style.color = 'red';
         $('#email').focus();
         return false;
-    }else {
+    }else if(!check(this)){
+        mailCheck.innerHTML = '올바른 이메일 형식이 아닙니다';
+        mailCheck.style.color = 'red';
+        $('#email').focus();
+        return false;
+    } else {
 
-    $.ajax({
-        type : 'get',
-        url : '/mailCheck?email='+email, //
-        success : function (data) {
-            console.log("data : " +  data);
-            checkInput.attr('disabled',false);
-            code =data;
-            alert('인증번호가 전송되었습니다.')
-            $("#mail-Check-Btn").val("Y");
-        }
-    }); // end ajax
+        $.ajax({
+            type: 'get',
+            url: '/mailCheck?email=' + email, //
+            success: function (data) {
+                console.log("data : " + data);
+                checkInput.attr('disabled', false);
+                code = data;
+                alert('인증번호가 전송되었습니다.')
+                $("#mail-Check-Btn").val("Y");
+            }
+        }); // end ajax
     }
 }); // end send eamil
 
@@ -267,32 +273,32 @@ $('#mail-check-input').blur(function () {
     const inputCode = $(this).val();
     const $resultMsg = $('#mail-check-warn');
 
-    if(inputCode === code){
+    if (inputCode === code) {
         $resultMsg.html('인증번호가 일치합니다.');
-        $resultMsg.css('color','green');
+        $resultMsg.css('color', 'green');
         $('#mail-check-warn').val("Y");
-        $('#mail-Check-Btn').attr('disabled',true);
-        $('#str_email01').attr('readonly',true);
-        $('#str_email02').attr('readonly',true);
+        $('#mail-Check-Btn').attr('disabled', true);
+        $('#str_email01').attr('readonly', true);
+        $('#str_email02').attr('readonly', true);
         $('#str_email02').attr('onFocus', 'this.initialSelect = this.selectedIndex');
         $('#str_email02').attr('onChange', 'this.selectedIndex = this.initialSelect');
-    }else{
+    } else {
         $resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
-        $resultMsg.css('color','red');
+        $resultMsg.css('color', 'red');
         $("#mail-check-warn").val("N");
     }
 });
-if(sessionStorage.getItem("data")!=null) {
+if (sessionStorage.getItem("data") != null) {
     kakaoOnLoad();
 }
 
-function kakaoOnLoad(){
+function kakaoOnLoad() {
     $("#mail-Check-Btn").val("Y");
     $("#mail-check-warn").val("Y");
     $("#checkId").val("Y");
     $("#myid").val("Y");
 
-    let str = ""+sessionStorage.getItem("data");
+    let str = "" + sessionStorage.getItem("data");
     sessionStorage.clear();
     let userInfo = JSON.parse(str);
     let id = $('#id');
@@ -304,29 +310,29 @@ function kakaoOnLoad(){
     let email = $('#email');
     id.val(userInfo.id);
     id.attr("readonly", true);
-    let pwCode = ""+pwGenerator();
+    let pwCode = "" + pwGenerator();
     pw.val(pwCode);
     pw.attr("readonly", true);
     pwCheck.val(pwCode);
     pwCheck.attr("readonly", true);
-    nickname.val(""+userInfo.nickname);
+    nickname.val("" + userInfo.nickname);
     let emailInfo = userInfo.email.split("@");
     console.log(email);
-    emailId.val(""+emailInfo[0]);
+    emailId.val("" + emailInfo[0]);
     emailId.attr("readonly", true);
-    emailAddress.val(""+emailInfo[1]);
+    emailAddress.val("" + emailInfo[1]);
     emailAddress.attr("readonly", true);
-    email.val(emailInfo[0]+"@"+emailInfo[1]);
+    email.val(emailInfo[0] + "@" + emailInfo[1]);
 }
 
-function pwGenerator(){
-    const str = ["1","2","3","4","5","6","7","8","9","0","a","b","c","d","e","f","g"
-        ,"h","i","j","k","l","n","m","o","p","q","r","s","t","u","v","w","x","y","z",
-        "A","B","C","D","E","F","G","H","I","J","K","L","N","M","O","P","Q","R","S",
-        "T","U","V","W","X","Y","Z","!","@","#","$","%","^","&","*","-","+","="];
+function pwGenerator() {
+    const str = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "a", "b", "c", "d", "e", "f", "g"
+        , "h", "i", "j", "k", "l", "n", "m", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+        "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "N", "M", "O", "P", "Q", "R", "S",
+        "T", "U", "V", "W", "X", "Y", "Z", "!", "@", "#", "$", "%", "^", "&", "*", "-", "+", "="];
     let pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,30}$/;
     let pw = "";
-    while(!pwdCheck.test(pw)) {
+    while (!pwdCheck.test(pw)) {
         pw = "";
         for (let i = 0; i < 20; i++) {
             let idx = Math.floor(Math.random() * str.length);

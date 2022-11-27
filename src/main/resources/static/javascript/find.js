@@ -1,7 +1,5 @@
 $("#check").click(function () {
-    let emailCheck =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    let id = $("#id").val();
-    let email = $("#email").val();
+
     let phone = $("#phone").val();
     let name = $("#name").val();
 
@@ -15,6 +13,14 @@ $("#check").click(function () {
         $("#phone").focus();
         return false;
     }
+
+});
+$("#check1").click(function () {
+    let emailCheck =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    let id = $("#id").val();
+    let email = $("#email").val();
+
+
     if (id === ""){
         alert("아이디를 입력하세요");
         $("#id").focus();

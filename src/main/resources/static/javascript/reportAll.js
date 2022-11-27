@@ -8,18 +8,20 @@ function getList(){
             let place = getPlace(e.placeNo);
             let placeInfo = getPlaceInfo(place.contentId, e.reportCode);
 
-            let no = e.no;
+            let no = e.placeNo;
             let content = e.content;
-            let areaName = place.areaName;
+            let category = e.category;
             let id = placeInfo.id;
             let title = placeInfo.title;
+            let placeName = place.placeName;
             $('#container').append(`
                <tr>
                     <td>${no}</td>
+                    <td>${category}</td>
                     <td>${content}</td>
                     <td><a href="/${id}">${title}</td>
-                    <td>${areaName}</td>
-                    <td><input type="button" value="삭제" onclick=""></td>
+                    <td>${placeName}</td>
+                    <td><input type="button" class="btn" value="장소삭제" onclick="moveView(this)"></td>
                </tr>`
             );
         })
@@ -64,4 +66,29 @@ function getPlaceInfo(contentId, type){
         }
     });
     return data;
+}
+function moveView(e){
+
+    let code = "";
+    let findCode = false;
+
+    e.parentElement.parentElement.childNodes.forEach(e => {
+        if(e.tagName=="TD" && !findCode){
+            console.log(e);
+            code = e.firstChild.textContent;
+            findCode = true;
+        }
+    });
+    console.log(code);
+    $.ajax({
+        method: "DELETE",
+        url: "http://localhost:8084/del/place",
+        data: {
+            code: code
+        }
+    }).done(function(){
+        alert("삭제 되었습니다.");
+        location.reload();
+    })
+
 }
