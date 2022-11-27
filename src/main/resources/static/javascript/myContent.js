@@ -65,6 +65,10 @@ function checkContent(){
 }
 
 function addWatchContent(){
+    if(user == ""){
+        alert("로그인 후 이용해주세요.");
+        location.href = "/user/loginForm";
+    } else {
     $.ajax({
         url: "/v1/content/add",
         method: "POST",
@@ -82,9 +86,14 @@ function addWatchContent(){
             `<span class="watch" onclick="removeWatchContent()"><i class="fa-solid fa-bookmark"></i> 봤어요</span>`
         );
     })
+    }
 }
 
 function addWishContent(){
+    if(user == ""){
+        alert("로그인 후 이용해주세요.");
+        location.href = "/user/loginForm";
+    } else {
     $.ajax({
         url: "/v1/content/add",
         method: "POST",
@@ -102,6 +111,7 @@ function addWishContent(){
             `<span class="remove" onclick="removeWishContent()"><i class="fa-solid fa-heart"></i> 담았어요</span>`
         );
     })
+    }
 }
 
 function removeWatchContent(){
@@ -172,9 +182,9 @@ function loadMyContent(){
                         title = res.name;
                     }
                         $('#wish').append(
-                            `<div><div class="content" onclick="location.href='${type}View?${type}_id=${c_id}';">
+                            `<div class="container"><div class="content" onclick="location.href='${type}View?${type}_id=${c_id}';">
                     <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"/>
-                    </div><div>${title}</div></div>`
+                    </div><div class="title">${title}</div></div>`
                         );
                 })
             }
@@ -193,9 +203,9 @@ function loadMyContent(){
                         title = res.name;
                     }
                         $('#watch').append(
-                            `<div><div class="content" onclick="location.href='${type}View?${type}_id=${c_id}';">
+                            `<div class="container"><div class="content" onclick="location.href='${type}View?${type}_id=${c_id}';">
                     <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"/>
-                    </div><div>${title}</div></div>`
+                    </div><div class="title">${title}</div></div>`
                         );
                 })
             }

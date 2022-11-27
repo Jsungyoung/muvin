@@ -69,13 +69,13 @@ function getDramaByGenre(){
         list.forEach(e => {
             const poster_path = e.poster_path;
             const title = e.name;
-            const releasedate = e.first_air_date;
+            const release = (e.first_air_date+"").substring(0,4);
             const drama_id = e.id;
 
             $('.content_all').append(
-                `<div class="content" onclick="location.href='tvView?tv_id=${drama_id}';">
-                    <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"></img>
-                </div>`
+                `<div class="container"><div class="content" onclick="location.href='tvView?tv_id=${drama_id}';">
+                    <img class="poster_img" src="https://image.tmdb.org/t/p/original/${poster_path}"/>
+                </div><div class="title">${title}(${release})</div></div>`
             );
         });
     });

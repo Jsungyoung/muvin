@@ -24,11 +24,7 @@
 }
 
 .content{
-    width: 16.6667%;
-    vertical-align: top;
-    margin: 1%;
-    overflow: auto;
-    cursor: pointer;
+    width: 200px;
 }
 
 
@@ -39,14 +35,20 @@
 }
 
 .content_all{
-    /* display: grid; */
-    /* grid-template-columns: repeat(5, 1fr); */
     display: flex;
     flex-wrap: wrap;
     width: 90vw;
-    margin: 0 auto;
-    justify-content:space-between;
-    border-radius: 10px;
+    justify-content:flex-start;
+    /*position: absolute;*/
+    left: 0;
+    top: 0;
+    margin: 0 20px;
+}
+
+.container{
+    margin: 20px 20px 35px 20px;
+    width: 200px;
+    cursor: pointer;
 }
 
 .click_genre, .click_nation{
@@ -74,4 +76,8 @@
     border-radius: 6px;
     background-color: #F8F8F8;
     color: black;
+}
+
+.title{
+    text-align: center;
 }

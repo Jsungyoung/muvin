@@ -10,6 +10,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/myList.css">
 </head>
 <body onload="javascript:loadMyContent()">
 <jsp:include page="../header.jsp"/>
@@ -29,7 +30,6 @@
             <div class="tab-pane fade show active" id="wish">
             </div>
             <div class="tab-pane fade" id="watch">
-                봤다고 한 콘텐츠
             </div>
         </div>
     </section>

@@ -27,13 +27,13 @@
 <%--    </div>--%>
 
 
-    <div><strong>일일 박스오피스</strong></div>
+    <div style="font-size: 20px; text-align: center; margin: 20px;"><strong>일일 박스오피스</strong></div>
     <div class="movie-container boxoffice"></div>
 
-    <div style="font-size: 20px;"><strong>별점순</strong></div>
+    <div style="font-size: 20px; text-align: center; margin: 20px;"><strong>별점순</strong></div>
     <div class="movie-container rated"></div>
 
-    <div style="font-size: 20px;"><strong>인기순</strong></div>
+    <div style="font-size: 20px; text-align: center; margin: 20px;"><strong>인기순</strong></div>
     <div class="movie-container popular"></div>
 
 
