@@ -38,6 +38,7 @@ nav {
 
 section {
     grid-area: section;
+    padding-bottom: 300px;
 }
 
 footer {
@@ -45,6 +46,7 @@ footer {
     font-size: 0.5em;
     padding:20px;
     text-align:center;
+
 }
 
 .menu {

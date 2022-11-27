@@ -1,4 +1,5 @@
 .login-wrapper{
+    position: relative;
     width: 500px;
     height: 350px;
     padding: 40px;

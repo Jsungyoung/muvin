@@ -18,8 +18,8 @@ function getMyPlace(){
                 <tr>
                     <td>${no}</td>
                     <td><a href="/${id}">${title}</td>
-                    <td>${address}</td>
                     <td>${areaName}</td>
+                    <td>${address}</td>
                     <td><input type="button" value="삭제" onclick="moveView(this)"></td>
                 </tr>
             `);
