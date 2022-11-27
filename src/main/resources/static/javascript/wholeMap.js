@@ -270,12 +270,18 @@ else if(tvid != null){
 }
 
 function movePlaceSearch(){
-    let movie_id = new URL(window.location.href).searchParams.get("movie_id");
-    let tv_id = new URL(window.location.href).searchParams.get("tv_id");
-    if(movie_id!=null){
-        location.href="/placeSearch?movie_id=" + movie_id;
-    }else if(tv_id!=null){
-        location.href="/placeSearch?tv_id=" + tv_id;
+    console.log($("#user").val());
+    if($("#user").val()==""){
+        alert("로그인이 필요한 서비스입니다.");
+    }else{
+        let movie_id = new URL(window.location.href).searchParams.get("movie_id");
+        let tv_id = new URL(window.location.href).searchParams.get("tv_id");
+        if(movie_id!=null){
+            location.href="/placeSearch?movie_id=" + movie_id;
+        }else if(tv_id!=null){
+            location.href="/placeSearch?tv_id=" + tv_id;
+        }
+
     }
 }
 
